@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "my-font";
+  src: url("/fonts/NeueHaasDisplayMediu.ttf")  format("truetype"); 
+}
+:root {
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html {
+  @apply overflow-x-hidden xl:text-[1vw] xs:text-[3vw] sm:text-[1.5vw] lg:text-[1vw] scroll-smooth;
+}
+body,
+#root {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+img,
+svg {
+  @apply w-full h-full object-contain;
+}
