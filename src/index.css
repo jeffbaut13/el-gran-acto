@@ -3,16 +3,36 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "my-font";
+  font-family: "StageGrotesk-black";
+  src: url("/fonts/StageGrotesk-Black.ttf")  format("truetype"); 
+}
+@font-face {
+  font-family: "StageGrotesk-bold";
+  src: url("/fonts/StageGrotesk-Bold.ttf")  format("truetype"); 
+}
+@font-face {
+  font-family: "StageGrotesk-ligth";
+  src: url("/fonts/StageGrotesk-Light.ttf")  format("truetype"); 
+}
+@font-face {
+  font-family: "StageGrotesk-regular";
+  src: url("/fonts/StageGrotesk-Regular.ttf")  format("truetype"); 
+}
+@font-face {
+  font-family: "Wayland";
   src: url("/fonts/NeueHaasDisplayMediu.ttf")  format("truetype"); 
 }
 :root {
-  
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @apply text-primary font-StageGroteskRegular;
 }
+.flexCenter{
+  @apply flex justify-center items-center;
+}
+
 html {
   @apply overflow-x-hidden xl:text-[1vw] xs:text-[3vw] sm:text-[1.5vw] lg:text-[1vw] scroll-smooth;
 }
@@ -25,4 +45,7 @@ body,
 img,
 svg {
   @apply w-full h-full object-contain;
+}
+strong{
+  @apply font-StageGroteskBlack
 }

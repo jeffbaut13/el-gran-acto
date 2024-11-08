@@ -1,10 +1,12 @@
+import { VideoBackground } from "../components/VideoBackground";
+
 const Layout = ({ children }) => {
   return (
-    <div>
-      <div>Layout</div>
+    <>
+      <header className="block absolute top-0 left-0">Header</header>
       {children}
-    </div>
+     
+    </>
   );
 };
 export default Layout;
- 

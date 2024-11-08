@@ -8,15 +8,18 @@ export default {
         xs: "300px",
       },
       fontFamily: {
-        myFont: ["my-font", "serif"],
+        StageGroteskBlack: ["StageGrotesk-black", "serif"],
+        StageGroteskBold: ["StageGrotesk-bold", "serif"],
+        StageGroteskLigth: ["StageGrotesk-ligth", "serif"],
+        StageGroteskRegular: ["StageGrotesk-regular", "serif"],
+        Wayland: ["Wayland", "serif"],
       },
       colors: {
-        primary: "#282828",
-        second: "#fff6c2",
-        tercero: "#e7e5da",
+        primary: "#fcf6cc",
+        second: "#000000",
+        tercero: "#e9e2b4",
       },
     },
-
   },
   plugins: [],
 };
