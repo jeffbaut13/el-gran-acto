@@ -6,10 +6,13 @@ export const SectionMain = () => {
   return (
     <main className="w-full h-screen inline-block relative flexCenter flex-col">
       <VideoBackground />
-      <figure className="inline-block w-1/3">
+      <div className="w-1/3">
+
+      <figure className="inline-block w-full">
         <img src="/iconos/logo.svg" alt="" />
       </figure>
-        <hr className="w-full mt-6" />
+        <hr className="w-full my-6" />
+      </div>
 
       <h1 className="tracking-widest">
         <strong>EN NAVIDAD,</strong> ENTREGAR ES MEJOR QUE RECIBIR.
