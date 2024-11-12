@@ -20,7 +20,7 @@
 }
 @font-face {
   font-family: "Wayland";
-  src: url("/fonts/NeueHaasDisplayMediu.ttf")  format("truetype"); 
+  src: url("/fonts/Wayland.ttf")  format("truetype"); 
 }
 :root {
   font-synthesis: none;
@@ -48,4 +48,10 @@ svg {
 }
 strong{
   @apply font-StageGroteskBlack
+}
+button{
+  @apply font-Wayland bg-primary text-second flexCenter  rounded-md 
+}
+.HoverButtons{
+  @apply transition-all ease-in-out duration-200 hover:scale-[1.02]
 }

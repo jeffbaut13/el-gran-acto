@@ -18,6 +18,10 @@ export default {
         primary: "#fcf6cc",
         second: "#000000",
         tercero: "#e9e2b4",
+        opacityBlack: "#00000020",
+      },
+      fontSize: {
+        button: "1.58rem",
       },
     },
   },

@@ -1,3 +1,5 @@
+import { CompartirCancion } from "../components/compartir-cancion/CompartirCancion";
+import { Footer } from "../components/footer/Footer";
 import { SectionMain } from "../components/main/SectionMain";
  
 
@@ -13,20 +15,14 @@ export const Home = () => {
       <section className="w-full h-screen bg-black flexCenter">
         Souvenir
       </section>
+      <CompartirCancion />
       <section className="w-full h-screen bg-black flexCenter">
         Los Clasicos
       </section>
       <section className="w-full h-screen bg-black flexCenter">
         Making of
       </section>
-      <footer>
-        <section className="w-full h-screen bg-black flexCenter">
-          Compartir
-        </section>
-        <section className="w-full h-screen bg-black flexCenter">
-          Pie de pagina
-        </section>
-      </footer>
+      <Footer />
     </>
   );
 };
