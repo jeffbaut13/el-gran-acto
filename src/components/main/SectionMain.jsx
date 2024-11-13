@@ -1,5 +1,5 @@
 import useCounterStore from "../../store/store";
-import { VideoBackground } from "../VideoBackground";
+import { VideoBackground } from "./VideoBackground";
 
 export const SectionMain = () => {
   const { count, increase, decrease, reset } = useCounterStore();

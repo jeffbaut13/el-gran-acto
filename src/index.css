@@ -20,7 +20,7 @@
 }
 @font-face {
   font-family: "Wayland";
-  src: url("/fonts/NeueHaasDisplayMediu.ttf")  format("truetype"); 
+  src: url("/fonts/Wayland.ttf")  format("truetype"); 
 }
 :root {
   font-synthesis: none;
@@ -48,4 +48,7 @@ svg {
 }
 strong{
   @apply font-StageGroteskBlack
+}
+.button_large{
+  @apply bg-primary w-[16.5rem] h-[3.3rem] rounded-md font-Wayland text-[2rem];
 }

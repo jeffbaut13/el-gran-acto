@@ -19,6 +19,11 @@ export default {
         second: "#000000",
         tercero: "#e9e2b4",
       },
+      
+      fontSize:{
+        button: "1.58rem",
+        parrafo: "0.9rem",
+      }
     },
   },
   plugins: [],

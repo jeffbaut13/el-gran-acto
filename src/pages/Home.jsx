@@ -1,3 +1,4 @@
+import SectionAgendar from "../components/agendar/SectionAgendar";
 import { SectionMain } from "../components/main/SectionMain";
  
 
@@ -9,6 +10,8 @@ export const Home = () => {
   return (
     <>
       <SectionMain />
+      <SectionAgendar />
+
       <section className="w-full h-screen bg-black flexCenter">Agendar</section>
       <section className="w-full h-screen bg-black flexCenter">
         Souvenir

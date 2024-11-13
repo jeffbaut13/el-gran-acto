@@ -1,4 +1,4 @@
-import { VideoBackground } from "../components/VideoBackground";
+import { VideoBackground } from "../components/main/VideoBackground";
 
 const Layout = ({ children }) => {
   return (

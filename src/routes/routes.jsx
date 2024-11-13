@@ -6,6 +6,8 @@ import { ErrorPage } from "../pages/ErrorPage";
  
 import   Layout   from "../layout/Layout"
 import { Home } from "../pages/Home";
+import Visita from "../pages/Visita";
+import Preguntas from "../pages/Preguntas";
 
 function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();
@@ -30,6 +32,31 @@ const router = createBrowserRouter([
     ),
     errorElement: <ErrorPage />,
   },
+  {
+    path: "visita",
+    element: (
+      <>
+      <Layout>
+        <ScrollToTopOnRouteChange />
+        <Visita />
+      </Layout>
+      </>
+    )
+
+  },
+  {
+    path: "preguntas",
+    element: (
+      <>
+      <Layout>
+        <ScrollToTopOnRouteChange />
+        <Preguntas />
+      </Layout>
+      </>
+    )
+
+  },
+
   
 ]);
 
