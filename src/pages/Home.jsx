@@ -1,6 +1,8 @@
 import SectionAgendar from "../components/agendar/SectionAgendar";
 import { CompartirCancion } from "../components/compartir-cancion/CompartirCancion";
-import { Footer } from "../components/footer/Footer";
+import { CompartirDonar } from "../components/Compartir-Donar/CompartirDonar";
+import { LosClasicos } from "../components/los-clasicos/LosClasicos";
+ 
 import { SectionMain } from "../components/main/SectionMain";
  
 
@@ -14,18 +16,16 @@ export const Home = () => {
       <SectionMain />
       <SectionAgendar />
 
-      <section className="w-full h-screen bg-black flexCenter">Agendar</section>
-      <section className="w-full h-screen bg-black flexCenter">
-        Souvenir
-      </section>
+      <CompartirDonar />
       <CompartirCancion />
-      <section className="w-full h-screen bg-black flexCenter">
-        Los Clasicos
+      <section className="w-full h-screen bg-black flexCenter snap-item">
+        Souvenir 
       </section>
-      <section className="w-full h-screen bg-black flexCenter">
+      <LosClasicos />
+      <section className="w-full h-screen bg-black flexCenter snap-item" >
         Making of
       </section>
-      <Footer />
+      
     </>
   );
 };

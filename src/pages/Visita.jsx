@@ -27,6 +27,7 @@ const Visita = () => {
               <img
                 className="w-8 absolute left-4"
                 src="/iconos/flecha.svg"
+                alt="Atras"
               />
               REGRESAR
             </div>
@@ -34,7 +35,7 @@ const Visita = () => {
           <div className="button_large cursor-pointer text-center text-second hover:scale-[1.02] duration-200 relative">
             
             SIGUIENTE
-            <img className="w-8 absolute right-4 top-0 rotate-180" src="/iconos/flecha.svg" />
+            <img className="w-8 absolute right-4 top-0 rotate-180" src="/iconos/flecha.svg" alt="Siguiente"/>
           </div>
         </div>
       </div>

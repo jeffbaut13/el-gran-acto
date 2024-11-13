@@ -8,6 +8,7 @@ export default {
         xs: "300px",
       },
       fontFamily: {
+        Bebas: ["Bebas", "serif"],
         StageGroteskBlack: ["StageGrotesk-black", "serif"],
         StageGroteskBold: ["StageGrotesk-bold", "serif"],
         StageGroteskLigth: ["StageGrotesk-ligth", "serif"],
@@ -15,18 +16,17 @@ export default {
         Wayland: ["Wayland", "serif"],
       },
       colors: {
-        primary: "#fcf6cc",
-        second: "#000000",
-        tercero: "#e9e2b4",
-        opacityBlack: "#00000020",
+        primary: "var(--color-primary)",
+        second: "var(--color-second)",
+        tercero: "var(--color-third)",
+        opacityBlack: "var(--color-opacityBlack)",
       },
-      fontSize: {
-        button: "1.58rem",
-      },
+      
       
       fontSize:{
         button: "1.58rem",
         parrafo: "0.9rem",
+        titlesBig: "6.22rem"
       }
     },
   },
