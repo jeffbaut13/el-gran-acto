@@ -1,0 +1,17 @@
+.clip {
+  clip-path: inset(0  100% 0 0 );
+}
+.clip.done{
+  animation: clipActive 0.5s ease-out forwards; 
+}
+.clip.active{
+  animation: clipDone 0.5s ease-out forwards; 
+}
+@keyframes clipActive{
+  from{clip-path: inset(0  0 0 0% );}
+  to{clip-path: inset(0  0 0 100% );}
+}
+@keyframes clipDone{
+  from{clip-path: inset(0  100% 0  0 );}
+  to{clip-path: inset(0  0 0 0 );}
+}

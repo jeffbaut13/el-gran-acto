@@ -1,13 +1,12 @@
 .swiper {
-  width: 70%;
-  height: fit-content;
-  padding: 0 10rem;
+  width: 100%;
+  height: 20.37rem;
 }
 
 .swiper-slide {
   text-align: center;
+  
 
-  /* Center slide text vertically */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,66 +18,17 @@
   height: 100%;
   object-fit: cover;
 }
-
-/*
-clases de botones y barra progreso
-*/
-
-.swiper-slide {
-  @apply opacity-30 transition-opacity duration-1000;
+.ease-in-transition .swiper-slide {
+  transition-timing-function: ease-out;
 }
-.swiper-slide.swiper-slide-prev,
-.swiper-slide.swiper-slide-active,
-.swiper-slide.swiper-slide-next {
-  @apply opacity-100;
-}
+
 .swiper-button-prev,
-.swiper-button-next {
-  @apply text-second cursor-pointer absolute top-1/2 -translate-y-1/2 z-10 opacity-100;
+.swiper-button-next{
+  color: var(--primary);
 }
-.swiper-button-prev:after,
-.swiper-button-next:after {
-  @apply text-2xl;
+.custom .swiper-button-prev{
+left: 12.19rem;
 }
-.swiper-button-prev {
-  @apply left-[41.5rem];
-}
-.swiper-button-next {
-  @apply right-[41.5rem];
-}
-
-.progress-bar-container {
-  width: 60%;
-  background-color: #ffffff30;
-  height: 3px;
-  position: relative;
-}
-
-.progress-bar {
-  background-color: #fff;
-  height: 100%;
-  transition: width 0.3s ease;
-}
-.point:before {
-  content: "";
-  position: absolute;
-  width: 0.3rem;
-  height: 0.3rem;
-  background-color: var(--foreground);
-  border-radius: 200px;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 0;
-  @apply transition-all duration-500;
-}
-
-.point {
-  position: relative;
-}
-.lineAnchor {
-  @apply border-b border-[#ffffff37];
-}
-
-.listServices:last-child .lineAnchor {
-  @apply border-none;
+.custom .swiper-button-next{
+left: 35.19rem;
 }
