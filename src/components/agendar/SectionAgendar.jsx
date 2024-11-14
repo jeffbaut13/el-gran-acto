@@ -30,7 +30,7 @@ const SectionAgendar = () => {
       </div>
       <div className="w-ful h-1/2  flex justify-between items-end ">
       <Link to="/visita">
-      <div className=" w-[26.5rem] hover:scale-[1.02] duration-200 cursor-pointer h-[11rem] border-2 border-primary rounded-md flex flex-col items-center justify-center px-7">
+      <div className=" w-[26.5rem] HoverButtons cursor-pointer h-[11rem] border-2 border-primary rounded-md flex flex-col items-center justify-center px-7">
           <div className="border-b-2 border-primary pb-4 w-full flex items-center">
             <div className=" w-16">
               <img className="w-10 " src="/iconos/botones-agendar.svg" />
@@ -49,7 +49,7 @@ const SectionAgendar = () => {
         </div>
 
       </Link>
-        <div className=" w-[26.5rem] hover:scale-[1.02] duration-100 cursor-pointer h-[11rem] border-2 border-primary rounded-md flex flex-col items-center justify-center px-7">
+        <div className=" w-[26.5rem] HoverButtons cursor-pointer h-[11rem] border-2 border-primary rounded-md flex flex-col items-center justify-center px-7">
           <div className="border-b-2 border-primary pb-4 w-full flex items-center">
             <div className=" w-16">
               <img className="w-10" src="/iconos/botones-agendar.svg" />
@@ -67,7 +67,7 @@ const SectionAgendar = () => {
             </p>
           </div>
         </div>
-        <div className=" w-[26.5rem] hover:scale-[1.02] duration-100 cursor-pointer h-[11rem] border-2 border-primary rounded-md flex flex-col items-center justify-center px-7">
+        <div className=" w-[26.5rem] HoverButtons cursor-pointer h-[11rem] border-2 border-primary rounded-md flex flex-col items-center justify-center px-7">
           <div className="border-b-2 border-primary pb-4 w-full flex items-center">
             <div className=" w-16 ">
               <img className="w-10" src="/iconos/botones-agendar.svg" />

@@ -22,20 +22,22 @@ const Visita = () => {
         </div>
         <div className="flex justify-center gap-44">
           <Link to="/">
-            <div className="button_large cursor-pointer text-center text-second hover:scale-[1.02] duration-200 relative">
+            <button className="button_large HoverButtons relative">
               
               <img
                 className="w-8 absolute left-4"
                 src="/iconos/flecha.svg"
               />
               REGRESAR
-            </div>
+            </button>
           </Link>
-          <div className="button_large cursor-pointer text-center text-second hover:scale-[1.02] duration-200 relative">
+          <Link to="/preguntas">
+          <button className="button_large HoverButtons relative">
             
             SIGUIENTE
             <img className="w-8 absolute right-4 top-0 rotate-180" src="/iconos/flecha.svg" />
-          </div>
+          </button>
+          </Link>
         </div>
       </div>
     </div>
