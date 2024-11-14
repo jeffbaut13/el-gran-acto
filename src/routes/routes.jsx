@@ -8,6 +8,7 @@ import   Layout   from "../layout/Layout"
 import { Home } from "../pages/Home";
 import Visita from "../pages/Visita";
 import Preguntas from "../pages/Preguntas";
+import Match from "../pages/Match";
 
 function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();
@@ -51,6 +52,18 @@ const router = createBrowserRouter([
       <Layout>
         <ScrollToTopOnRouteChange />
         <Preguntas />
+      </Layout>
+      </>
+    )
+
+  },
+  {
+    path: "match",
+    element: (
+      <>
+      <Layout>
+        <ScrollToTopOnRouteChange />
+        <Match />
       </Layout>
       </>
     )
