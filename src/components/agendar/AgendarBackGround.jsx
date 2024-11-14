@@ -8,7 +8,7 @@ export const AgendarBackGround = () => {
 
   return (
     <div className="absolute top-0 left-0 h-full w-full -z-10">
-      <div className="h-full w-full relative snap-item">
+      <div className="h-full w-full relative  ">
    
         {/* Fondo de la pantalla principal */}
         <div

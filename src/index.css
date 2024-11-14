@@ -3,33 +3,59 @@
 @tailwind utilities;
 
 @font-face {
+  font-family: "Bebas";
+  src: url("/fonts/BebasNeue-Regular.ttf") format("truetype");
+}
+@font-face {
   font-family: "StageGrotesk-black";
-  src: url("/fonts/StageGrotesk-Black.ttf")  format("truetype"); 
+  src: url("/fonts/StageGrotesk-Black.ttf") format("truetype");
 }
 @font-face {
   font-family: "StageGrotesk-bold";
-  src: url("/fonts/StageGrotesk-Bold.ttf")  format("truetype"); 
+  src: url("/fonts/StageGrotesk-Bold.ttf") format("truetype");
 }
 @font-face {
   font-family: "StageGrotesk-ligth";
-  src: url("/fonts/StageGrotesk-Light.ttf")  format("truetype"); 
+  src: url("/fonts/StageGrotesk-Light.ttf") format("truetype");
 }
 @font-face {
   font-family: "StageGrotesk-regular";
-  src: url("/fonts/StageGrotesk-Regular.ttf")  format("truetype"); 
+  src: url("/fonts/StageGrotesk-Regular.ttf") format("truetype");
 }
 @font-face {
   font-family: "Wayland";
-  src: url("/fonts/Wayland.ttf")  format("truetype"); 
+  src: url("/fonts/Wayland.ttf") format("truetype");
 }
-:root {
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  @apply text-primary font-StageGroteskRegular;
+
+@media (min-width: 1024px) {
+  #root {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+  }
+
+  .snap-item {
+    scroll-snap-align: start;
+    margin: 0;
+  }
 }
-.flexCenter{
+@layer base {
+  :root {
+    --color-primary: #fcf6cc;
+    --color-second: #000000;
+    --color-third: #e9e2b4;
+    --color-opacityBlack: #00000020;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @apply text-primary font-StageGroteskRegular;
+  }
+}
+
+.flexCenter {
   @apply flex justify-center items-center;
 }
 
@@ -46,107 +72,15 @@ img,
 svg {
   @apply w-full h-full object-contain;
 }
-strong{
-  @apply font-StageGroteskBlack
+strong {
+  @apply font-StageGroteskBlack;
 }
 .button_large{
-  @apply  w-[16.5rem] h-[3.3rem] text-[2rem];
+  @apply bg-primary w-[16.5rem] h-[3.3rem] rounded-md font-Wayland text-[2rem];
 }
-button{
-  @apply font-Wayland bg-primary text-second flexCenter  rounded-md 
+button {
+  @apply font-Wayland bg-primary text-second flexCenter  rounded-md;
 }
 .HoverButtons{
   @apply transition-all ease-in-out duration-200 hover:scale-[1.02]
-}
-/* .react-datepicker{
-----------------------------------calendario----------------------------------------
-} */
- /* Estilos del contenedor general del calendario */
-.calendario {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(40px);
-  width: 21.5rem;
-  height: 24rem;
-  color: #fcf6cc;
-}
-
-/* Estilos de react-datepicker */
-.react-datepicker {
-  background: transparent;
- /*  color: #fff; */
-  font-family: sans-serif;
-  width: 100%;
-  color: #fcf6cc;
-  border: none;
-}
-.react-datepicker__header{
-  background-color: transparent;
-  color: #fcf6cc;
-  border: none;
-}
-
-/* Encabezado personalizado para el mes y año */
-.react-datepicker__current-month {
-  color: #fcf6cc;
-  font-size: 1.25rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-/* Navegación (flechas) */
-.react-datepicker__navigation {
-  top: 1rem;
-}
-
-.react-datepicker__navigation-icon::before {
-  border-color: #fff;
-}
-
-/* Días de la semana */
-.react-datepicker__day-names {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.1rem;
-}
-
-.react-datepicker__day-name {
-  color: #fcf6cc;
-  font-weight: bold;
-}
-
-/* Días del calendario */
-.react-datepicker__day {
-  width: 2.5rem;
-  line-height: 2rem;
-  margin: 0.2rem;
-  border-radius: 0.5rem;
-  text-align: center;
-  color: #fcf6cc;
-  cursor: pointer;
-}
-
-.react-datepicker__day:hover {
-  background-color: #fcf6cc;
-  color: black;
-}
-
-/* Día seleccionado */
-.react-datepicker__day--selected {
-  background-color: #fcf6cc;
-  color: black;
-  font-weight: bold;
-}
-
-/* Día actual */
-.react-datepicker__day--today {
-  border: 1px solid rgba(255, 255, 255, 0.233);
-  font-weight: bold;
-}
-.react-datepicker__day--keyboard-selected{
-  background-color: rgba(0, 0, 0, 0.288) !important;
 }

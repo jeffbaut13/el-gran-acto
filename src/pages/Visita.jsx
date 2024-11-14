@@ -27,6 +27,7 @@ const Visita = () => {
               <img
                 className="w-8 absolute left-4"
                 src="/iconos/flecha.svg"
+                alt="Atras"
               />
               REGRESAR
             </button>

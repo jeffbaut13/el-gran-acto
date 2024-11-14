@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const SectionAgendar = () => {
   return (
-    <div className="w-full h-screen relative flex justify-between flex-col py-12 px-20">
+    <div className="w-full h-screen relative flex justify-between flex-col py-12 px-20 snap-item">
       <AgendarBackGround />
       <div className="w-ful h-1/2 flex flex-col items-center justify-center">
         <div className="w-[40rem]  flex">
@@ -33,7 +33,7 @@ const SectionAgendar = () => {
       <div className=" w-[26.5rem] HoverButtons cursor-pointer h-[11rem] border-2 border-primary rounded-md flex flex-col items-center justify-center px-7">
           <div className="border-b-2 border-primary pb-4 w-full flex items-center">
             <div className=" w-16">
-              <img className="w-10 " src="/iconos/botones-agendar.svg" />
+              <img className="w-10 " src="/iconos/botones-agendar.svg" alt="Agendar Visita"/>
             </div>
             <h1 className="text-center font-Wayland text-button ">
               AGENDAR VISITA
