@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Burger } from "./Burger";
 import gsap from "gsap";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   const [active, setActive] = useState(false);
@@ -37,9 +38,9 @@ export const Header = () => {
   return (
     <header className="block fixed top-0 left-0 px-20 w-full z-10 mt-5">
       <div className="w-full h-14 flex justify-between py-4">
-        <figure className="h-full w-auto">
+        <Link to={"/"} className="h-full w-auto">
           <img src="/iconos/prospero.svg" alt="Icono Inter Rapidísimo" />
-        </figure>
+        </Link>
 
         <Burger handleClick={handleClick} active={active} />
       </div>
