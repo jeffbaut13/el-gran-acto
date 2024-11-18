@@ -1,8 +1,14 @@
-import useCounterStore from "../../store/store";
+ 
+import usePlayVideo from "../../store/StoreVideo";
 import { VideoBackground } from "./VideoBackground";
 
 export const SectionMain = () => {
-  const { count, increase, decrease, reset } = useCounterStore();
+   
+  const { playVideo, play,closeVideo } = usePlayVideo();
+  
+  console.log(playVideo);
+  
+  
   return (
     <main className="w-full h-screen relative flex justify-between flex-col pb-12 pt-32 px-20 snap-item">
       <VideoBackground />
@@ -21,7 +27,7 @@ export const SectionMain = () => {
         </h1>
       </div>
       <div className="w-full flexCenter">
-        <figure className="w-10">
+        <figure onClick={play} className="cursor-pointer w-10">
           <img src="/iconos/play.svg" alt="Icono para reproducir video" />
         </figure>
       </div>
