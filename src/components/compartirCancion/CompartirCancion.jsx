@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
 import { Lineas } from "./Lineas";
-import { SocialLink } from "../coomons/socialLink";
 
 export const CompartirCancion = () => {
   const imagenes = ["apple-music", "spotify", "deezer"];
@@ -48,9 +46,7 @@ export const CompartirCancion = () => {
           <p className="text-center mt-4 font-StageGroteskBold ">
             Compartir a través de:
           </p>
-          <div className="flex justify-center gap-16 mt-2">
-            <SocialLink social={social}/>
-          </div>
+          <div className="flex justify-center gap-16 mt-2"></div>
         </div>
       </div>
     </section>
