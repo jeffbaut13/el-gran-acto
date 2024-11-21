@@ -1,11 +1,11 @@
 import SectionAgendar from "../components/agendar/SectionAgendar";
-import { CompartirCancion } from "../components/compartir-cancion/CompartirCancion";
-import { CompartirDonar } from "../components/Compartir-Donar/CompartirDonar";
-import { LosClasicos } from "../components/los-clasicos/LosClasicos";
+import { CompartirCancion } from "../components/compartirCancion/CompartirCancion";
+import { CompartirDonar } from "../components/CompartirDonar/CompartirDonar";
+import { LosClasicos } from "../components/losClasicos/LosClasicos";
 
 import { SectionMain } from "../components/main/SectionMain";
-import { MakingOf } from "../components/Making-of/MakingOf";
-import { VideoComercial } from "../components/video-comercial/VideoComercial";
+import { MakingOf } from "../components/MakingOf/MakingOf";
+import { VideoComercial } from "../components/videoComercial/VideoComercial";
 import usePlayVideo from "../store/StoreVideo";
 
 export const Home = () => {
