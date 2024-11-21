@@ -14,6 +14,7 @@ export const SliderOneSlide = ({ abuelitos, sliderRef, setName, setOpen }) => {
     <>
       <Swiper
         effect={"creative"}
+        speed={500}
         allowTouchMove={false} // Desactiva el arrastre
         creativeEffect={{
           prev: {
@@ -41,18 +42,18 @@ export const SliderOneSlide = ({ abuelitos, sliderRef, setName, setOpen }) => {
             </figure>
             <div className="absolute z-[5] w-full h-[105%] bg-gradient-to-t from-[#000000c3] to-40% pointer-events-none" />
             <div className="w-full h-full z-10 relative flex flex-col justify-end items-start p-4">
-              <p className="font-Wayland text-3xl leading-4 uppercase">
+              <p className="font-Wayland text-[1.7rem] leading-3 uppercase">
                 Conoce a
               </p>
-              <h2 className="font-Wayland text-[2.837rem] leading-10 my-2">
+              <h2 className="font-Wayland text-[2.82rem] leading-10 my-2">
                 {viejito.nombre}
               </h2>
               {/* <h2 className="font-Wayland text-2xl">{viejito.role}</h2> */}
               <span
                 onClick={() => handleClick(i)}
-                className="cursor-pointer font-Wayland border border-primary rounded-lg px-2 "
+                className="cursor-pointer font-StageGroteskBold border border-primary rounded-sm px-4 text-xs"
               >
-                LEER MÁS
+                VER MÁS
               </span>
             </div>
           </SwiperSlide>

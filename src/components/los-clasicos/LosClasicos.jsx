@@ -3,6 +3,7 @@ import { SlideClasicos } from "./SlideClasicos";
 import "./clip-path.css";
 import { SliderOneSlide } from "./SliderOneSlide";
 import { abuelitos } from "../../data/viejitos";
+import { PopUp } from "./PopUp";
 
 export const LosClasicos = () => {
   const [name, setName] = useState("");
@@ -26,14 +27,12 @@ export const LosClasicos = () => {
     }
   };
 
-  console.log(name);
-
   return (
     <section className="h-screen w-full flex flex-col justify-center items-center snap-item bg-black relative px-20">
       <div className="w-full h-full absolute top-0 left-0 opacity-30 z-0 bg-second"></div>
-      <div className="w-full h-full z-10 flex flex-col justify-center px-12">
+      <div className="w-full h-full z-10 flex flex-col justify-center gap-2 px-12">
         <div className="w-full">
-          <h2 className="text-titlesBig leading-[5.2rem] font-Wayland text-center">
+          <h2 className="text-[4.38rem] leading-[3.8rem] font-Wayland text-center">
             CONOCE A <br />
             LOS CLÁSICOS
           </h2>
@@ -43,10 +42,26 @@ export const LosClasicos = () => {
             letras.
           </p>
         </div>
-        <div className="custom relative h-[26.37rem] flex items-center">
+        <div className="custom relative h-[31.95rem] flex items-center">
+          {open && (
+            <>
+              <div className="w-full scale-110 bg-black bg-opacity-5 backdrop-blur-md absolute top-0 left-0 h-full z-[29]" />
+              <div className="w-[57.48rem] h-full bg-black bg-opacity-65 absolute top-0 left-1/2 -translate-x-1/2 z-30 rounded-lg border border-primary ">
+                <figure
+                  onClick={() => setOpen(false)}
+                  className="w-4 h-4 inline-block absolute right-4 top-2"
+                >
+                  <img src="/iconos/close.svg" alt="" />
+                </figure>
+                {abuelitos.map((viejito, i) => (
+                  i === name ? <PopUp key={i}  viejito={viejito} open={open}/> : <></>
+                ))}
+              </div>
+            </>
+          )}
           <div
             style={{ left: "20%" }}
-            className={`w-[15.19rem] h-full absolute z-50`}
+            className={`w-[15.19rem] h-full absolute z-20`}
           >
             <SliderOneSlide
               setName={setName}
@@ -54,13 +69,6 @@ export const LosClasicos = () => {
               setOpen={setOpen}
               sliderRef={sliderOneRef}
             />
-            {open && (
-              <div className="w-[250%] h-full bg-blue-500 absolute top-0 left-[90%] z-10 rounded-r-lg">
-                {abuelitos.map((viejito, i) => (
-                  <>{i === name ? viejito.nombre : ""}</>
-                ))}
-              </div>
-            )}
           </div>
           <SlideClasicos
             abuelitos={abuelitos}

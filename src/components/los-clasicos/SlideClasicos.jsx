@@ -22,10 +22,7 @@ export const SlideClasicos = ({
         slidesPerView={5}
         spaceBetween={60}
         grabCursor={true}
-        navigation={{
-          prevEl: ".swiper-button-prev",
-          nextEl: ".swiper-button-next",
-        }}
+         
         modules={[Navigation]}
         loop={true}
         className="mySwiper ease-in-transition pointer-events-none select-none"
@@ -40,7 +37,10 @@ export const SlideClasicos = ({
               </figure>
               <div className="absolute z-[5] w-full h-[105%] bg-black bg-opacity-50 to-40% pointer-events-none" />
               <div className="w-full h-full z-10 relative flex flex-col justify-end items-start p-4">
-                <h2 className="font-Wayland text-4xl">{abuelo.nombre}</h2>
+              <p className="font-Wayland text-[1.56rem] leading-3 uppercase">
+                Conoce a
+              </p>
+                <h2 className="font-Wayland text-[2.4rem] leading-10">{abuelo.nombre}</h2>
               </div>
             </div>
           </SwiperSlide>
