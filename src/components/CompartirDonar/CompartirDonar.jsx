@@ -1,5 +1,5 @@
-import { SocialLink } from "../coomons/socialLink";
-
+ 
+ 
 export const CompartirDonar = () => {
   const backgroundImage = "/imagenes/compartir-donacion.webp";
   const social = ["facebook", "whatsapp", "X"];
@@ -26,7 +26,7 @@ export const CompartirDonar = () => {
           <div className="flex flex-col justify-center items-center mt-8">
             <h4 className="text-xl">Invitar a través de:</h4>
             <div className="w-full flex justify-between mt-2">
-              <SocialLink social={social} />
+               
             </div>
           </div>
         </div>
