@@ -1,8 +1,7 @@
-import { useRef } from "react";
+ 
 
-export const VisitaBackGround = () => {
-  const videoRef = useRef(null);
-
+export const VisitaBack = () => {
+  
   const backgroundImage = "/imagenes/background-visitas.jpg";
   //const videoSrcMobile = "/videos/intro-vertical.mp4";
 
@@ -22,4 +21,4 @@ export const VisitaBackGround = () => {
       </div>
     </div>
   );
-};
+}
