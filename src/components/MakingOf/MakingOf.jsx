@@ -1,8 +1,12 @@
-export const MakingOf = () => {
+import { links } from "../header/MenuLink";
+
+export const MakingOf = ({ reff }) => {
   const backgroundImage = "/imagenes/DETRAS-DE-CAMARAS.webp";
   return (
     <section
-     className="h-screen w-full flex flex-col justify-center items-center snap-item relative px-20"
+      ref={reff}
+      id={`${links[6]}`}
+      className="h-screen w-full flex flex-col justify-center items-center snap-item relative px-20"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
@@ -13,15 +17,15 @@ export const MakingOf = () => {
       <div className="w-full z-10 relative flex">
         <div className="w-2/5 pl-20">
           <h2 className="text-[4.38rem] leading-[4rem] font-Wayland ">
-          DETRÁS DE <br />
-          CÁMARAS
+            DETRÁS DE <br />
+            CÁMARAS
           </h2>
-           
 
           <h3 className="tracking-[0.15em] text-sm text-start my-4">
-          Mira los mejores momentos de esta nueva <br /> entrega de Inter Rapidísimo.
+            Mira los mejores momentos de esta nueva <br /> entrega de Inter
+            Rapidísimo.
           </h3>
-          
+
           <button className="px-7 py-1.5 text-[1.46rem]">VER</button>
         </div>
         <div className="w-1/2" />

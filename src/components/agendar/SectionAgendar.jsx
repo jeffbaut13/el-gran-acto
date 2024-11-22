@@ -2,15 +2,16 @@ import React from "react";
 import { AgendarBackGround } from "./AgendarBackGround";
 import { Link, NavLink } from "react-router-dom";
 import PrincipalMatch from "./PrincipalMatch";
+import { links } from "../header/MenuLink";
 
 
-const SectionAgendar = () => {
+const SectionAgendar = ({reff}) => {
   return (
-    <div className="w-full h-screen relative flex justify-between flex-col py-12 px-20 snap-item">
+    <section ref={reff} id={`${links[1]}`} className="w-full h-screen relative flex justify-between flex-col py-12 px-20 snap-item">
       <AgendarBackGround />
       <PrincipalMatch />
       
-    </div>
+    </section>
   );
 };
 

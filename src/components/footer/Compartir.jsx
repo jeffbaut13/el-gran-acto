@@ -1,10 +1,13 @@
+import { links } from "../header/MenuLink";
 import { Socials } from "../helpers/Socials";
 
-export const Compartir = () => {
+export const Compartir = ({ reff }) => {
   const backgroundImage = "/imagenes/compartir.webp";
   const social = ["facebook", "whatsapp", "X"];
   return (
     <section
+      ref={reff}
+      id={`${links[7]}`}
       className="h-screen w-full flex flex-col justify-end items-center gap-4 snap-item relative px-20 pb-20"
       style={{
         backgroundImage: `url(${backgroundImage})`,

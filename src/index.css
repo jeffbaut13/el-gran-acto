@@ -185,3 +185,11 @@ button {
 .lineBurger.active {
   @apply absolute top-0;
 }
+
+.regaloIcon{
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d; /* Habilitar el efecto 3D */
+}
+.buttonRegalo:hover .regaloIcon {
+  transform: rotateY(360deg); /* Rotación en el eje Y */
+}

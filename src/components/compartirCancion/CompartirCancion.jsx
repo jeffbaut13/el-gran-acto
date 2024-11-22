@@ -1,13 +1,16 @@
+import { links } from "../header/MenuLink";
 import { Socials } from "../helpers/Socials";
 import { Lineas } from "./Lineas";
 
-export const CompartirCancion = () => {
+export const CompartirCancion = ({reff}) => {
   const imagenes = ["apple-music", "spotify", "deezer"];
   const backgroundImage = "/imagenes/background-cancion-navidad.webp";
 
   const social = ["facebook", "whatsapp"];
   return (
     <section
+    ref={reff}
+    id={`${links[3]}`}
       className="h-screen w-full flex flex-col justify-center items-center snap-item"
       style={{
         backgroundImage: `url(${backgroundImage})`,
@@ -39,7 +42,7 @@ export const CompartirCancion = () => {
               </figure>
             ))}
           </div>
-          <p className="text-justify w-full mt-4 text-sm font-StageGroteskLigth">
+          <p className="text-center w-full mt-4 text-sm font-StageGroteskLigth">
             Esta canción interpretada por 5 abuelos nos demuestra que la edad es
             solo un número y al mismo tiempo es una invitación para que
             compartamos más con todos los abuelos.
