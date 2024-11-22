@@ -8,7 +8,6 @@ export default {
         xs: "300px",
       },
       fontFamily: {
-        Bebas: ["Bebas", "serif"],
         StageGroteskBlack: ["StageGrotesk-black", "serif"],
         StageGroteskBold: ["StageGrotesk-bold", "serif"],
         StageGroteskLigth: ["StageGrotesk-ligth", "serif"],

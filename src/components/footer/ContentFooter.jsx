@@ -1,21 +1,63 @@
-import { Creditos } from "./Creditos";
+import { Link } from "react-router-dom";
+
+const campañas = [
+  {
+    title: "Entregar es mejor que recibir",
+    url: "https://entregamagica.com/",
+    img: "entrega-david",
+  },
+  {
+    title: "Guardianes del páramo",
+    url: "https://www.guardiandelparamo.com/",
+    img: "guardianes-del-paramo",
+  },
+  {
+    title: "Operación mayo",
+    url: "https://operacionmayo.com/",
+    img: "operacion-mayo",
+  },
+  {
+    title: "¡Ganémosla de nuevo!",
+    url: "https://www.youtube.com/watch?v=uzJmSqZlXmc&t=7s",
+    img: "ganemosla-de-nuevo",
+  },
+  {
+    title: "Amigos del alma",
+    url: "https://amigodelalma.com/",
+    img: "amigos-del-alma",
+  },
+];
 
 export const ContentFooter = () => {
   return (
-    <section className="w-full h-screen bg-tercero text-second flex flex-col justify-around px-10 snap-item">
-      <Creditos />
-      <div className="w-full flex justify-between">
-        <div className="w-1/3"></div>
-        <div className="w-1/3 text-2xl font-StageGroteskLigth">
-          <span className="flex items-center justify-between border-b-2 border-dashed border-second pb-4">
-            Subscribete para próximas entregas
-            <span className="w-6 h-auto inline-block">
-              <img src="/iconos/arrow-link-black.svg" alt="Suscribete al boletin" />
-            </span>
-          </span>
-        </div>
-        <div className="w-1/3"></div>
+    <section className="w-full h-screen bg-[#131313] text-primary flex flex-col justify-center px-10 snap-item gap-4">
+      <h2 className="font-Wayland w-full text-center text-[3.15rem] leading-[3rem]">
+        CONOCE AQUÍ OTRAS DE NUESTRAS ENTREGAS
+      </h2>
+      <hr className="border-white border-0.5" />
+      <div className="w-full h-[60%] flex gap-4">
+        {campañas.map((campaña, i) => (
+          <Link
+            to={campaña.url}
+            target="_blank"
+            key={i}
+            className="w-full h-full pt-6 hover:p-0 ease-in-out transition-all duration-300 opacity-60 hover:opacity-100 relative group overflow-hidden"
+          >
+            <img
+              className="object-cover rounded-2xl"
+              src={`/imagenes/${campaña.img}.webp`}
+              alt=""
+            />
+            <h3 className="absolute bottom-0 left-1/2 -translate-x-1/2 text-white font-StageGroteskBlack text-5xl w-full p-2 translate-y-full z-20 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 ease-in-out transition-all duration-500">
+              {campaña.title}
+            </h3>
+            <div className="w-full h-full bg-gradient-to-t from-black to-50% opacity-0 group-hover:opacity-100 ease-in-out transition-all duration-300 absolute top-0 left-0 z-10" />
+          </Link>
+        ))}
       </div>
+      <p className="w-full text-center text-white text-[1.05rem] pt-6 ">
+        DERECHOS RESERVADOS INTER RAPIDÍSIMO - 2024
+      </p>
     </section>
   );
 };

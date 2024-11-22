@@ -1,11 +1,12 @@
 import React from "react";
-import { VisitaBackGround } from "../components/agendar/visitaBackground";
+ 
 import { Link } from "react-router-dom";
+import { VisitaBack } from "../components/agendar/VisitaBack";
 
 const Visita = () => {
   return (
     <div className="w-full h-screen relative flex justify-between flex-col py-12 px-20">
-      <VisitaBackGround />
+       <VisitaBack />
       <div className=" w-full h-1/2 flex justify-center items-center font-Wayland">
         <h1 className="text-[6rem] leading-[4.8rem]">
           HAZ MATCH CON UN ABUELITO
