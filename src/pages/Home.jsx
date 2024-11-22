@@ -14,10 +14,14 @@ import { ButtonSouvenir } from "../components/helpers/ButtonSouvenir";
 import { ButtonDonar } from "../components/helpers/ButtonDonar";
 
 export const Home = () => {
+  const { playVideo, play, closeVideo, scrollShow,scrollHide  } = usePlayVideo();
   const [showButton, setShowButton] = useState(false);
   const [showButtonDonar, setShowButtonDonar] = useState(false);
 
   // Configurar los observadores para las secciones con los IDs deseados
+  const { ref: section0Ref, inView: inViewSection } = useInView({
+    threshold: 0.5,
+  });
   const { ref: section1Ref, inView: inViewSection1 } = useInView({
     threshold: 0.5,
   });
@@ -41,6 +45,11 @@ export const Home = () => {
   });
 
   useEffect(() => {
+    if(inViewSection){
+      scrollShow()
+    }else{
+      scrollHide()
+    }
     if (inViewSection1 || inViewSection2 || inViewSection3) {
       setShowButton(true);
     } else {
@@ -66,15 +75,15 @@ export const Home = () => {
     inViewSection6,
     inViewSection7,
   ]);
-  console.log(showButtonDonar);
+ 
 
-  const { playVideo, play, closeVideo } = usePlayVideo();
+  
   return (
     <>
       <ButtonSouvenir showButton={showButton} />
       <ButtonDonar showButton={showButtonDonar} />
       <VideoComercial playVideo={playVideo} setPlayVideo={closeVideo} />
-      <SectionMain />
+      <SectionMain reff={section0Ref}/>
       <SectionAgendar reff={section1Ref} />
 
       <CompartirDonar reff={section2Ref} />

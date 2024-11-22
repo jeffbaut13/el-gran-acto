@@ -1,7 +1,25 @@
 import gsap from "gsap";
 import React, { useEffect, useRef } from "react";
 
-export const Scroll = () => {
+export const Scroll = ({ scrollIcon }) => {
+  const iconoScroll = useRef(null);
+
+  useEffect(() => {
+    if (scrollIcon) {
+      gsap.to(".scroll", {
+        translateY: 0,
+        duration: 0.5,
+        ease: "power1.inOut",
+      });
+    } else {
+      gsap.to(".scroll", {
+        translateY: 120,
+        duration: 0.5,
+        ease: "power1.inOut",
+      });
+    }
+  }, [scrollIcon]);
+
   useEffect(() => {
     gsap.to(".mouse", {
       rotate: "3deg",
@@ -36,7 +54,10 @@ export const Scroll = () => {
   }, []);
 
   return (
-    <figure className="scroll fixed bottom-6 left-1/2 -translate-x-1/2 w-10 h-10 inline-block z-[8]">
+    <figure
+      ref={iconoScroll}
+      className="scroll fixed bottom-6 left-1/2 -translate-x-1/2 w-10 h-10 inline-block z-[8]"
+    >
       <svg
         id="uuid-859a1873-6c95-405b-ba1b-8209c2d6fe02"
         data-name="Capa 2"

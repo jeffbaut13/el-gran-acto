@@ -2,11 +2,11 @@ import usePlayVideo from "../../store/StoreVideo";
 import { links } from "../header/MenuLink";
 import { VideoBackground } from "./VideoBackground";
 
-export const SectionMain = () => {
+export const SectionMain = ({reff}) => {
   const { playVideo, play, closeVideo } = usePlayVideo();
 
   return (
-    <main id={`${links[0]}`} className="w-full h-screen relative flex justify-between flex-col pb-12 pt-32 px-20 snap-item">
+    <main ref={reff} id={`${links[0]}`} className="w-full h-screen relative flex justify-between flex-col pb-12 pt-32 px-20 snap-item">
       <VideoBackground />
       <div className="w-full flexCenter flex-col">
         <div className="w-[42.1155rem]">
