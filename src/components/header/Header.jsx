@@ -3,6 +3,7 @@ import { Burger } from "./Burger";
 import gsap from "gsap";
 import { Link } from "react-router-dom";
 import { MenuLink } from "./MenuLink";
+import { Scroll } from "../helpers/Scroll";
 
 export const Header = () => {
   const [active, setActive] = useState(false);
@@ -50,6 +51,7 @@ export const Header = () => {
           <Burger handleClick={handleClick} active={active} />
         </div>
       </header>
+      <Scroll />
     </>
   );
 };
