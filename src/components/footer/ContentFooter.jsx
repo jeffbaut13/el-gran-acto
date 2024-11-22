@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { links } from "../header/MenuLink";
 
 const campañas = [
   {
@@ -30,7 +31,10 @@ const campañas = [
 
 export const ContentFooter = () => {
   return (
-    <section className="w-full h-screen bg-[#131313] text-primary flex flex-col justify-center px-10 snap-item gap-4">
+    <section
+      id={`${links[8]}`}
+      className="w-full h-screen bg-[#131313] text-primary flex flex-col justify-center px-10 snap-item gap-4"
+    >
       <h2 className="font-Wayland w-full text-center text-[3.15rem] leading-[3rem]">
         CONOCE AQUÍ OTRAS DE NUESTRAS ENTREGAS
       </h2>

@@ -4,8 +4,9 @@ import "./clip-path.css";
 import { SliderOneSlide } from "./SliderOneSlide";
 import { abuelitos } from "../../data/viejitos";
 import { PopUp } from "./PopUp";
+import { links } from "../header/MenuLink";
 
-export const LosClasicos = () => {
+export const LosClasicos = ({ reff }) => {
   const [name, setName] = useState("");
   const [open, setOpen] = useState(false);
 
@@ -28,7 +29,11 @@ export const LosClasicos = () => {
   };
 
   return (
-    <section className="h-screen w-full flex flex-col justify-center items-center snap-item bg-black relative px-20">
+    <section
+      ref={reff}
+      id={`${links[5]}`}
+      className="h-screen w-full flex flex-col justify-center items-center snap-item bg-black relative px-20 z-[5]"
+    >
       <div className="w-full h-full absolute top-0 left-0 opacity-30 z-0 bg-second"></div>
       <div className="w-full h-full z-10 flex flex-col justify-center gap-2 px-12">
         <div className="w-full">
@@ -53,9 +58,13 @@ export const LosClasicos = () => {
                 >
                   <img src="/iconos/close.svg" alt="" />
                 </figure>
-                {abuelitos.map((viejito, i) => (
-                  i === name ? <PopUp key={i}  viejito={viejito} open={open}/> : <></>
-                ))}
+                {abuelitos.map((viejito, i) =>
+                  i === name ? (
+                    <PopUp key={i} viejito={viejito} open={open} />
+                  ) : (
+                    <></>
+                  )
+                )}
               </div>
             </>
           )}

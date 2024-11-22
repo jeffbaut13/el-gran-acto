@@ -1,24 +1,25 @@
 import usePlayVideo from "../../store/StoreVideo";
+import { links } from "../header/MenuLink";
 import { VideoBackground } from "./VideoBackground";
 
 export const SectionMain = () => {
   const { playVideo, play, closeVideo } = usePlayVideo();
 
   return (
-    <main className="w-full h-screen relative flex justify-between flex-col pb-12 pt-32 px-20 snap-item">
+    <main id={`${links[0]}`} className="w-full h-screen relative flex justify-between flex-col pb-12 pt-32 px-20 snap-item">
       <VideoBackground />
       <div className="w-full flexCenter flex-col">
         <div className="w-[42.1155rem]">
           <figure className="inline-block w-full">
             <img
-              src="/imagenes/el-gran-acto-logo.webp"
+              src="/iconos/el-gran-acto-logo.svg"
               alt="Logo el gran acto"
             />
           </figure>
         </div>
 
         <h1 className="tracking-[0.248em] text-sm mt-2">
-          <strong>EN NAVIDAD,</strong> ENTREGAR ES MEJOR QUE RECIBIR.
+          EN NAVIDAD, ENTREGAR ES MEJOR QUE RECIBIR.
         </h1>
       </div>
       <div className="w-full flexCenter">
