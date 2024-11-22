@@ -76,11 +76,89 @@ strong {
   @apply font-StageGroteskBlack;
 }
 .button_large{
-  @apply bg-primary w-[16.5rem] h-[3.3rem] rounded-md font-Wayland text-[2rem];
+  @apply bg-transparent hover:bg-primary border border-primary text-primary hover:text-black w-[10.5rem] h-[3rem] rounded-md font-StageGroteskLigth hover:font-StageGroteskBlack text-[1.5rem];
 }
 button {
   @apply font-Wayland bg-primary text-second flexCenter  rounded-md;
 }
 .HoverButtons{
   @apply transition-all ease-in-out duration-200 hover:scale-[1.02]
+}
+
+/* Estilos del contenedor general del calendario */
+
+/* Estilos de react-datepicker */
+.react-datepicker {
+  background: transparent;
+  color: #fff;
+  font-family: sans-serif;
+  width: 100%;
+  border: none;
+}
+
+/* Encabezado personalizado para el mes y año */
+.react-datepicker__current-month {
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Navegación (flechas) */
+.react-datepicker__navigation {
+  top: 1rem;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: #fff;
+}
+
+/* Días de la semana */
+.react-datepicker__day-names {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.react-datepicker__day-name {
+  font-weight: bold;
+  color: #fcf6cc;
+}
+
+/* Días del calendario */
+.react-datepicker__day {
+  width: 2.5rem;
+  line-height: 2.5rem;
+  margin: 0.2rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  color: #fcf6cc;
+  cursor: pointer;
+}
+
+.react-datepicker__day:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Día seleccionado */
+.react-datepicker__day--selected {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Día actual */
+.react-datepicker__day--today {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-weight: bold;
+}
+.react-datepicker__header{
+  background-color: transparent;
+  border: none;
+  color: #fcf6cc;
+}
+.react-datepicker__day--keyboard-selected{
+  background-color: #fcf6cc;
+  color: #000000;
 }
