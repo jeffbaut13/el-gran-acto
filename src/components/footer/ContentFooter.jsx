@@ -52,10 +52,10 @@ export const ContentFooter = () => {
               src={`/imagenes/${campaña.img}.webp`}
               alt=""
             />
-            <h3 className="absolute bottom-0 left-1/2 -translate-x-1/2 text-white font-StageGroteskBlack text-5xl w-full p-2 translate-y-full z-20 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 ease-in-out transition-all duration-500">
+            {/* <h3 className="absolute bottom-0 left-1/2 -translate-x-1/2 text-white font-StageGroteskBlack text-5xl w-full p-2 translate-y-full z-20 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 ease-in-out transition-all duration-500">
               {campaña.title}
-            </h3>
-            <div className="w-full h-full bg-gradient-to-t from-black to-50% opacity-0 group-hover:opacity-100 ease-in-out transition-all duration-300 absolute top-0 left-0 z-10" />
+            </h3> */}
+            {/* <div className="w-full h-full bg-gradient-to-t from-black to-50% opacity-0 group-hover:opacity-100 ease-in-out transition-all duration-300 absolute top-0 left-0 z-10" /> */}
           </Link>
         ))}
       </div>

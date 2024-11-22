@@ -4,7 +4,7 @@ import van from "../../data/van.json";
 
 import gsap from "gsap";
 
-const Loader = ({LoaderHide, Loading}) => {
+const Loader = ({ LoaderHide, Loading }) => {
   const lottieRef = useRef(null);
   const [percentage, setPercentage] = useState(0);
   const [first, setfirst] = useState(null);
@@ -72,19 +72,15 @@ const Loader = ({LoaderHide, Loading}) => {
     <div className="bg-black flex justify-center fixed top-0 left-0 loadingBox items-center flex-col w-full h-full z-[205]">
       <div className="mask1 w-full  inline-block">
         <div className="loading opacity-100 w-full h-full flex flex-col items-center justify-center">
+          <span className="text-[--second] font-StageGroteskBlack text-3xl">
+            {percentage}
+            <span className=" ">%</span>
+          </span>
           <Lottie
             lottieRef={lottieRef}
             animationData={van}
-            className="w-64 h-64 inline-block"
+            className="w-64 h-auto inline-block"
           />
-          {/*  <Lottie
-            lottieRef={lottieRef}
-            animationData={PianoTwo}
-            className="w-full h-full"
-          /> */}
-          <span className="-translate-y-[610%] text-[--second] font-StageGroteskBlack text-3xl">
-            {percentage}<span className=" ">%</span> 
-          </span>
         </div>
       </div>
     </div>
