@@ -1,4 +1,5 @@
- 
+import { Socials } from "../helpers/Socials";
+
 export const Compartir = () => {
   const backgroundImage = "/imagenes/compartir.webp";
   const social = ["facebook", "whatsapp", "X"];
@@ -15,7 +16,7 @@ export const Compartir = () => {
         COMPARTE LA EXPERIENCIA <br /> DE ESTE GRAN ACTO
       </h2>
       <div className="flex justify-center gap-16 mt-2">
-      
+        <Socials social={social} />
       </div>
     </section>
   );

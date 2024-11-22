@@ -1,3 +1,4 @@
+import { Socials } from "../helpers/Socials";
 import { Lineas } from "./Lineas";
 
 export const CompartirCancion = () => {
@@ -46,7 +47,7 @@ export const CompartirCancion = () => {
           <p className="text-center mt-4 font-StageGroteskBold ">
             Compartir a través de:
           </p>
-          <div className="flex justify-center gap-16 mt-2"></div>
+          <div className="flex justify-center gap-16 mt-2"><Socials social={social} /></div>
         </div>
       </div>
     </section>

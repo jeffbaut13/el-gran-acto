@@ -1,5 +1,5 @@
- 
- 
+import { Socials } from "../helpers/Socials";
+
 export const CompartirDonar = () => {
   const backgroundImage = "/imagenes/compartir-donacion.webp";
   const social = ["facebook", "whatsapp", "X"];
@@ -16,7 +16,9 @@ export const CompartirDonar = () => {
       <div className="w-full z-10 relative flex">
         <div className="w-2/5 pl-20">
           <h2 className="text-[4.38rem] leading-[4rem] font-Wayland ">
-            INVITA A  <br />OTRA PERSONA A <br />DONAR SU TIEMPO
+            INVITA A <br />
+            OTRA PERSONA A <br />
+            DONAR SU TIEMPO
           </h2>
           <hr className="w-full my-4" />
 
@@ -26,7 +28,7 @@ export const CompartirDonar = () => {
           <div className="flex flex-col justify-center items-center mt-8">
             <h4 className="text-xl">Invitar a través de:</h4>
             <div className="w-full flex justify-between mt-2">
-               
+              <Socials social={social} />
             </div>
           </div>
         </div>

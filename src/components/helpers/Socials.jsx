@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 
-export const SocialLink = ({social}) => {
+export const Socials = ({social}) => {
   return (
     <>
       {social.map((link, i) => (
