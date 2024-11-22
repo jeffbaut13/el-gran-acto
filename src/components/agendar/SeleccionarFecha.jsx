@@ -62,7 +62,7 @@ const SeleccionarFecha = ({ onAgendarClick }) => {
           />
           <button
             onClick={onAgendarClick} // Llama a la función al hacer clic
-            className="w-[80%] font-StageGroteskRegular h-8 text-primary bg-transparent border border-primary rounded-lg HoverButtons"
+            className="w-[80%] font-StageGroteskRegular h-8 my-5 text-primary bg-transparent border border-primary rounded-lg HoverButtons"
           >
             Agendar Visita
           </button>
