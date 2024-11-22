@@ -6,7 +6,6 @@ import { ErrorPage } from "../pages/ErrorPage";
 import Layout from "../layout/Layout";
 import { Home } from "../pages/Home";
 import Visita from "../pages/Visita";
-import Preguntas from "../pages/Preguntas";
 import Match from "../pages/Match";
 
 function ScrollToTopOnRouteChange() {
@@ -38,15 +37,6 @@ const router = createBrowserRouter([
       <>
         <ScrollToTopOnRouteChange />
         <Visita />
-      </>
-    ),
-  },
-  {
-    path: "preguntas",
-    element: (
-      <>
-        <ScrollToTopOnRouteChange />
-        <Preguntas />
       </>
     ),
   },

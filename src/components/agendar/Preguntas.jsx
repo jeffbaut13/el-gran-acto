@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Importa useNavigate
-import { PreguntasBackGround } from '../components/agendar/PreguntasBackGround';
+import { PreguntasBackGround } from './PreguntasBackGround';
+import Viejito from './Viejito';
+import Buscando from './Buscando';
 
 const Preguntas = () => {
   const navigate = useNavigate(); // Define navigate para redirección
@@ -80,7 +82,7 @@ const Preguntas = () => {
     <div className="w-full h-screen flex py-12 px-20">
       <PreguntasBackGround />
       <div className="w-full h-full flex flex-col items-center justify-center">
-        <p className="font-StageGroteskRegular text-xl text-center">
+         <p className="font-StageGroteskRegular text-xl text-center">
           Respondiendo unas sencillas preguntas,<br />
           nuestro sistema te podrá asignar <br />
           al abuelito con el que te podrás entender mejor.
@@ -93,18 +95,18 @@ const Preguntas = () => {
               <button
                 key={index}
                 onClick={() => handleSeleccionarOpcion(index)}
-                className={`border my-2 rounded-md w-full h-10 flex justify-start font-StageGroteskRegular ${
+                className={`border my-2 rounded-md w-full h-10 flex justify-start font-StageGroteskRegular capitalize ${
                   opcionSeleccionada === index ? 'bg-primary text-second' : 'bg-transparent text-primary'
                 }`}
               >
-                <p className="flex-none pl-2">{String.fromCharCode(65 + index)}</p>
+                <p className=" pl-2">{String.fromCharCode(65 + index)}</p>
                 <p className="ml-2">{texto}</p>
               </button>
             ))}
           </div>
         </div>
 
-        {/* Puntos de progreso */}
+        
         <div className="flex relative items-center justify-center mt-10 gap-5">
         <button onClick={handleAnteriorPregunta} className="absolute bg-transparent w-10 left-[-5rem]">
             <img className=' rotate-180' src="/iconos/flechaSiguiente.svg" alt="Siguiente" />
@@ -122,7 +124,34 @@ const Preguntas = () => {
               }`}
             />
           ))}
+        </div> 
+
+{/*         <div className=' visita'>
+          <button className=' flex flex-col w-[33rem] h-[8rem] bg-transparent border border-primary font-Wayland HoverButtons'>
+            <div className=' flex border-b-[1px] w-[90%] justify-between'>
+            <span className=' text-primary text-[2rem]'>Agendar Visita</span>
+            <img className='w-8' src='/iconos/flechaVisita.svg' />
+            </div>
+            <div className=' w-[90%] flex'>
+              <p className=' text-primary text-sm text-start capitalize font-StageGroteskRegular'>Programa una visita y dona tu tiempo en el ancianato de Facatativá.</p>
+            </div>
+            
+          </button>
+          <button className=' flex flex-col w-[33rem] h-[8rem]  bg-transparent border border-primary mt-10 font-Wayland HoverButtons'>
+          <div className=' flex border-b-[1px] w-[90%] justify-between'>
+            <span className=' text-primary text-[2rem]'>Agendar Videollamada</span>
+            <img className='w-8' src='/iconos/flechaVisita.svg' />
+            </div>
+            <div className=' w-[90%] flex '>
+              <p className=' text-primary text-sm capitalize font-StageGroteskRegular'>Si estás fuera de Facatativá, también puedes donarle tiempo.</p>
+            </div>
+          </button>
         </div>
+ */}
+
+
+{/* <Buscando />
+ */}{/* <Viejito /> */}
       </div>
     </div>
   );
