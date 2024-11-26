@@ -145,7 +145,7 @@ const Preguntas = () => {
                 />
               </div>
               <div className="w-[90%] flex">
-                <p className="text-primary text-sm text-start capitalize font-StageGroteskRegular">
+                <p className="text-primary  text-start capitalize font-StageGroteskRegular">
                   Programa una visita y dona tu tiempo en el ancianato de
                   Facatativá.
                 </p>
@@ -166,7 +166,7 @@ const Preguntas = () => {
                 />
               </div>
               <div className="w-[90%] flex">
-                <p className="text-primary text-sm text-start capitalize font-StageGroteskRegular">
+                <p className="text-primary  text-start capitalize font-StageGroteskRegular">
                   Programa una visita y dona tu tiempo en el ancianato de
                   Facatativá.
                 </p>

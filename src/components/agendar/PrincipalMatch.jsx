@@ -39,12 +39,12 @@ const PrincipalMatch = ({ cambiarComponente }) => {
           DONA TIEMPO
           <br /> A UN ABUELITO EN NAVIDAD
         </h1>
-        <p className="text-start text-xl mt-5">
+        <p className="text-start  mt-5">
           En Navidad, entregar es mejor que recibir, por eso nos unimos al
           ancianato de Facatativá para que puedas compartir con uno de sus
           abuelos a través de una visita o una videollamada.
         </p>
-        <p className="text-start text-xl mt-5 w-full">
+        <p className="text-start  mt-5 w-full">
           A continuación, podrás agendar, cambiar o cancelar, tu visita o
           videollamada.
         </p>
