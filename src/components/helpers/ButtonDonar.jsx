@@ -8,12 +8,14 @@ export const ButtonDonar = ({ showButton }) => {
   useEffect(() => {
     if (showButton) {
       gsap.to(buttonRef.current, {
-        translateX: "36%",
+        translateX: "-17%",
+
         pointerEvents: "all",
       });
     } else {
       gsap.to(buttonRef.current, {
         translateX: "100%",
+
         pointerEvents: "none",
       });
     }
@@ -49,13 +51,15 @@ export const ButtonDonar = ({ showButton }) => {
   return (
     <div
       ref={buttonRef}
-      className="fixed top-1/2 right-0 w-fit z-[19]"
+      className="fixed top-1/2 -translate-y-1/2 right-0 w-12 h-[12.15rem] z-[19]"
     >
       <button
-        className=" leading-[1.1rem] text-[1.15rem] py-2 px-14 HoverButtons bg-tercero -rotate-90 rounded-b-none"
+        className="leading-[1rem] text-[0.838rem] overButtons bg-tercero w-full h-full rounded-r-none text-second hover:scale-105 overflow-hidden"
         onClick={() => handleClick(`${links[1]}`)}
       >
-        DONA TIEMPO <br />A UN ABUELITO
+        <span className="whitespace-nowrap -rotate-90">
+          DONA TIEMPO <br />A UN ABUELITO
+        </span>
       </button>
     </div>
   );
