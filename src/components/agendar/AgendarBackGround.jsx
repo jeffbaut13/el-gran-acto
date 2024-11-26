@@ -3,7 +3,7 @@ import { useRef } from "react";
 export const AgendarBackGround = () => {
   const videoRef = useRef(null);
 
-  const backgroundImage = "/imagenes/seccion-agendar.webp";
+  const backgroundImage = "/imagenes/backNuevoAgendar.webp";
   //const videoSrcMobile = "/videos/intro-vertical.mp4";
 
   return (

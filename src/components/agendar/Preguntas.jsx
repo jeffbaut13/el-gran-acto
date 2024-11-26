@@ -1,49 +1,72 @@
-import React, { useState } from 'react';
-import { PreguntasBackGround } from './PreguntasBackGround';
-import Buscando from './Buscando'; // Importar el componente Buscando
-import Viejito from './Viejito';   // Importar el componente Viejito
-import SeleccionarFecha from './SeleccionarFecha';   // Importar el componente Viejito
-
+import React, { useState } from "react";
+import { PreguntasBackGround } from "./PreguntasBackGround";
+import Buscando from "./Buscando"; // Importar el componente Buscando
+import Viejito from "./Viejito"; // Importar el componente Viejito
+import SeleccionarFecha from "./SeleccionarFecha"; // Importar el componente Viejito
 
 const Preguntas = () => {
   const preguntasData = [
     {
-      pregunta: '¿Qué prefieres hacer en un día libre?',
-      opciones: ['Libros o películas.', 'Descubrir un lugar.', 'Escribir, pintar o cocinar.', 'Amigos o familia.']
+      pregunta: "¿Qué prefieres hacer en un día libre?",
+      opciones: [
+        "Libros o películas.",
+        "Descubrir un lugar.",
+        "Escribir, pintar o cocinar.",
+        "Amigos o familia.",
+      ],
     },
     {
-      pregunta: '¿Qué actividad disfrutas más con otras personas?',
-      opciones: ['Conversaciones profundas.', 'Compartir momentos divertidos.', 'Aprender algo nuevo.', 'Escuchar y dar consejos.']
+      pregunta: "¿Qué actividad disfrutas más con otras personas?",
+      opciones: [
+        "Conversaciones profundas.",
+        "Compartir momentos divertidos.",
+        "Aprender algo nuevo.",
+        "Escuchar y dar consejos.",
+      ],
     },
     {
-      pregunta: 'Si te piden que cuentes algo interesante de ti, ¿Qué destacarías?',
-      opciones: ['Una experiencia emocionante.', 'Un lugar que visitaste.', 'Una habilidad.', 'Una gran historia.']
+      pregunta:
+        "Si te piden que cuentes algo interesante de ti, ¿Qué destacarías?",
+      opciones: [
+        "Una experiencia emocionante.",
+        "Un lugar que visitaste.",
+        "Una habilidad.",
+        "Una gran historia.",
+      ],
     },
     {
-      pregunta: '¿Qué tipo de conversaciones disfrutas más?',
-      opciones: ['Reflexiva.', 'Divertida.', 'Sobre el pasado.', 'Consejos.']
+      pregunta: "¿Qué tipo de conversaciones disfrutas más?",
+      opciones: ["Reflexiva.", "Divertida.", "Sobre el pasado.", "Consejos."],
     },
     {
-      pregunta: '¿De qué equipo de fútbol eres hincha?',
-      opciones: ['Santa Fe.', 'Millonarios.', 'Nacional.', 'Otros.']
+      pregunta: "¿De qué equipo de fútbol eres hincha?",
+      opciones: ["Santa Fe.", "Millonarios.", "Nacional.", "Otros."],
     },
     {
-      pregunta: '¿Cuál de estos artistas te gustaría escuchar con un abuelito?',
-      opciones: ['Leonardo Fabio.', 'Leo Dan.', 'Pedro Infante.', 'Vicente Fernández.']
-    }
+      pregunta: "¿Cuál de estos artistas te gustaría escuchar con un abuelito?",
+      opciones: [
+        "Leonardo Fabio.",
+        "Leo Dan.",
+        "Pedro Infante.",
+        "Vicente Fernández.",
+      ],
+    },
   ];
 
   const [preguntaIndex, setPreguntaIndex] = useState(0);
-  const [respuestas, setRespuestas] = useState(Array(preguntasData.length).fill(null));
-  const [estado, setEstado] = useState('preguntas'); // 'preguntas', 'buscando', 'viejito', 'seleccionarFecha'
+  const [respuestas, setRespuestas] = useState(
+    Array(preguntasData.length).fill(null)
+  );
+  const [estado, setEstado] = useState("preguntas"); // 'preguntas', 'buscando', 'viejito', 'seleccionarFecha'
 
   const handleSeleccionarOpcion = (indice) => {
     const nuevasRespuestas = [...respuestas];
-    nuevasRespuestas[preguntaIndex] = preguntasData[preguntaIndex].opciones[indice];
+    nuevasRespuestas[preguntaIndex] =
+      preguntasData[preguntaIndex].opciones[indice];
     setRespuestas(nuevasRespuestas);
 
     if (preguntaIndex === preguntasData.length - 1) {
-      setEstado('visita');
+      setEstado("visita");
     } else {
       setPreguntaIndex(preguntaIndex + 1);
     }
@@ -56,12 +79,12 @@ const Preguntas = () => {
   };
 
   const mostrarBuscando = () => {
-    setEstado('buscando');
-    setTimeout(() => setEstado('viejito'), 5000);
+    setEstado("buscando");
+    setTimeout(() => setEstado("viejito"), 5000);
   };
 
   const handleAgendar = () => {
-    setEstado('seleccionarFecha');
+    setEstado("seleccionarFecha");
   };
 
   const { pregunta, opciones } = preguntasData[preguntaIndex] || {};
@@ -70,15 +93,26 @@ const Preguntas = () => {
     <div className="w-full h-screen flex py-12 px-20">
       <PreguntasBackGround />
       <div className="w-full h-full flex flex-col items-center justify-center">
-        {estado === 'preguntas' && (
+        {preguntaIndex < 1 && (
+          <div className=" w-[25rem] text-center ">
+            <p>
+              Respondiendo unas sencillas preguntas, <br />
+              nuestro sistema te podrá asignar al abuelito con el que te podrás
+              entender mejor.
+            </p>
+          </div>
+        )}
+        {estado === "preguntas" && (
           <div className="border border-primary w-[25rem] h-[28rem] mt-5 rounded-xl flex flex-col items-center justify-center">
             <div className="px-14 w-full">
-              <p className="text-center font-StageGroteskBold mb-5">{pregunta}</p>
+              <p className="text-center font-StageGroteskBold mb-5 ">
+                {pregunta}
+              </p>
               {opciones.map((texto, index) => (
                 <button
                   key={index}
                   onClick={() => handleSeleccionarOpcion(index)}
-                  className="border border-primary my-2 rounded-md w-full h-10 flex justify-start font-StageGroteskRegular capitalize bg-transparent text-primary"
+                  className="border border-primary my-2 rounded-md w-full h-10 flex justify-start font-StageGroteskRegular capitalize bg-transparent text-primary hover:bg-primary hover:text-black"
                 >
                   <p className="pl-2">{String.fromCharCode(65 + index)}</p>
                   <p className="ml-2">{texto}</p>
@@ -96,44 +130,56 @@ const Preguntas = () => {
           </div>
         )}
 
-        {estado === 'visita' && (
+        {estado === "visita" && (
           <div className="visita flex gap-5">
             <button
               onClick={mostrarBuscando}
-              className="flex flex-col w-[23rem] h-[10rem] bg-transparent border border-primary font-Wayland HoverButtons"
+              className="flex flex-col w-[33rem] h-[8rem] bg-transparent border border-primary font-Wayland HoverButtons"
             >
-              <div className="flex border-b-[1px] w-[90%] justify-between">
+              <div className="flex border-b-[1px] border-primary w-[90%] justify-between">
                 <span className="text-primary text-[2rem]">Agendar Visita</span>
-                <img className="w-8" src="/iconos/flechaVisita.svg" alt="Visita" />
+                <img
+                  className="w-8"
+                  src="/iconos/flechaVisita.svg"
+                  alt="Visita"
+                />
               </div>
               <div className="w-[90%] flex">
                 <p className="text-primary text-sm text-start capitalize font-StageGroteskRegular">
-                  Programa una visita y dona tu tiempo en el ancianato de Facatativá.
+                  Programa una visita y dona tu tiempo en el ancianato de
+                  Facatativá.
                 </p>
               </div>
             </button>
             <button
               onClick={mostrarBuscando}
-              className="flex flex-col w-[23rem] h-[10rem] bg-transparent border border-primary font-Wayland HoverButtons"
+              className="flex flex-col w-[33rem] h-[8rem] bg-transparent border border-primary font-Wayland HoverButtons"
             >
-              <div className="flex border-b-[1px] w-[90%] justify-between">
-                <span className="text-primary text-[2rem]">Agendar Videollamada</span>
-                <img className="w-8" src="/iconos/flechaVisita.svg" alt="Visita" />
+              <div className="flex border-b-[1px] border-primary w-[90%] justify-between">
+                <span className="text-primary text-[2rem]">
+                  Agendar Videollamada
+                </span>
+                <img
+                  className="w-8"
+                  src="/iconos/flechaVisita.svg"
+                  alt="Visita"
+                />
               </div>
               <div className="w-[90%] flex">
                 <p className="text-primary text-sm text-start capitalize font-StageGroteskRegular">
-                  Programa una visita y dona tu tiempo en el ancianato de Facatativá.
+                  Programa una visita y dona tu tiempo en el ancianato de
+                  Facatativá.
                 </p>
               </div>
             </button>
           </div>
         )}
 
-        {estado === 'buscando' && <Buscando />}
+        {estado === "buscando" && <Buscando />}
 
-        {estado === 'viejito' && <Viejito onAgendar={handleAgendar} />}
+        {estado === "viejito" && <Viejito onAgendar={handleAgendar} />}
 
-        {estado === 'seleccionarFecha' && <SeleccionarFecha />}
+        {estado === "seleccionarFecha" && <SeleccionarFecha />}
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { MenuLink } from "./MenuLink";
 import { Scroll } from "../helpers/Scroll";
 
-export const Header = () => {
+export const Header = ({scrollIcon}) => {
   const [active, setActive] = useState(false);
 
   const handleClick = () => {
@@ -50,7 +50,7 @@ export const Header = () => {
 
           <Burger handleClick={handleClick} active={active} />
         </div>
-        <Scroll />
+        <Scroll scrollIcon={scrollIcon}/>
       </header>
     </>
   );

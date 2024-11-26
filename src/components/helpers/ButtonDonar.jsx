@@ -8,12 +8,12 @@ export const ButtonDonar = ({ showButton }) => {
   useEffect(() => {
     if (showButton) {
       gsap.to(buttonRef.current, {
-        translateX: 106,
+        translateX: "36%",
         pointerEvents: "all",
       });
     } else {
       gsap.to(buttonRef.current, {
-        translateX: 200,
+        translateX: "100%",
         pointerEvents: "none",
       });
     }

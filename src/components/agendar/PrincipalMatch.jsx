@@ -1,13 +1,41 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
 const PrincipalMatch = ({ cambiarComponente }) => {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handlePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   return (
     <>
       <div className="w-full h-full flex flex-col items-center justify-start"></div>
-      <div className="w-full h-full flex flex-col items-center  justify-center video px-5">
-        <video className=" bg-white w-[32rem] rounded-xl"></video>
+      <div className="w-full h-full flex flex-col items-center justify-center video px-5">
+        <div className="relative w-[35rem] h-[180rem] rounded-xl overflow-hidden bg-white">
+          <video
+            ref={videoRef}
+            className="w-full h-full rounded-xl"
+            src="your-video-file.mp4"
+          ></video>
+          {!isPlaying && (
+            <div
+              className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 cursor-pointer"
+              onClick={handlePlayPause}
+            >
+              <img className="w-8" src="/iconos/play.svg" />
+            </div>
+          )}
+        </div>
 
-        <h1 className="text-[4.38rem] leading-[4rem] pb-5  font-Wayland mt-10">
+        <h1 className="text-[4.38rem] leading-[4rem] pb-5 font-Wayland mt-5">
           DONA TIEMPO
           <br /> A UN ABUELITO EN NAVIDAD
         </h1>

@@ -14,7 +14,7 @@ export const ButtonSouvenir = ({ showButton }) => {
       });
     } else {
       gsap.to(buttonRef.current, {
-        translateX: -120,
+        translateX: "-200%",
         pointerEvents: "none",
       });
     }
