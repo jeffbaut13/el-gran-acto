@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
 import { PreguntasBackGround } from './PreguntasBackGround';
-import Viejito from './Viejito';
-import Buscando from './Buscando';
+import Buscando from './Buscando'; // Importar el componente Buscando
+import Viejito from './Viejito';   // Importar el componente Viejito
+import SeleccionarFecha from './SeleccionarFecha';   // Importar el componente Viejito
+
 
 const Preguntas = () => {
-  const navigate = useNavigate(); // Define navigate para redirección
-
-  // Lista de preguntas y respuestas
   const preguntasData = [
     {
-      pregunta: '¿Qué prefieres hacer En un día libre?',
+      pregunta: '¿Qué prefieres hacer en un día libre?',
       opciones: ['Libros o películas.', 'Descubrir un lugar.', 'Escribir, pintar o cocinar.', 'Amigos o familia.']
     },
     {
@@ -35,123 +33,107 @@ const Preguntas = () => {
     }
   ];
 
-  // Estado para el índice de la pregunta actual y las respuestas seleccionadas
   const [preguntaIndex, setPreguntaIndex] = useState(0);
   const [respuestas, setRespuestas] = useState(Array(preguntasData.length).fill(null));
-  const [opcionSeleccionada, setOpcionSeleccionada] = useState(null);
+  const [estado, setEstado] = useState('preguntas'); // 'preguntas', 'buscando', 'viejito', 'seleccionarFecha'
 
-  // Maneja la selección de una opción
   const handleSeleccionarOpcion = (indice) => {
-    setOpcionSeleccionada(indice);
     const nuevasRespuestas = [...respuestas];
     nuevasRespuestas[preguntaIndex] = preguntasData[preguntaIndex].opciones[indice];
     setRespuestas(nuevasRespuestas);
-  };
 
-  // Maneja el cambio a la siguiente pregunta solo si hay una respuesta seleccionada
-  const handleSiguientePregunta = () => {
-    if (opcionSeleccionada === null) {
-      alert('Por favor, selecciona una respuesta antes de continuar.');
-      return;
-    }
-
-    if (preguntaIndex < preguntasData.length - 1) {
-      setPreguntaIndex(preguntaIndex + 1);
-      setOpcionSeleccionada(null); // Reinicia la opción seleccionada para la siguiente pregunta
+    if (preguntaIndex === preguntasData.length - 1) {
+      setEstado('visita');
     } else {
-      console.log('Cuestionario completado:', respuestas);
-      navigate('/match');
+      setPreguntaIndex(preguntaIndex + 1);
     }
   };
+
   const handleAnteriorPregunta = () => {
     if (preguntaIndex > 0) {
       setPreguntaIndex(preguntaIndex - 1);
-      setOpcionSeleccionada(respuestas[preguntaIndex - 1] !== null 
-        ? preguntasData[preguntaIndex - 1].opciones.indexOf(respuestas[preguntaIndex - 1]) 
-        : null); // Restaurar la opción seleccionada de la pregunta anterior si existe
-    } else {
-      alert('Ya estás en la primera pregunta.');
     }
   };
 
+  const mostrarBuscando = () => {
+    setEstado('buscando');
+    setTimeout(() => setEstado('viejito'), 5000);
+  };
 
-  // Pregunta y opciones actuales
-  const { pregunta, opciones } = preguntasData[preguntaIndex];
+  const handleAgendar = () => {
+    setEstado('seleccionarFecha');
+  };
+
+  const { pregunta, opciones } = preguntasData[preguntaIndex] || {};
 
   return (
     <div className="w-full h-screen flex py-12 px-20">
       <PreguntasBackGround />
       <div className="w-full h-full flex flex-col items-center justify-center">
-         <p className="font-StageGroteskRegular text-xl text-center">
-          Respondiendo unas sencillas preguntas,<br />
-          nuestro sistema te podrá asignar <br />
-          al abuelito con el que te podrás entender mejor.
-        </p>
-
-        <div className="border relative border-primary w-[25rem] h-[28rem] mt-5 rounded-xl flex flex-col items-center justify-center">
-          <div className="px-14 w-full">
-            <p className="text-center font-StageGroteskBold mb-5">{pregunta}</p>
-            {opciones.map((texto, index) => (
+        {estado === 'preguntas' && (
+          <div className="border border-primary w-[25rem] h-[28rem] mt-5 rounded-xl flex flex-col items-center justify-center">
+            <div className="px-14 w-full">
+              <p className="text-center font-StageGroteskBold mb-5">{pregunta}</p>
+              {opciones.map((texto, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleSeleccionarOpcion(index)}
+                  className="border border-primary my-2 rounded-md w-full h-10 flex justify-start font-StageGroteskRegular capitalize bg-transparent text-primary"
+                >
+                  <p className="pl-2">{String.fromCharCode(65 + index)}</p>
+                  <p className="ml-2">{texto}</p>
+                </button>
+              ))}
+            </div>
+            {preguntaIndex > 0 && (
               <button
-                key={index}
-                onClick={() => handleSeleccionarOpcion(index)}
-                className={`border my-2 rounded-md w-full h-10 flex justify-start font-StageGroteskRegular capitalize ${
-                  opcionSeleccionada === index ? 'bg-primary text-second' : 'bg-transparent text-primary'
-                }`}
+                onClick={handleAnteriorPregunta}
+                className="mt-5 text-primary bg-transparent font-StageGroteskRegular border border-primary rounded-md px-4 py-2"
               >
-                <p className=" pl-2">{String.fromCharCode(65 + index)}</p>
-                <p className="ml-2">{texto}</p>
+                Atrás
               </button>
-            ))}
+            )}
           </div>
-        </div>
+        )}
 
-        
-        <div className="flex relative items-center justify-center mt-10 gap-5">
-        <button onClick={handleAnteriorPregunta} className="absolute bg-transparent w-10 left-[-5rem]">
-            <img className=' rotate-180' src="/iconos/flechaSiguiente.svg" alt="Siguiente" />
-          </button>
+        {estado === 'visita' && (
+          <div className="visita flex gap-5">
+            <button
+              onClick={mostrarBuscando}
+              className="flex flex-col w-[23rem] h-[10rem] bg-transparent border border-primary font-Wayland HoverButtons"
+            >
+              <div className="flex border-b-[1px] w-[90%] justify-between">
+                <span className="text-primary text-[2rem]">Agendar Visita</span>
+                <img className="w-8" src="/iconos/flechaVisita.svg" alt="Visita" />
+              </div>
+              <div className="w-[90%] flex">
+                <p className="text-primary text-sm text-start capitalize font-StageGroteskRegular">
+                  Programa una visita y dona tu tiempo en el ancianato de Facatativá.
+                </p>
+              </div>
+            </button>
+            <button
+              onClick={mostrarBuscando}
+              className="flex flex-col w-[23rem] h-[10rem] bg-transparent border border-primary font-Wayland HoverButtons"
+            >
+              <div className="flex border-b-[1px] w-[90%] justify-between">
+                <span className="text-primary text-[2rem]">Agendar Videollamada</span>
+                <img className="w-8" src="/iconos/flechaVisita.svg" alt="Visita" />
+              </div>
+              <div className="w-[90%] flex">
+                <p className="text-primary text-sm text-start capitalize font-StageGroteskRegular">
+                  Programa una visita y dona tu tiempo en el ancianato de Facatativá.
+                </p>
+              </div>
+            </button>
+          </div>
+        )}
 
-        <button onClick={handleSiguientePregunta} className="absolute bg-transparent w-10 right-[-5rem]">
-            <img src="/iconos/flechaSiguiente.svg" alt="Siguiente" />
-          </button>
+        {estado === 'buscando' && <Buscando />}
 
-          {preguntasData.map((_, index) => (
-            <div
-              key={index}
-              className={`w-4 h-4 rounded-full ${
-                index <= preguntaIndex ? 'bg-primary' : 'bg-transparent border border-primary'
-              }`}
-            />
-          ))}
-        </div> 
+        {estado === 'viejito' && <Viejito onAgendar={handleAgendar} />}
 
-{/*         <div className=' visita'>
-          <button className=' flex flex-col w-[33rem] h-[8rem] bg-transparent border border-primary font-Wayland HoverButtons'>
-            <div className=' flex border-b-[1px] w-[90%] justify-between'>
-            <span className=' text-primary text-[2rem]'>Agendar Visita</span>
-            <img className='w-8' src='/iconos/flechaVisita.svg' />
-            </div>
-            <div className=' w-[90%] flex'>
-              <p className=' text-primary text-sm text-start capitalize font-StageGroteskRegular'>Programa una visita y dona tu tiempo en el ancianato de Facatativá.</p>
-            </div>
-            
-          </button>
-          <button className=' flex flex-col w-[33rem] h-[8rem]  bg-transparent border border-primary mt-10 font-Wayland HoverButtons'>
-          <div className=' flex border-b-[1px] w-[90%] justify-between'>
-            <span className=' text-primary text-[2rem]'>Agendar Videollamada</span>
-            <img className='w-8' src='/iconos/flechaVisita.svg' />
-            </div>
-            <div className=' w-[90%] flex '>
-              <p className=' text-primary text-sm capitalize font-StageGroteskRegular'>Si estás fuera de Facatativá, también puedes donarle tiempo.</p>
-            </div>
-          </button>
-        </div>
- */}
-
-
-{/* <Buscando />
- */}{/* <Viejito /> */}
+        {estado === 'seleccionarFecha' && <SeleccionarFecha />}
       </div>
     </div>
   );

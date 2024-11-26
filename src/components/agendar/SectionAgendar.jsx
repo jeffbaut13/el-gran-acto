@@ -21,7 +21,7 @@ const SectionAgendar = ({reff}) => {
   };
 
   return (
-    <section ref={reff} id={`${links[1]}`} className="w-full h-screen relative flex justify-between flex-col py-12 px-20 snap-item">
+    <section ref={reff} id={`${links[1]}`} className="w-full h-screen relative flex justify-between py-12 px-20 snap-item">
       <AgendarBackGround />
       {renderizarComponente()}
     

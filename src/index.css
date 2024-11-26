@@ -189,22 +189,6 @@ button {
   position: relative;
 }
 
-.rotarCaset {
-  position: absolute;
-  top: 30%; /* Ajusta al punto exacto del rodillo en el cassette */
-  left: 50%; /* Ajusta al punto exacto del rodillo en el cassette */
-  transform-origin: center; /* Origen de la rotación */
-  animation: girarRodillo 2s linear infinite;
-}
-
-@keyframes girarRodillo {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 .regaloIcon{
   transition: transform 0.3s ease;
