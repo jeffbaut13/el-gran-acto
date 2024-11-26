@@ -74,7 +74,7 @@ strong {
   @apply font-StageGroteskBlack;
 }
 .button_large{
-  @apply bg-transparent hover:bg-primary border border-primary text-primary hover:text-black w-[10.5rem] h-[3rem] rounded-lg font-StageGroteskLigth hover:font-StageGroteskBlack text-[1.5rem];
+  @apply bg-transparent hover:bg-primary border border-primary text-primary hover:text-black px-3.5 py-2 rounded-lg font-StageGroteskLigth hover:font-StageGroteskBlack text-[1rem];
   
 }
 button {
