@@ -21,7 +21,7 @@ export const MakingOf = ({ reff }) => {
             CÁMARAS
           </h2>
 
-          <h3 className="tracking-[0.15em] text-sm text-start my-4">
+          <h3 className="tracking-[0.15em] text-base text-start my-4">
             Mira los mejores momentos de esta nueva <br /> entrega de Inter
             Rapidísimo.
           </h3>
