@@ -8,18 +8,18 @@ export const Compartir = ({ reff }) => {
     <section
       ref={reff}
       id={`${links[7]}`}
-      className="h-screen w-full flex flex-col justify-end items-center gap-4 snap-item relative px-20 pb-20"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="h-screen w-full snap-item relative bg-black"
     >
-      <h2 className="font-Wayland text-[4.38rem] leading-[3.8rem] text-center">
-        COMPARTE LA EXPERIENCIA <br /> DE ESTE GRAN ACTO
-      </h2>
-      <div className="flex justify-center gap-16 mt-2">
-        <Socials social={social} />
+      <figure className="w-full h-full absolute top-0 left-0">
+        <img className="object-cover opacity-85" src={backgroundImage} alt="" />
+      </figure>
+      <div className="w-full h-full absolute left-0 top-0 flex flex-col justify-end items-center gap-4 snap-item px-20 pb-20">
+        <h2 className="font-Wayland text-[4.38rem] leading-[3.8rem] text-center">
+          COMPARTE LA EXPERIENCIA <br /> DE ESTE GRAN ACTO
+        </h2>
+        <div className="flex justify-center gap-16 mt-2">
+          <Socials social={social} />
+        </div>
       </div>
     </section>
   );

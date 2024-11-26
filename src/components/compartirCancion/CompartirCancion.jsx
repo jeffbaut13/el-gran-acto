@@ -34,11 +34,11 @@ export const CompartirCancion = ({reff}) => {
           </figure>
           <Lineas lines={6} />
         </div>
-        <div className="w-[38%] m-auto">
-          <div className="flex items-center justify-center gap-20 py-4 w-full border border-primary rounded-lg">
+        <div className="w-[34%] m-auto">
+          <div className="flex bg-black bg-opacity-20 justify-center w-full border border-primary rounded-lg h-14 gap-2">
             {imagenes.map((imagen, i) => (
-              <figure className="w-20 h-auto inline-block" key={i}>
-                <img src={`/iconos/${imagen}.svg`} alt={`${imagen}`} />
+              <figure className="cursor-pointer group hover:bg-primary transition-all ease-in-out duration-700 w-1/3 h-full px-12 inline-block " key={i}>
+                <img className="group-hover:invert" src={`/iconos/${imagen}.svg`} alt={`${imagen}`} />
               </figure>
             ))}
           </div>
@@ -50,7 +50,7 @@ export const CompartirCancion = ({reff}) => {
           <p className="text-center mt-4 font-StageGroteskBold ">
             Compartir a través de:
           </p>
-          <div className="flex justify-center gap-16 mt-2"><Socials social={social} /></div>
+          <div className="flex justify-center gap-12 mt-2"><Socials social={social} /></div>
         </div>
       </div>
     </section>

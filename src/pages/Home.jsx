@@ -12,6 +12,7 @@ import usePlayVideo from "../store/StoreVideo";
 import { useInView } from "react-intersection-observer";
 import { ButtonSouvenir } from "../components/helpers/ButtonSouvenir";
 import { ButtonDonar } from "../components/helpers/ButtonDonar";
+import { LosClasicosCards } from "../components/losClasicos/LosClasicosCards";
 
 export const Home = () => {
   const { playVideo, play, closeVideo, scrollShow,scrollHide  } = usePlayVideo();
@@ -88,8 +89,8 @@ export const Home = () => {
 
       <CompartirDonar reff={section2Ref} />
       <CompartirCancion reff={section3Ref} />
-      <Souvenir reff={section4Ref} />
-      <LosClasicos reff={section5Ref} />
+      {/* <Souvenir reff={section4Ref} /> */}
+      <LosClasicosCards reff={section5Ref} />
       <MakingOf reff={section6Ref} />
       <Compartir reff={section7Ref} />
     </>

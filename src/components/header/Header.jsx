@@ -17,7 +17,7 @@ export const Header = ({scrollIcon}) => {
         opacity: 1,
         pointerEvents: "all",
         display: "flex",
-        paddingTop: "3rem",
+        paddingTop: "0rem",
         ease: "power1.inOut",
         duration: 0.5,
       });
@@ -29,7 +29,7 @@ export const Header = ({scrollIcon}) => {
         opacity: 0,
         pointerEvents: "none",
         display: "none",
-        paddingTop: "0rem",
+        paddingTop: "6rem",
         ease: "power1.inOut",
         duration: 0.5,
       });

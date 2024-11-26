@@ -8,10 +8,10 @@ export const Socials = ({social}) => {
         <Link
           key={i}
           to={"/"}
-          className="font-Wayland bg-primary text-second flexCenter  rounded-md px-[3.2rem] py-3 HoverButtons"
+          className="group font-Wayland border border-primary text-primary hover:bg-primary hover:text-second flexCenter rounded-lg px-[3.3rem] py-1.5 HoverButtons"
         >
           <span className="w-8">
-            <img src={`/iconos/${link}.svg`} alt={`${link}`} />
+            <img className="group-hover:invert transition-all ease-in-out duration-700" src={`/iconos/${link}.svg`} alt={`${link}`} />
           </span>
         </Link>
       ))}
