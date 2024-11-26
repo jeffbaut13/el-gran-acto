@@ -43,21 +43,19 @@ export const MenuLink = ({ setActive }) => {
 
   return (
     <nav className="menuLink w-full h-full z-[9] bg-black bg-opacity-30 backdrop-blur-sm text-second fixed top-0 left-0 opacity-0 flexCenter">
-      <ul className="text-primary w-[56.47rem] min-h-[43.45rem] p-12 bg-black bg-opacity-60 rounded-2xl flex flex-col items-end justify-around">
+      <ul className="text-primary w-[56.47rem] min-h-[42.5rem] p-12 bg-black bg-opacity-60 rounded-2xl flex flex-col items-end justify-around">
         {" "}
         {links.map((link, i) => (
-          <li className="group flex flex-col w-full items-end gap-4" key={i}>
+          <li className="group flex flex-col w-full items-end justify-between min-h-[4.2rem]" key={i}>
+            <span />
             <span className="cursor-pointer" onClick={() => handleClick(link)}>
               <Flecha />
-              <span className="-translate-y-3 -translate-x-2 inline-block">
-                0{i}.{" "}
-              </span>
-              <span className="font-StageGroteskBlack text-[2.085rem] leading-7">
+              <span className="font-StageGroteskLigth text-[1.565rem] leading-7">
                 {link.replace(/-/g, " ")}
               </span>
             </span>
-            <span className="border-b border-[#e9e2b430] inline-block w-full h-0.5 overflow-hidden  ">
-              <span className="translate-x-[101%] group-hover:translate-x-0 bg-primary block w-full h-full ease-out duration-400 transition-all" />
+            <span className="border-b border-[#e9e2b430] inline-block w-full h-0.5 overflow-hidden">
+              <span className="translate-x-[101%] group-hover:translate-x-0 bg-primary block w-full h-full ease-out duration-700 transition-all" />
             </span>
           </li>
         ))}
@@ -68,7 +66,7 @@ export const MenuLink = ({ setActive }) => {
 
 const Flecha = () => {
   return (
-    <figure className="origin-bottom-left scale-0 -translate-x-8 group-hover:scale-100  ease-out duration-500 transition-all w-7 h-7 inline-block">
+    <figure className="origin-bottom-left scale-0 -translate-x-2 group-hover:scale-100  ease-out duration-500 transition-all w-7 h-7 inline-block">
       <svg
         id="uuid-0f3a82ea-aee5-433d-bd50-75cefc91472c"
         data-name="Capa 2"

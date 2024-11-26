@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     <Helmet>
-      <title>Viejitos</title>
+      <title>El gran acto</title>
       <link rel="canonical" href="/" />
       <meta name="description" content="content" />
     </Helmet>

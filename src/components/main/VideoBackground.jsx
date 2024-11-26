@@ -3,7 +3,7 @@ import { useRef } from "react";
 export const VideoBackground = () => {
   const videoRef = useRef(null);
 
-  const backgroundImage = "/imagenes/background.jpg";
+  const backgroundImage = "/imagenes/background.webp";
   //const videoSrcMobile = "/videos/intro-vertical.mp4";
   const videoSrcMobile = "/videos/intro.mp4";
   const videoSrcDesktop = "/videos/intro.mp4";
@@ -19,8 +19,8 @@ export const VideoBackground = () => {
             backgroundImage: `url(${backgroundImage})`,
           }}
         >
-          <div className="absolute top-0 left-0 bg-black bg-opacity-55 w-full h-full" />
-          <video
+          <div className="absolute top-0 left-0 bg-black bg-opacity-10 w-full h-full" />
+          {/* <video
             ref={videoRef}
             className="video w-full h-full object-cover z-10"
             autoPlay
@@ -38,7 +38,7 @@ export const VideoBackground = () => {
               }
               type="video/mp4"
             />
-          </video>
+          </video> */}
         </div>
         <div className="absolute bottom-0 left-0 bg-gradient-to-t from-second from-20% w-full h-40" />
 

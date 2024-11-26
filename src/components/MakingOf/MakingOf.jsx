@@ -26,7 +26,7 @@ export const MakingOf = ({ reff }) => {
             Rapidísimo.
           </h3>
 
-          <button className="px-7 py-1.5 text-[1.46rem]">VER</button>
+          <button className="px-7 py-2 text-[1rem] HoverButtons">VER</button>
         </div>
         <div className="w-1/2" />
       </div>
