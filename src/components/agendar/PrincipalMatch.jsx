@@ -50,7 +50,7 @@ const PrincipalMatch = ({ cambiarComponente }) => {
         </p>
         <div className="flex items-start w-full gap-10 mt-[2rem] h-full caja">
           <button
-            className="button_large"
+            className="button_large text-[1rem]"
             onClick={() => cambiarComponente("Preguntas")}
           >
             AGENDAR
