@@ -7,7 +7,7 @@ export const HoverCard = ({ abuelitos, setName, setOpen }) => {
   };
 
   return (
-    <div className="w-full h-[100%] flex gap-4">
+    <div className="xs:w-[300vw] lg:w-full h-[100%] flex gap-4">
       {abuelitos.map((abuelito, i) => (
         <div
           onClick={() => handleClick(i)}
@@ -15,7 +15,7 @@ export const HoverCard = ({ abuelitos, setName, setOpen }) => {
           className="cursor-pointer w-full h-full py-3 hover:p-0 ease-in-out transition-all duration-300 opacity-60 hover:opacity-100 relative group overflow-hidden"
         >
           <img
-            className="object-cover rounded-2xl"
+            className="object-cover rounded-2xl "
             src={`${abuelito.imagen}`}
             alt=""
           />
@@ -28,10 +28,7 @@ export const HoverCard = ({ abuelitos, setName, setOpen }) => {
               {abuelito.nombre}
             </h2>
             {/* <h2 className="font-Wayland text-2xl">{viejito.role}</h2> */}
-            <span
-               
-              className="cursor-pointer font-StageGroteskBold border border-primary rounded-sm px-4 text-xs"
-            >
+            <span className="cursor-pointer font-StageGroteskBold border border-primary rounded-sm px-4 text-xs">
               VER MÁS
             </span>
           </div>

@@ -1,12 +1,13 @@
 import { useRef } from "react";
 import ReactPlayer from "react-player";
+import { isMobile } from "../../data/medidas";
 
 export const PopUp = ({ viejito, open }) => {
   const videoRef = useRef(null);
   return (
-    <div className="w-full h-full p-2">
+    <div className="w-full h-full lg:p-2">
       <div className="w-full h-full flex flex-col items-center justify-center">
-        <h2 className="w-[70%] text-start font-Wayland text-[2.838rem]">
+        <h2 className="xs:w-[85%] lg:w-[70%] text-start font-Wayland lg:text-[2.838rem] xs:text-2xl">
           {viejito.nombre} / {viejito.role}
         </h2>
         <ReactPlayer
@@ -15,7 +16,7 @@ export const PopUp = ({ viejito, open }) => {
           playing={open ? true : false} // Controla el estado de reproducción
           ref={videoRef}
           url={viejito.video}
-          width="70%"
+          width={`${isMobile ? "85%" : "70%"}`}
           height="fit-content"
         />
       </div>

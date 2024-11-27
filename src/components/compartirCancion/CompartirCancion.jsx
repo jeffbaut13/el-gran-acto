@@ -11,7 +11,7 @@ export const CompartirCancion = ({reff}) => {
     <section
     ref={reff}
     id={`${links[3]}`}
-      className="h-screen w-full flex flex-col justify-center items-center snap-item"
+      className="h-screen w-full flex flex-col justify-center items-center snap-item p-responsive"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
@@ -19,11 +19,11 @@ export const CompartirCancion = ({reff}) => {
       }}
     >
       {/* Fondo de la pantalla principal */}
-      <h2 className="text-[4.4rem] font-Wayland leading-[3.5rem] text-center mt-20">
+      <h2 className="titles font-Wayland   text-center mt-20">
         ESCUCHA LA CANCIÓN <br />
         DE LOS CLÁSICOS
       </h2>
-      <div className="-translate-y-12 w-full flex justify-center flex-col">
+      <div className="lg:-translate-y-12 xs:-translate-y-6 w-full flex justify-center flex-col">
         <div className="flex items-center justify-center">
           <Lineas lines={6} />
           <figure className="w-[28rem]">
@@ -34,10 +34,10 @@ export const CompartirCancion = ({reff}) => {
           </figure>
           <Lineas lines={6} />
         </div>
-        <div className="w-[34%] m-auto">
+        <div className="lg:w-[34%] xs:w-full m-auto">
           <div className="flex bg-black bg-opacity-20 justify-center w-full border border-primary rounded-lg h-14 gap-2">
             {imagenes.map((imagen, i) => (
-              <figure className="cursor-pointer group hover:bg-primary transition-all ease-in-out duration-700 w-1/3 h-full px-12 inline-block " key={i}>
+              <figure className="cursor-pointer group hover:bg-primary transition-all ease-in-out duration-700 w-1/3 h-full lg:px-12 xs:px-9 inline-block " key={i}>
                 <img className="group-hover:invert" src={`/iconos/${imagen}.svg`} alt={`${imagen}`} />
               </figure>
             ))}

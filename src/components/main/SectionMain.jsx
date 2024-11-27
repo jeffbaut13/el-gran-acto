@@ -10,20 +10,21 @@ export const SectionMain = ({ reff }) => {
     <main
       ref={reff}
       id={`${links[0]}`}
-      className="w-full h-screen relative flex justify-between items-end pb-24 px-20 snap-item"
+      className="w-full h-screen relative flex justify-between max-lg:flex-col items-end pb-24 p-responsive snap-item"
     >
+      <div className="lg:hidden h-1/3"/>
       <VideoBackground />
-      <div className="w-full flex justify-start flex-col">
-        <div className="w-[30rem]">
+      <div className="w-full flex lg:justify-start xs:justify-center flex-col">
+        <div className="lg:w-[30rem] xs:w-full">
           <figure className="inline-block w-full">
             <img src="/iconos/el-gran-acto-logo.svg" alt="Logo el gran acto" />
           </figure>
         </div>
 
-        <h1 className="tracking-[0.248em] text-sm my-4">
+        <h1 className="tracking-[0.248em] text-sm my-4 max-lg:text-center">
           <strong>EN NAVIDAD,</strong> ENTREGAR ES MEJOR QUE RECIBIR.
         </h1>
-        <div className="">
+        <div className="flex lg:justify-start xs:justify-center ">
           <button
             onClick={play}
             className="group text-[1rem] leading-3 HoverButtons py-2.5"
@@ -37,8 +38,8 @@ export const SectionMain = ({ reff }) => {
           </button>
         </div>
       </div>
-      <div className="w-full flex justify-end gap-3">
-        <div className="flex flex-col items-start justify-center">
+      <div className="w-full flex max-lg:flex-col justify-end lg:gap-3 xs:gap-6">
+        <div className="flex flex-col lg:items-start xs:items-center justify-center">
           <button className="group text-[1.15rem] leading-3 py-2 HoverButtons">
             <span className="w-10 h-auto pr-3 ml-3.5">
               <IconPlay customStyle={true} />

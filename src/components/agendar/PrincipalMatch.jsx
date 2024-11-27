@@ -35,7 +35,7 @@ const PrincipalMatch = ({ cambiarComponente }) => {
           )}
         </div>
 
-        <h1 className="text-[4.38rem] leading-[4rem] pb-5 font-Wayland mt-5">
+        <h1 className="titles pb-5 font-Wayland mt-5">
           DONA TIEMPO
           <br /> A UN ABUELITO EN NAVIDAD
         </h1>
