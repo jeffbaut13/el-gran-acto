@@ -18,7 +18,7 @@ export const CompartirDonar = ({reff}) => {
       }}
     >
       <div className="w-full h-full lg:bg-gradient-to-r xs:bg-gradient-to-t from-[#000000d6] to-40% absolute left-0 top-0" />
-      <div className="w-full z-10 relative flex h-full max-lg:items-end max-lg:pb-28">
+      <div className="w-full z-10 relative flex h-full xs:items-end lg:items-center max-lg:pb-28">
         <div className="lg:w-2/5 xs:w-full lg:pl-20">
           <h2 className="titles font-Wayland ">
             INVITA A <br className="max-lg:hidden" />

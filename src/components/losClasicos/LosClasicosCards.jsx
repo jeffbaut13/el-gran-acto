@@ -38,7 +38,7 @@ export const LosClasicosCards = ({ reff }) => {
           {open && (
             <>
               <div className="w-full scale-110 bg-black bg-opacity-5 backdrop-blur-md absolute top-0 left-0 h-full z-[29]" />
-              <div className="lg:w-[57.48rem] xs:w-[90%] lg:h-full xs:h-[55%] bg-black bg-opacity-65 absolute xs:top-14 lg:top-0 left-1/2 -translate-x-1/2 z-30 rounded-lg border border-primary">
+              <div className="lg:w-[57.48rem] xs:w-[75%] lg:h-full xs:h-[50%] bg-black bg-opacity-65 absolute xs:top-14 lg:top-0 left-1/2 -translate-x-1/2 z-30 rounded-lg border border-primary">
                 <figure
                   onClick={() => setOpen(false)}
                   className="cursor-pointer w-4 h-4 inline-block absolute right-4 top-2"

@@ -39,7 +39,7 @@ export const ContentFooter = () => {
         CONOCE AQUÍ OTRAS DE NUESTRAS ENTREGAS
       </h2>
       <hr className="border-white border-0.5 max-lg:hidden" />
-      <div className="w-full h-[60%] overflow-x-scroll">
+      <div className="w-full h-[60%] max-lg:overflow-x-scroll">
         <div className="lg:w-full xs:w-[300vw] h-full flex gap-4">
           {campañas.map((campaña, i) => (
             <Link
