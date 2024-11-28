@@ -7,6 +7,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 export const Form = ({ pasos, setPasos }) => {
+  const [captchaValido, setCaptchaValido] = useState(false);
+   
   const {
     register,
     handleSubmit,
@@ -14,21 +16,33 @@ export const Form = ({ pasos, setPasos }) => {
   } = useForm({ mode: "onChange" });
 
   const onChangeCaptcha = (token) => {
-    setCaptchaToken(token);
+  
     setCaptchaValido(!!token); // Valida si el token existe
   };
 
   const onSubmit = async (data) => {
-    /* if (!captchaValido) {
+    if (!captchaValido) {
       alert("Por favor, completa el ReCAPTCHA.");
       return;
-    } */
+    }
     try {
+      // Enviar los datos del formulario a la API
       const response = await axios.post(
-        "https://backboletas.onrender.com/registro"
+        "https://backboletas.onrender.com/registro",
+        {
+          nombre: data.nombre,
+          documentoTipo: data.documentoTipo,
+          documento: data.documento,
+          ciudad: data.ciudad,
+          celular: data.celular,
+          correo: data.correo,
+          edad: data.edad,
+        }
+        
       );
-      if (response.status === 200) {
-        setPasos(3);
+
+      if (response.status === 201) {
+        setPasos(3); // Cambiar a paso 3 si la solicitud fue exitosa
       } else {
         alert("Hubo un problema al enviar el formulario.");
       }
@@ -37,7 +51,6 @@ export const Form = ({ pasos, setPasos }) => {
       alert("No se pudo completar el registro, intenta nuevamente.");
     }
   };
-
   return (
     <form
       className="font-StageGroteskBold px-14 w-full"
@@ -225,12 +238,12 @@ export const Form = ({ pasos, setPasos }) => {
             </div>
 
             {/* ReCAPTCHA */}
-            {/* <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full">
               <ReCAPTCHA
-                sitekey="6LcU7YwqAAAAALRpU0m0eCncbIr380WpUsLXOz78"
+                sitekey="6Lf19owqAAAAAGEz4qFM0nQPgk3jkCw8gK6qm5y9"
                 onChange={onChangeCaptcha}
               />
-            </div> */}
+            </div>
             <button
               onClick={() => setPasos(1)}
               className={`cursor-pointer px-6 py-2 HoverButtons text-xs`}
