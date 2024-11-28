@@ -1,3 +1,4 @@
+ 
 import usePlayVideo from "../../store/StoreVideo";
 import { links } from "../header/MenuLink";
 import { IconPlay } from "../helpers/IconPlay";
@@ -5,6 +6,8 @@ import { VideoBackground } from "./VideoBackground";
 
 export const SectionMain = ({ reff }) => {
   const { playVideo, play, closeVideo } = usePlayVideo();
+
+  
 
   return (
     <main
