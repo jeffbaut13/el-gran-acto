@@ -70,7 +70,7 @@ export const Landing = () => {
                   MAURICIO Y PALO DE AGUA
                 </span>
               </h1>
-              <div className="mt-52 z-10 relative max-lg:translate-y-36">
+              <div className="mt-52 z-10 relative lg:translate-y-14 xs:translate-y-36">
                 <button
                   onClick={() => setopenForm(true)}
                   className="px-7 py-2 HoverButtons bg-black bg-opacity-35 lg:text-[1.1rem] xs:text-xl"

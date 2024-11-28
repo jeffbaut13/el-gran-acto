@@ -3,9 +3,10 @@ import { useForm } from "react-hook-form";
 import ciudades from "./ciudades.json"; // Importa directamente el archivo JSON
 import { div } from "three/webgpu";
 import ReCAPTCHA from "react-google-recaptcha";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
-export const Form = () => {
-  const [pasos, setPasos] = useState(1);
+export const Form = ({ pasos, setPasos }) => {
   const {
     register,
     handleSubmit,
@@ -18,18 +19,16 @@ export const Form = () => {
   };
 
   const onSubmit = async (data) => {
-    if (!captchaValido) {
+    /* if (!captchaValido) {
       alert("Por favor, completa el ReCAPTCHA.");
       return;
-    }
-
+    } */
     try {
       const response = await axios.post(
-        "https://backboletas.onrender.com/registro",
-        { ...data, recaptchaToken: captchaToken } // Envía el token al backend
+        "https://backboletas.onrender.com/registro"
       );
       if (response.status === 200) {
-        alert("Registro exitoso");
+        setPasos(3);
       } else {
         alert("Hubo un problema al enviar el formulario.");
       }
@@ -214,8 +213,9 @@ export const Form = () => {
                     required: "Debes autorizar el tratamiento de datos",
                   })}
                 />
+                
                 Autorizo el tratamiento de mis datos personales según los
-                términos y condiciones.
+                <Link className="text-white ml-2" to={"https://www.interrapidisimo.com/proteccion-de-datos-personales/"} target="_blank" >términos y condiciones.</Link>
               </label>
               {errors.autorizacion && (
                 <p className="text-red-500 text-sm">
@@ -225,12 +225,12 @@ export const Form = () => {
             </div>
 
             {/* ReCAPTCHA */}
-            <div className="flex justify-center w-full">
+            {/* <div className="flex justify-center w-full">
               <ReCAPTCHA
                 sitekey="6LcU7YwqAAAAALRpU0m0eCncbIr380WpUsLXOz78"
                 onChange={onChangeCaptcha}
               />
-            </div>
+            </div> */}
             <button
               onClick={() => setPasos(1)}
               className={`cursor-pointer px-6 py-2 HoverButtons text-xs`}
@@ -246,6 +246,17 @@ export const Form = () => {
             >
               Enviar
             </button>
+          </div>
+        )}
+        {pasos == 3 && (
+          <div className="flex flex-col font-Alterenate">
+            <h3 className="w-ful text-center text-2xl mb-4 tracking-widest">
+              ¡RECIBIMOS TU REGISTRO!
+            </h3>
+            <h3 className="w-ful text-center text-2xl  tracking-widest">
+              GRACIAS POR SER PARTE DE LA HISTORIA DE LOS CLÁSICOS <br />Y
+              PARTICIPAR EN EL GRAN ACTO.
+            </h3>
           </div>
         )}
       </div>
