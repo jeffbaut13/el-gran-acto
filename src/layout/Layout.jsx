@@ -11,9 +11,9 @@ const Layout = ({ children }) => {
     
     {Loading && <Loader LoaderHide={LoaderHide} Loading={Loading}/>} 
     
-      {/* <Header scrollIcon={scrollIcon} /> */}
+      <Header scrollIcon={scrollIcon} />
       {children}
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

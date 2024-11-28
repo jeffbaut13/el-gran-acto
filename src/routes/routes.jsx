@@ -20,7 +20,7 @@ function ScrollToTopOnRouteChange() {
 }
 
 const router = createBrowserRouter([
-  /* {
+  {
     path: "/",
     element: (
       <>
@@ -49,8 +49,8 @@ const router = createBrowserRouter([
         <Match />
       </>
     ),
-  }, */
-  {
+  },
+  /* {
     path: "/",
     element: (
       <>
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
       </Layout>
       </>
     ),
-  },
+  }, */
 ]);
 
 export default router;

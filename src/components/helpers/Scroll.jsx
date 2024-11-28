@@ -56,7 +56,7 @@ export const Scroll = ({ scrollIcon }) => {
   return (
     <figure
       ref={iconoScroll}
-      className="scroll fixed bottom-6 left-1/2 -translate-x-1/2 w-10 h-10 inline-block z-[8]"
+      className="scroll fixed lg:bottom-6 max-lg:hidden left-1/2 -translate-x-1/2 w-10 h-10 inline-block z-[8]"
     >
       <svg
         id="uuid-859a1873-6c95-405b-ba1b-8209c2d6fe02"
