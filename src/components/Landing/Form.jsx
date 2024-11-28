@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 export const Form = ({ pasos, setPasos }) => {
   const [captchaValido, setCaptchaValido] = useState(false);
-   
+
   const {
     register,
     handleSubmit,
@@ -16,15 +16,14 @@ export const Form = ({ pasos, setPasos }) => {
   } = useForm({ mode: "onChange" });
 
   const onChangeCaptcha = (token) => {
-  
     setCaptchaValido(!!token); // Valida si el token existe
   };
 
   const onSubmit = async (data) => {
-    if (!captchaValido) {
+    /* if (!captchaValido) {
       alert("Por favor, completa el ReCAPTCHA.");
       return;
-    }
+    } */
     try {
       // Enviar los datos del formulario a la API
       const response = await axios.post(
@@ -38,7 +37,6 @@ export const Form = ({ pasos, setPasos }) => {
           correo: data.correo,
           edad: data.edad,
         }
-        
       );
 
       if (response.status === 201) {
@@ -226,9 +224,16 @@ export const Form = ({ pasos, setPasos }) => {
                     required: "Debes autorizar el tratamiento de datos",
                   })}
                 />
-                
                 Autorizo el tratamiento de mis datos personales según los
-                <Link className="text-white ml-2" to={"https://www.interrapidisimo.com/proteccion-de-datos-personales/"} target="_blank" >términos y condiciones.</Link>
+                <Link
+                  className="text-white ml-2"
+                  to={
+                    "https://www.interrapidisimo.com/proteccion-de-datos-personales/"
+                  }
+                  target="_blank"
+                >
+                  términos y condiciones.
+                </Link>
               </label>
               {errors.autorizacion && (
                 <p className="text-red-500 text-sm">
@@ -238,12 +243,12 @@ export const Form = ({ pasos, setPasos }) => {
             </div>
 
             {/* ReCAPTCHA */}
-            <div className="flex justify-center w-full">
+           {/*  <div className="flex justify-center w-full">
               <ReCAPTCHA
                 sitekey="6Lf19owqAAAAAGEz4qFM0nQPgk3jkCw8gK6qm5y9"
                 onChange={onChangeCaptcha}
               />
-            </div>
+            </div> */}
             <button
               onClick={() => setPasos(1)}
               className={`cursor-pointer px-6 py-2 HoverButtons text-xs`}
