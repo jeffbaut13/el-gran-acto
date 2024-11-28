@@ -14,7 +14,7 @@ export const FormEvent = () => {
           </h2>
           <p className="text-primary font-StageGroteskRegular text-sm text-center my-8">
             *Este es un evento para mayores de 18 años, las boletas serán
-            entregadas <br />a las primeras 100 personas que completen el
+            entregadas <br />a +DE75 personas que completen el
             formulario.
           </p>
         </>
