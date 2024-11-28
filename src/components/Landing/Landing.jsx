@@ -23,7 +23,7 @@ export const Landing = () => {
     } else {
       gsap.to(".overlay", {
         css: {
-          "--tw-bg-opacity": "0.4",
+          "--tw-bg-opacity": "0.35",
         },
         ease: "power1.inOut",
         duration: 0.2,
@@ -47,33 +47,33 @@ export const Landing = () => {
             <FormEvent/>
           ) : (
             <>
-              <figure className="w-[36.58rem] mb-20">
+              <figure className="lg:w-[36.58rem] xs:w-5/6 mb-20">
                 <img
                   src="/iconos/el-gran-acto-logo.svg"
                   alt="El gran acto - de los clasicos y palo de agua"
                 />
-                <h2 className="uppercase border border-primary w-full text-center rounded-md leading-10 text-[1.5rem] tracking-[0.132em]">
+                <h2 className="uppercase border border-primary w-full text-center rounded-md leading-10 lg:text-[1.5rem] xs:text-base tracking-[0.132em]">
                   jueves 5 de diciembre 2024 / teatro colón, Bogotá
                 </h2>
               </figure>
               <h1 className="mt-10">
-                <span className="tracking-[0.1em] text-[4.85rem] leading-[4rem]">
+                <span className="tracking-[0.1em] lg:text-[4.85rem] lg:leading-[4rem] xs:text-7xl">
                   LOS CLÁSICOS
                 </span>
                 <br />
-                <span className="tracking-[0.12em] flex items-center gap-4 text-[2.8rem] leading-[2rem]">
+                <span className="tracking-[0.12em] flex items-center gap-4 lg:text-[2.8rem] leading-[2rem] xs:text-[2.6rem]">
                   <span>SANTIAGO CRUZ</span>
                   <span className="w-2 h-2 inline-block bg-primary rounded-full relative " />
                   <span>GUSI</span>
                 </span>
-                <span className="tracking-[0.095em] text-[2.53rem] leading-[2.4rem]">
+                <span className="tracking-[0.095em] lg:text-[2.53rem] leading-[2.4rem] xs:text-[2.36rem]">
                   MAURICIO Y PALO DE AGUA
                 </span>
               </h1>
-              <div className="mt-52 z-10 relative">
+              <div className="mt-52 z-10 relative max-lg:translate-y-36">
                 <button
                   onClick={() => setopenForm(true)}
-                  className="px-7 py-2 HoverButtons bg-black bg-opacity-35 text-[1.1rem"
+                  className="px-7 py-2 HoverButtons bg-black bg-opacity-35 lg:text-[1.1rem] xs:text-xl"
                 >
                   REGÍSTRATE
                 </button>
@@ -81,7 +81,7 @@ export const Landing = () => {
             </>
           )}
         </div>
-        <div className="overlay absolute top-0 left-0 bg-black lg:bg-opacity-40 xs:bg-opacity-90 w-full h-full" />
+        <div className="overlay absolute top-0 left-0 bg-black w-full h-full" />
       </div>
     </main>
   );
