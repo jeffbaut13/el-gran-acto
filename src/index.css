@@ -4,6 +4,10 @@
 
  
 @font-face {
+  font-family: "Alterenate-regular";
+  src: url("/fonts/Alternate-Regular.ttf") format("truetype");
+}
+@font-face {
   font-family: "StageGrotesk-black";
   src: url("/fonts/StageGrotesk-Black.ttf") format("truetype");
 }
@@ -232,4 +236,26 @@ p{
 }
 .titles{
   @apply lg:text-[4.38rem] lg:leading-[4rem] xs:text-[3.05rem] leading-[2.8rem]
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input, select {
+
+  @apply w-full bg-transparent  focus:outline-none max-lg:text-xl;
+}
+input:focus{
+  background-color: #ffffff00 !important;
+}
+option{
+  @apply text-black
+}
+.placeHolder{
+  @apply placeholder:font-StageGroteskLigth placeholder:text-primary placeholder:opacity-15
 }
