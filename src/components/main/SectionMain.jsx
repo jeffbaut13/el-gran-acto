@@ -10,7 +10,7 @@ export const SectionMain = ({ reff }) => {
     <main
       ref={reff}
       id={`${links[0]}`}
-      className="w-full h-screen relative flex justify-between max-lg:flex-col items-end pb-24 p-responsive snap-item"
+      className="w-full h-screen relative flex justify-between max-lg:flex-col items-end lg:pb-24 xs:pb-44 p-responsive snap-item"
     >
       <div className="lg:hidden h-1/3"/>
       <VideoBackground />
