@@ -12,7 +12,7 @@ import getBoletasCount from "../firestore/boletas";
 
 export const Landing = () => {
   const [openForm, setopenForm] = useState(false);
-  const [boletas, setBoletas] = useState(50);
+  const [boletas, setBoletas] = useState(null);
 
   const sociales = [
     {
