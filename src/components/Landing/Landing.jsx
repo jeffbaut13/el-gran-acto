@@ -8,10 +8,11 @@ import { BotonMusic } from "../helpers/BotonMusic";
 import { Socials } from "../helpers/Socials";
 import { Link } from "react-router-dom";
 import { IconPlay } from "../helpers/IconPlay";
+import getBoletasCount from "../firestore/boletas";
 
 export const Landing = () => {
   const [openForm, setopenForm] = useState(false);
-  const [boletas, setBoletas] = useState(51);
+  const [boletas, setBoletas] = useState(50);
 
   const sociales = [
     {
@@ -32,14 +33,14 @@ export const Landing = () => {
 
   const isMobile = mobile || tablet;
 
-  /* useEffect(() => {
+  useEffect(() => {
     const fetchBoletasCount = async () => {
       const count = await getBoletasCount(); // Espera el valor
       setBoletas(count); // Actualiza el estado con el número de documentos
     };
 
     fetchBoletasCount();
-  }, []); */
+  }, []);
 
   useEffect(() => {
     if (openForm) {
