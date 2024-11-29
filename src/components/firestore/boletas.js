@@ -10,9 +10,9 @@ const getBoletasCount = async () => {
     const boletasCollection = collection(firestore, "boletas");
     const snapshot = await getDocs(boletasCollection);
     
-console.log(snapshot.size);
 
-    return 
+
+    return snapshot.size
 
   } catch (error) {
     console.error("Error obteniendo el número de documentos:", error);
