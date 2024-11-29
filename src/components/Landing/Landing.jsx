@@ -11,7 +11,7 @@ import { IconPlay } from "../helpers/IconPlay";
 
 export const Landing = () => {
   const [openForm, setopenForm] = useState(false);
-  const [boletas, setBoletas] = useState(null);
+  const [boletas, setBoletas] = useState(50);
 
   const sociales = [
     {
@@ -32,14 +32,14 @@ export const Landing = () => {
 
   const isMobile = mobile || tablet;
 
-  useEffect(() => {
+  /* useEffect(() => {
     const fetchBoletasCount = async () => {
       const count = await getBoletasCount(); // Espera el valor
       setBoletas(count); // Actualiza el estado con el número de documentos
     };
 
     fetchBoletasCount();
-  }, []);
+  }, []); */
 
   useEffect(() => {
     if (openForm) {
