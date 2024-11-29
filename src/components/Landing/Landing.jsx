@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { mobile, tablet } from "../../data/medidas";
 import gsap from "gsap";
 import { FormEvent } from "./FormEvent";
-import getBoletasCount from "../../firebase/boletas";
+ 
 import { LogoLanding } from "./LogoLanding";
 import { BotonMusic } from "../helpers/BotonMusic";
 import { Socials } from "../helpers/Socials";
