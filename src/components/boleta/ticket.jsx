@@ -74,22 +74,24 @@ const Ticket = () => {
   }
 
   return (
-    <div id="ticket" className="w-full h-full relative">
-      <img
-        className="w-full h-full"
-        src="/imagenes/BOLETA-SIN-QR.png"
-        alt="Boleta base"
-      />
-      <button
-        onClick={handleDownloadPDF}
-        className="absolute xs:w-full lg:hidden md:w-[23.7rem] xs:bottom-[5.5rem] h-14 md:bottom-[1rem] border-none normal-case left-1/2 transform -translate-x-1/2 rounded-xl"
-      >
-        {/* Este botón no tiene texto, pero puedes agregarlo si es necesario */}
-      </button>
-      <div className="bg-white absolute xs:bottom-[11rem] md:bottom-[4.8rem] left-1/2 transform -translate-x-1/2 rounded-xl">
+    <div id="ticket" className="xs:w-full lg:m-auto lg:w-96 h-full">
+      <div className=" w-full flexCenter h-[60%]">
+        <img
+          
+          src="/imagenes/BOLETA-PARTE-UNO.png"
+          alt="Boleta base"
+        />
+      </div>
+      <div className=" w-full flexCenter relative">
+        <img
+          
+          src="/imagenes/BOLETA-PARTE-DOS.png"
+          alt="Boleta base DOS"
+        />
+      <div className="bg-white absolute top-[20%] left-1/2 transform -translate-x-1/2 rounded-xl">
         {qrCode ? (
           <img
-            className="xs:w-52 md:w-40 rounded-xl"
+            className="xs:h-1/2 rounded-xl"
             src={qrCode}
             alt="QR Code"
           />
@@ -97,6 +99,13 @@ const Ticket = () => {
           <p>QR no disponible</p>
         )}
       </div>
+      </div>
+      <button
+        onClick={handleDownloadPDF}
+        className="absolute xs:w-full lg:hidden md:w-[23.7rem] xs:bottom-[5.5rem] h-14 md:bottom-[1rem] border-none normal-case left-1/2 transform -translate-x-1/2 rounded-xl"
+      >
+        {/* Este botón no tiene texto, pero puedes agregarlo si es necesario */}
+      </button>
     </div>
   );
 };
