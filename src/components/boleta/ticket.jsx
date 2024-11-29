@@ -39,16 +39,26 @@ const Ticket = () => {
     if (!ticketElement) return;
 
     try {
+      // Captura de la imagen con html2canvas
       const canvas = await html2canvas(ticketElement, {
         scale: 2, // Mejor calidad
+        scrollX: 0, // No se debe desplazar horizontalmente
+        scrollY: 0, // No se debe desplazar verticalmente
+        x: 0, // Ajustar la posición horizontal de la captura
+        y: 0, // Ajustar la posición vertical de la captura
+        width: ticketElement.offsetWidth, // Ancho del contenedor
+        height: ticketElement.offsetHeight, // Alto del contenedor
+        useCORS: true, // Permite cargar imágenes de orígenes cruzados
+        logging: true, // Activar los logs para depuración (opcional)
       });
+
       const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("portrait", "mm", "a4");
 
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      // Crear un PDF con el tamaño adecuado
+      const pdf = new jsPDF("portrait", "px", [canvas.width, canvas.height]);
 
-      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+      // Añadir la imagen al PDF
+      pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
       pdf.save("boleta.pdf"); // Nombre del archivo
     } catch (err) {
       console.error("Error al generar el PDF:", err);
@@ -65,16 +75,24 @@ const Ticket = () => {
 
   return (
     <div id="ticket" className="w-full h-full relative">
-      <img className="w-full h-full" src="/imagenes/BOLETA-SIN-QR.png" alt="Boleta base" />
+      <img
+        className="w-full h-full"
+        src="/imagenes/BOLETA-SIN-QR.png"
+        alt="Boleta base"
+      />
       <button
         onClick={handleDownloadPDF}
-        className="absolute xs:w-full md:w-[23.7rem] xs:bottom-[5.5rem] h-14 md:bottom-[1rem] border-none normal-case left-1/2 transform -translate-x-1/2 rounded-xl"
+        className="absolute xs:w-full lg:hidden md:w-[23.7rem] xs:bottom-[5.5rem] h-14 md:bottom-[1rem] border-none normal-case left-1/2 transform -translate-x-1/2 rounded-xl"
       >
-        
+        {/* Este botón no tiene texto, pero puedes agregarlo si es necesario */}
       </button>
       <div className="bg-white absolute xs:bottom-[11rem] md:bottom-[4.8rem] left-1/2 transform -translate-x-1/2 rounded-xl">
         {qrCode ? (
-          <img className="xs:w-52 md:w-40 rounded-xl" src={qrCode} alt="QR Code" />
+          <img
+            className="xs:w-52 md:w-40 rounded-xl"
+            src={qrCode}
+            alt="QR Code"
+          />
         ) : (
           <p>QR no disponible</p>
         )}
