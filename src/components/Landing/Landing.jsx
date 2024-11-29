@@ -130,13 +130,13 @@ export const Landing = () => {
               />
               <div className="lg:w-[38rem] xs:w-5/6 h-[14.9rem] flexCenter flex-col rounded-xl justify-center mt-36">
                 <div className="lg:w-[57.1%] xs:w-5/6">
-                  <p className="w-full font-StageGroteskLigth text-start mb-4 lg:text-[0.89rem] lg:leading-[1.2rem] xs:text-base">
+                  <p className="w-full font-StageGroteskLigth lg:text-start xs:text-center mb-4 lg:text-[0.89rem] leading-[1.2rem] xs:text-base">
                     Buenas, estamos muy agradecidos con todos los que{" "}
                     <br className="max-lg:hidden" /> nos han dado su apoyo,
                     gracias a Dios ya 
                     llenamos <br className="max-lg:hidden" />nuestro concierto.
                   </p>
-                  <p className="w-full font-StageGroteskLigth text-start mb-8 lg:text-[0.89rem] lg:leading-[1.2rem] xs:text-base">
+                  <p className="w-full font-StageGroteskLigth lg:text-start xs:text-center mb-8 lg:text-[0.89rem] leading-[1.2rem] xs:text-base">
                     Síguenos en nuestras cuentas para que{" "}
                     <br className="max-lg:hidden" /> no te pierdas nada de lo
                     que estamos haciendo.
