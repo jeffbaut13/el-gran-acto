@@ -66,7 +66,7 @@ export const Landing = () => {
       <div className="h-full w-full relative snap-item">
         {/* Fondo de la pantalla principal */}
 
-        {boletas <= 1 ? (
+        {boletas <= 50 ? (
           <>
             <div className="absolute top-0 left-0 w-full h-full z-0">
               <img
