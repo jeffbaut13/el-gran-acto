@@ -1,5 +1,6 @@
 import usePlayVideo from "../../store/StoreVideo";
 import { links } from "../header/MenuLink";
+import { BotonMusic } from "../helpers/BotonMusic";
 import { IconPlay } from "../helpers/IconPlay";
 import { VideoBackground } from "./VideoBackground";
 
@@ -40,19 +41,7 @@ export const SectionMain = ({ reff }) => {
       </div>
       <div className="w-full flex max-lg:flex-col justify-end lg:gap-3 xs:gap-6">
         <div className="flex flex-col lg:items-start xs:items-center justify-center">
-          <button className="group text-[1.15rem] leading-3 py-2 HoverButtons">
-            <span className="w-10 h-auto pr-3 ml-3.5">
-              <IconPlay customStyle={true} />
-            </span>
-            <span className="flex flex-col mr-3.5 items-start">
-              <span className="w-full leading-4">
-                ESCUCHA: <span className="">+ de 75</span>
-              </span>
-              <span className="font-StageGroteskRegular text-[0.47rem] tracking-[0.248em] pl-1">
-                EL GRAN EXITO DE “LOS CLÁSICOS”
-              </span>
-            </span>
-          </button>
+          <BotonMusic />
         </div>
         <div className="flex flex-col items-center">
           <button className="leading-[1.1rem] text-[1.15rem] py-1 px-14 HoverButtons">

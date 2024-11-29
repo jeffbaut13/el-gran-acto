@@ -13,6 +13,7 @@ export default {
         StageGroteskBold: ["StageGrotesk-bold", "serif"],
         StageGroteskLigth: ["StageGrotesk-ligth", "serif"],
         StageGroteskRegular: ["StageGrotesk-regular", "serif"],
+        StageGroteskMedium: ["StageGrotesk-Medium", "serif"],
         Wayland: ["Wayland", "serif"],
       },
       colors: {

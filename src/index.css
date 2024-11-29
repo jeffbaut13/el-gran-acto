@@ -12,6 +12,10 @@
   src: url("/fonts/StageGrotesk-Black.ttf") format("truetype");
 }
 @font-face {
+  font-family: "StageGrotesk-Medium";
+  src: url("/fonts/StageGrotesk-Medium.ttf") format("truetype");
+}
+@font-face {
   font-family: "StageGrotesk-bold";
   src: url("/fonts/StageGrotesk-Bold.ttf") format("truetype");
 }
