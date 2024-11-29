@@ -8,6 +8,7 @@ import { Home } from "../pages/Home";
 import Visita from "../pages/Visita";
 import Match from "../pages/Match";
 import { Landing } from "../components/Landing/Landing";
+import Ticket from "../components/boleta/ticket";
 
 function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();
@@ -58,6 +59,18 @@ const router = createBrowserRouter([
 
         <ScrollToTopOnRouteChange />
         <Landing />
+      </Layout>
+      </>
+    ),
+  },
+  {
+    path: "/ticket/:id",
+    element: (
+      <>
+      <Layout>
+
+        <ScrollToTopOnRouteChange />
+        <Ticket />
       </Layout>
       </>
     ),
