@@ -68,7 +68,7 @@ const Ticket = () => {
       <img className="w-full h-full" src="/imagenes/BOLETA-SIN-QR.png" alt="Boleta base" />
       <button
         onClick={handleDownloadPDF}
-        className="absolute xs:w-full md:w-[23.7rem] xs:bottom-[5.5rem] h-14 md:bottom-[1rem] bg-white border-none normal-case left-1/2 transform -translate-x-1/2 rounded-xl"
+        className="absolute xs:w-full md:w-[23.7rem] xs:bottom-[5.5rem] h-14 md:bottom-[1rem] border-none normal-case left-1/2 transform -translate-x-1/2 rounded-xl"
       >
         
       </button>
