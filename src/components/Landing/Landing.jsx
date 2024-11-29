@@ -66,7 +66,7 @@ export const Landing = () => {
       <div className="h-full w-full relative snap-item">
         {/* Fondo de la pantalla principal */}
 
-        {boletas <= 50 ? (
+        {boletas <= 1 ? (
           <>
             <div className="absolute top-0 left-0 w-full h-full z-0">
               <img
@@ -123,20 +123,20 @@ export const Landing = () => {
                 alt=""
               />
             </div>
-            <div className="flex flex-col items-center lg:justify-between xs:justify-around w-full h-full z-10 relative lg:py-8">
+            <div className="flex flex-col items-center lg:justify-between xs:justify-around w-full h-full z-10 relative lg:py-12">
               <LogoLanding
                 text={"HA LLENADO EL TEATRO COLÓN"}
                 customStyle={"lg:text-[2.35rem] xs:text-[1.6rem]"}
               />
               <div className="lg:w-[38rem] xs:w-5/6 h-[14.9rem] flexCenter flex-col rounded-xl justify-center mt-36">
                 <div className="lg:w-[57.1%] xs:w-5/6">
-                  <p className="w-full font-StageGroteskLigth text-start mb-4 lg:text-[0.89rem] lg:leading-[0.8rem] xs:text-base">
+                  <p className="w-full font-StageGroteskLigth text-start mb-4 lg:text-[0.89rem] lg:leading-[1.2rem] xs:text-base">
                     Buenas, estamos muy agradecidos con todos los que{" "}
                     <br className="max-lg:hidden" /> nos han dado su apoyo,
-                    gracias a Dios ya <br className="max-lg:hidden" />
-                    llenamos nuestro concierto.
+                    gracias a Dios ya 
+                    llenamos <br className="max-lg:hidden" />nuestro concierto.
                   </p>
-                  <p className="w-full font-StageGroteskLigth text-start mb-8 lg:text-[0.89rem] lg:leading-[0.8rem] xs:text-base">
+                  <p className="w-full font-StageGroteskLigth text-start mb-8 lg:text-[0.89rem] lg:leading-[1.2rem] xs:text-base">
                     Síguenos en nuestras cuentas para que{" "}
                     <br className="max-lg:hidden" /> no te pierdas nada de lo
                     que estamos haciendo.
