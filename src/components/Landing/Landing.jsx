@@ -11,7 +11,7 @@ import { IconPlay } from "../helpers/IconPlay";
 
 export const Landing = () => {
   const [openForm, setopenForm] = useState(false);
-  const [boletas, setBoletas] = useState(50);
+  const [boletas, setBoletas] = useState(51);
 
   const sociales = [
     {
