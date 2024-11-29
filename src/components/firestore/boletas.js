@@ -10,8 +10,6 @@ const getBoletasCount = async () => {
     const boletasCollection = collection(firestore, "boletas");
     const snapshot = await getDocs(boletasCollection);
     
-
-
     return snapshot.size
 
   } catch (error) {
