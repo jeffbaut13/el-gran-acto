@@ -7,17 +7,15 @@ const Scanner = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [cameraAccess, setCameraAccess] = useState(false); // Para manejar el estado de permisos
+  const [cameraAccess, setCameraAccess] = useState(false);
 
   useEffect(() => {
-    // Solicitar permisos al cargar el componente
+    // Solicitar permisos explícitamente al cargar el componente
     navigator.mediaDevices
-      .getUserMedia({ video: true }) // Se solicita únicamente acceso al video
-      .then(() => {
-        setCameraAccess(true);
-      })
+      .getUserMedia({ video: true }) // Garantizar que se solicita acceso al video
+      .then(() => setCameraAccess(true))
       .catch((err) => {
-        console.error("No se pudo acceder a la cámara:", err);
+        console.error("Error al solicitar acceso a la cámara:", err);
         setError("No se pudo acceder a la cámara. Verifique los permisos.");
         setCameraAccess(false);
       });
@@ -59,7 +57,7 @@ const Scanner = () => {
   };
 
   const videoConstraints = {
-    facingMode: "environment", // Usa la cámara trasera (principal)
+    facingMode: "environment", // Usa la cámara trasera
   };
 
   return (
@@ -72,7 +70,7 @@ const Scanner = () => {
             onError={handleError}
             onScan={handleScan}
             style={previewStyle}
-            constraints={videoConstraints} // Se asegura de que se solicite video
+            constraints={videoConstraints} // Configura el acceso a la cámara
           />
         </div>
       ) : (
