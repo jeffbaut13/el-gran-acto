@@ -9,6 +9,7 @@ import Visita from "../pages/Visita";
 import Match from "../pages/Match";
 import { Landing } from "../components/Landing/Landing";
 import Ticket from "../components/boleta/ticket";
+import Scanner from "../components/boleta/Scanner";
 
 function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();
@@ -71,6 +72,18 @@ const router = createBrowserRouter([
 
         <ScrollToTopOnRouteChange />
         <Ticket />
+      </Layout>
+      </>
+    ),
+  },
+  {
+    path: "/scanner",
+    element: (
+      <>
+      <Layout>
+
+        <ScrollToTopOnRouteChange />
+        <Scanner />
       </Layout>
       </>
     ),
