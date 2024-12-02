@@ -38,20 +38,30 @@ const Scanner = () => {
     setMessage("");
   };
 
+  const previewStyle = {
+    width: "100%",
+    height: "100%",
+  };
+
+  const videoConstraints = {
+    facingMode: "environment", // Configura la cámara trasera
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-black">
-      <h1 className="text-xl font-bold mb-4">Escáner de Código QR</h1>
+      <h1 className="text-xl font-bold text-white mb-4">Escáner de Código QR</h1>
       <div className="w-64 h-64 border-2 border-gray-500 rounded-md overflow-hidden">
         <QrScanner
           delay={300}
           onError={handleError}
           onScan={handleScan}
-          style={{ width: "100%", height: "100%" }}
+          style={previewStyle}
+          constraints={videoConstraints} // Añadimos las restricciones
         />
       </div>
       {isLoading && <p className="text-blue-500 mt-4">Validando QR...</p>}
       {qrData && (
-        <p className="text-gray-700 mt-4">Código Escaneado: {qrData}</p>
+        <p className="text-gray-300 mt-4">Código Escaneado: {qrData}</p>
       )}
       {message && <p className="text-green-500 mt-4">{message}</p>}
       {error && <p className="text-red-500 mt-4">{error}</p>}
