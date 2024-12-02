@@ -12,7 +12,7 @@ const Scanner = () => {
   useEffect(() => {
     // Solicitar permisos al cargar el componente
     navigator.mediaDevices
-      .getUserMedia({ video: true })
+      .getUserMedia({ video: true }) // Se solicita únicamente acceso al video
       .then(() => {
         setCameraAccess(true);
       })
@@ -59,7 +59,7 @@ const Scanner = () => {
   };
 
   const videoConstraints = {
-    facingMode: "environment",
+    facingMode: "environment", // Usa la cámara trasera (principal)
   };
 
   return (
@@ -72,7 +72,7 @@ const Scanner = () => {
             onError={handleError}
             onScan={handleScan}
             style={previewStyle}
-            constraints={videoConstraints}
+            constraints={videoConstraints} // Se asegura de que se solicite video
           />
         </div>
       ) : (
