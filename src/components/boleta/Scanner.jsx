@@ -7,19 +7,6 @@ const Scanner = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [cameraAccess, setCameraAccess] = useState(false);
-
-  useEffect(() => {
-    // Solicitar permisos explícitamente al cargar el componente
-    navigator.mediaDevices
-      .getUserMedia({ video: true }) // Garantizar que se solicita acceso al video
-      .then(() => setCameraAccess(true))
-      .catch((err) => {
-        console.error("Error al solicitar acceso a la cámara:", err);
-        setError("No se pudo acceder a la cámara. Verifique los permisos.");
-        setCameraAccess(false);
-      });
-  }, []);
 
   const handleScan = async (data) => {
     if (data) {
@@ -57,27 +44,21 @@ const Scanner = () => {
   };
 
   const videoConstraints = {
-    facingMode: "environment", // Usa la cámara trasera
+    video: { facingMode: "environment" }, // Especifica explícitamente el video
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-black">
       <h1 className="text-xl font-bold text-white mb-4">Escáner de Código QR</h1>
-      {cameraAccess ? (
-        <div className="w-64 h-64 border-2 border-gray-500 rounded-md overflow-hidden">
-          <QrScanner
-            delay={300}
-            onError={handleError}
-            onScan={handleScan}
-            style={previewStyle}
-            constraints={videoConstraints} // Configura el acceso a la cámara
-          />
-        </div>
-      ) : (
-        <p className="text-red-500">
-          No se puede acceder a la cámara. Verifique los permisos.
-        </p>
-      )}
+      <div className="w-64 h-64 border-2 border-gray-500 rounded-md overflow-hidden">
+        <QrScanner
+          delay={300}
+          onError={handleError}
+          onScan={handleScan}
+          style={previewStyle}
+          constraints={videoConstraints} // Asegura que se solicite acceso a la cámara
+        />
+      </div>
       {isLoading && <p className="text-blue-500 mt-4">Validando QR...</p>}
       {qrData && (
         <p className="text-gray-300 mt-4">Código Escaneado: {qrData}</p>
