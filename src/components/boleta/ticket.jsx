@@ -26,6 +26,12 @@ const Ticket = () => {
           setQrCodePrincipal(qrCodePrincipal);
           setQrCodeAcompanante(qrCodeAcompanante);
           setQrCode(qrCodePrincipal); // Mostrar la boleta principal por defecto
+        } else if (qrCodePrincipal) {
+          setQrCodePrincipal(qrCodePrincipal);
+          setQrCode(qrCodePrincipal); // Solo la boleta principal
+        } else if (qrCodeAcompanante) {
+          setQrCodeAcompanante(qrCodeAcompanante);
+          setQrCode(qrCodeAcompanante); // Solo la boleta acompañante
         } else {
           setError("Boleta no encontrada o incompleta");
         }
@@ -78,31 +84,33 @@ const Ticket = () => {
 
   return (
     <div className="ticket-container">
-      {/* Botones para seleccionar la boleta */}
-      <div className="flex justify-center gap-4 mb-4">
-        <button
-          disabled={loading}
-          onClick={() => handleSelectTicket("principal")}
-          className={`px-4 py-2 rounded-lg ${
-            selectedTicket === "principal"
-              ? "bg-blue-500 text-white"
-              : "bg-gray-300 text-black"
-          }`}
-        >
-          Boleta 1
-        </button>
-        <button
-          disabled={loading}
-          onClick={() => handleSelectTicket("acompanante")}
-          className={`px-4 py-2 rounded-lg ${
-            selectedTicket === "acompanante"
-              ? "bg-blue-500 text-white"
-              : "bg-gray-300 text-black"
-          }`}
-        >
-          Boleta 2
-        </button>
-      </div>
+      {/* Condición para mostrar los botones solo si ambos QR están disponibles */}
+      {(qrCodePrincipal && qrCodeAcompanante) && (
+        <div className="flex justify-center gap-4 mb-4">
+          <button
+            disabled={loading}
+            onClick={() => handleSelectTicket("principal")}
+            className={`px-4 py-2 rounded-lg ${
+              selectedTicket === "principal"
+                ? "bg-blue-500 text-white"
+                : "bg-gray-300 text-black"
+            }`}
+          >
+            Boleta 1
+          </button>
+          <button
+            disabled={loading}
+            onClick={() => handleSelectTicket("acompanante")}
+            className={`px-4 py-2 rounded-lg ${
+              selectedTicket === "acompanante"
+                ? "bg-blue-500 text-white"
+                : "bg-gray-300 text-black"
+            }`}
+          >
+            Boleta 2
+          </button>
+        </div>
+      )}
 
       {/* Contenido de la boleta */}
       <div id="ticket" className="xs:w-full lg:m-auto lg:w-96 h-full">
