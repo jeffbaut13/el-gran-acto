@@ -6,6 +6,7 @@ const Scanner = () => {
   const [qrData, setQrData] = useState(null); // Almacena los datos del QR validado
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [lastScannedCode, setLastScannedCode] = useState(null); // Almacena el último código escaneado para evitar repeticiones
   const videoRef = useRef(null);
   let qrScanner = null;
 
@@ -35,6 +36,15 @@ const Scanner = () => {
 
   const handleScan = async (uniqueCode) => {
     const cleanedCode = uniqueCode.trim(); // Eliminar espacios si existen
+
+    // Evitar que se haga una nueva búsqueda si el código no ha cambiado
+    if (cleanedCode === lastScannedCode) {
+      return;
+    }
+
+    setLastScannedCode(cleanedCode); // Actualizamos el último código escaneado
+
+    // Comenzamos la carga solo si el código es nuevo
     setIsLoading(true);
     setError('');
     setQrData(null);
