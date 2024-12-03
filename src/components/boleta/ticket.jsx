@@ -6,22 +6,27 @@ import jsPDF from "jspdf";
 
 const Ticket = () => {
   const { id } = useParams(); // Obtenemos el ID dinámico de la URL
-  const [qrCode, setQrCode] = useState(null);
+  const [qrCode, setQrCode] = useState(null); // Estado para mostrar el QR actual
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // Cambiar entre Boleta 1 y Boleta 2
+  const [selectedTicket, setSelectedTicket] = useState("principal");
 
   useEffect(() => {
     const fetchTicketData = async () => {
       try {
         const response = await axios.get(
-          `https://backboletas.onrender.com/boletas/${id}` // Endpoint de tu backend
+          `https://backboletas.onrender.com/boletas/${id}`
         );
-        const { qrCode } = response.data;
 
-        if (qrCode) {
-          setQrCode(qrCode); // Establecemos el QR en el estado
+        const { qrCodePrincipal, qrCodeAcompanante } = response.data;
+
+        if (qrCodePrincipal && qrCodeAcompanante) {
+          // Mostrar el código QR principal por defecto
+          setQrCode(qrCodePrincipal);
         } else {
-          setError("Boleta no encontrada");
+          setError("Boleta no encontrada o incompleta");
         }
       } catch (err) {
         setError("Error al cargar la boleta");
@@ -35,34 +40,31 @@ const Ticket = () => {
   }, [id]);
 
   const handleDownloadPDF = async () => {
-    const ticketElement = document.getElementById("ticket"); // Elemento a capturar
+    const ticketElement = document.getElementById("ticket");
     if (!ticketElement) return;
 
     try {
-      // Captura de la imagen con html2canvas
       const canvas = await html2canvas(ticketElement, {
-        scale: 2, // Mejor calidad
-        scrollX: 0, // No se debe desplazar horizontalmente
-        scrollY: 0, // No se debe desplazar verticalmente
-        x: 0, // Ajustar la posición horizontal de la captura
-        y: 0, // Ajustar la posición vertical de la captura
-        width: ticketElement.offsetWidth, // Ancho del contenedor
-        height: ticketElement.offsetHeight, // Alto del contenedor
-        useCORS: true, // Permite cargar imágenes de orígenes cruzados
-        logging: true, // Activar los logs para depuración (opcional)
+        scale: 2,
+        useCORS: true,
       });
 
       const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("portrait", "px", "a4");
 
-      // Crear un PDF con el tamaño adecuado
-      const pdf = new jsPDF("portrait", "px", [canvas.width, canvas.height]);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
 
-      // Añadir la imagen al PDF
-      pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
-      pdf.save("boleta.pdf"); // Nombre del archivo
+      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+      pdf.save(`boleta-${selectedTicket}.pdf`);
     } catch (err) {
       console.error("Error al generar el PDF:", err);
     }
+  };
+
+  const handleSelectTicket = (type) => {
+    setSelectedTicket(type);
+    setQrCode(type === "principal" ? qrCodePrincipal : qrCodeAcompanante);
   };
 
   if (loading) {
@@ -74,38 +76,63 @@ const Ticket = () => {
   }
 
   return (
-    <div id="ticket" className="xs:w-full lg:m-auto lg:w-96 h-full">
-      <div className=" w-full flexCenter h-[60%]">
-        <img
-          
-          src="/imagenes/BOLETA-PARTE-UNO.png"
-          alt="Boleta base"
-        />
+    <div className="ticket-container">
+      {/* Botones para seleccionar la boleta */}
+      <div className="flex justify-center gap-4 mb-4">
+        <button
+          onClick={() => handleSelectTicket("principal")}
+          className={`px-4 py-2 rounded-lg ${
+            selectedTicket === "principal"
+              ? "bg-blue-500 text-white"
+              : "bg-gray-300 text-black"
+          }`}
+        >
+          Boleta 1
+        </button>
+        <button
+          onClick={() => handleSelectTicket("acompanante")}
+          className={`px-4 py-2 rounded-lg ${
+            selectedTicket === "acompanante"
+              ? "bg-blue-500 text-white"
+              : "bg-gray-300 text-black"
+          }`}
+        >
+          Boleta 2
+        </button>
       </div>
-      <div className=" w-full flexCenter relative">
-        <img
-          
-          src="/imagenes/BOLETA-PARTE-DOS.png"
-          alt="Boleta base DOS"
-        />
-      <div className="bg-white absolute top-[20%] left-1/2 transform -translate-x-1/2 rounded-xl">
-        {qrCode ? (
+
+      {/* Contenido de la boleta */}
+      <div id="ticket" className="xs:w-full lg:m-auto lg:w-96 h-full">
+        <div className="w-full flex justify-center h-[60%]">
           <img
-            className="xs:h-1/2 rounded-xl"
-            src={qrCode}
-            alt="QR Code"
+            src="/imagenes/BOLETA-PARTE-UNO.png"
+            alt="Boleta base"
           />
-        ) : (
-          <p>QR no disponible</p>
-        )}
+        </div>
+        <div className="w-full flex justify-center relative">
+          <img
+            src="/imagenes/BOLETA-PARTE-DOS.png"
+            alt="Boleta base DOS"
+          />
+          <div className="bg-white absolute top-[20%] left-1/2 transform -translate-x-1/2 rounded-xl">
+            {qrCode ? (
+              <img
+                className="xs:h-1/2 rounded-xl"
+                src={qrCode}
+                alt="QR Code"
+              />
+            ) : (
+              <p>QR no disponible</p>
+            )}
+          </div>
+        </div>
+        <button
+          onClick={handleDownloadPDF}
+          className="absolute xs:w-full lg:hidden md:w-[23.7rem] xs:bottom-[5.5rem] h-14 md:bottom-[1rem] border-none normal-case left-1/2 transform -translate-x-1/2 rounded-xl bg-blue-500 text-white"
+        >
+          Descargar PDF
+        </button>
       </div>
-      </div>
-      <button
-        onClick={handleDownloadPDF}
-        className="absolute xs:w-full lg:hidden md:w-[23.7rem] xs:bottom-[5.5rem] h-14 md:bottom-[1rem] border-none normal-case left-1/2 transform -translate-x-1/2 rounded-xl"
-      >
-        {/* Este botón no tiene texto, pero puedes agregarlo si es necesario */}
-      </button>
     </div>
   );
 };
