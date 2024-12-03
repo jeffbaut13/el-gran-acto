@@ -4,7 +4,7 @@ import axios from "axios";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-const TicketInter = () => {
+const ticketInter = () => {
   const { id } = useParams(); // Obtenemos el ID dinámico de la URL
   const [qrCodePrincipal, setQrCodePrincipal] = useState(null); // Código QR principal
   const [qrCodeAcompanante, setQrCodeAcompanante] = useState(null); // Código QR acompañante
@@ -148,4 +148,4 @@ const TicketInter = () => {
   );
 };
 
-export default TicketInter;
+export default ticketInter;
