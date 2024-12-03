@@ -1,83 +1,91 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import QrScanner from 'qr-scanner';
 import axios from 'axios';
-import QrScanner from 'qr-scanner'; // Asegúrate de instalar un paquete para escanear el QR
 
 const Scanner = () => {
-  const [scannedCode, setScannedCode] = useState('');
-  const [valid, setValid] = useState(false);
-  const [ticketInfo, setTicketInfo] = useState(null);
+  const [qrData, setQrData] = useState(null); // Almacena los datos del QR validado
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const videoRef = useRef(null);
+  let qrScanner = null;
 
-  // Función para manejar el escaneo del QR
-  const handleScan = async (result) => {
-    // El código QR escaneado (puede contener el prefijo QR-)
-    const scannedCode = result.data;
-    setScannedCode(scannedCode);
-    console.log('Código escaneado:', scannedCode);
+  useEffect(() => {
+    if (videoRef.current) {
+      qrScanner = new QrScanner(
+        videoRef.current,
+        (result) => {
+          handleScan(result.data);
+        },
+        {
+          highlightScanRegion: true,
+          highlightCodeOutline: true,
+        }
+      );
 
-    // Llamada al backend para validar el QR
-    try {
-      const response = await axios.get('https://backboletas.onrender.com/validar-qr', {
-        params: { uniqueCode: scannedCode }, // Enviar código completo
-      });
+      qrScanner.start();
+    }
 
-      // Si el código es válido, mostrar el botón para validarlo
-      if (response.data.message === 'QR válido') {
-        setValid(true);
-        setTicketInfo(response.data);
-      } else {
-        setValid(false);
-        setTicketInfo(null);
+    return () => {
+      if (qrScanner) {
+        qrScanner.stop();
+        qrScanner.destroy();
       }
-    } catch (error) {
-      console.error('Error al validar el QR:', error);
-      setValid(false);
-      setTicketInfo(null);
+    };
+  }, []);
+
+  const handleScan = async (uniqueCode) => {
+    setIsLoading(true);
+    setError('');
+    setQrData(null);
+
+    try {
+      const response = await axios.get(`http://localhost:5000/validar-qr`, {
+        params: { uniqueCode },
+      });
+      setQrData(response.data);
+    } catch (err) {
+      setError(err.response?.data?.error || 'Error al validar el QR');
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  // Función para manejar la validación del código
-  const handleValidateTicket = async () => {
-    const { id, usado } = ticketInfo;
+  const handleValidate = async () => {
+    if (!qrData) return;
 
-    // Verificar si ya está usado
-    if (usado) {
-      alert('Este código QR ya fue validado.');
-      return;
-    }
-
-    // Actualizar el estado de usadoPrincipal a true en Firestore
     try {
-      await axios.patch(`http://localhost:5000/validar-qr/${id}`, {
-        usadoPrincipal: true,
+      const response = await axios.post(`http://localhost:5000/actualizar-qr`, {
+        id: qrData.id,
+        type: qrData.type,
       });
-      alert('Boleta validada exitosamente!');
-      setValid(false); // Ocultar el botón
-    } catch (error) {
-      console.error('Error al validar la boleta:', error);
-      alert('Hubo un error al validar la boleta.');
+      alert(response.data.message);
+      setQrData(null); // Resetear datos después de la validación
+    } catch (err) {
+      setError(err.response?.data?.error || 'Error al actualizar el estado');
     }
   };
 
   return (
-    <div>
-      <h1>Escanea tu QR</h1>
-
-      {/* Aquí deberías tener el componente para escanear el QR */}
-      <QrScanner onScan={handleScan} />
-
-      {/* Mostrar el código escaneado */}
-      {scannedCode && <p>Código Escaneado: {scannedCode}</p>}
-
-      {/* Mostrar el mensaje si el código es válido */}
-      {valid && ticketInfo && (
-        <div>
-          <p>{ticketInfo.nombre}</p>
-          <button onClick={handleValidateTicket}>Validar Boleta</button>
+    <div className="flex flex-col items-center justify-center p-4">
+      <video ref={videoRef} className="w-full max-w-md border rounded-md shadow-md" />
+      {isLoading && <p className="text-blue-500">Escaneando QR...</p>}
+      {error && <p className="text-red-500 mt-4">{error}</p>}
+      {qrData && (
+        <div className="flex flex-col items-center mt-4">
+          <p className="text-green-500">
+            {qrData.message} ({qrData.type === 'principal' ? 'Boleta Principal' : 'Acompañante'}) -{' '}
+            {qrData.usado ? 'Ya utilizada' : 'Disponible'}
+          </p>
+          {!qrData.usado && (
+            <button
+              onClick={handleValidate}
+              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md"
+            >
+              Validar Boleta
+            </button>
+          )}
         </div>
       )}
-
-      {/* Si el QR no es válido */}
-      {!valid && scannedCode && <p style={{ color: 'red' }}>Código QR no encontrado</p>}
     </div>
   );
 };
