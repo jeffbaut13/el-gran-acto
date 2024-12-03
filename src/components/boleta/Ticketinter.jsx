@@ -4,7 +4,7 @@ import axios from "axios";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-const ticketInter = () => {
+const TicketInter = () => {
   const { id } = useParams(); // Obtenemos el ID dinámico de la URL
   const [qrCodePrincipal, setQrCodePrincipal] = useState(null); // Código QR principal
   const [qrCodeAcompanante, setQrCodeAcompanante] = useState(null); // Código QR acompañante
@@ -16,10 +16,7 @@ const ticketInter = () => {
   useEffect(() => {
     const fetchTicketData = async () => {
       try {
-        const response = await axios.get(
-          `https://backboletas.onrender.com/boletas/${id}`
-        );
-
+        const response = await axios.get(`https://backboletas.onrender.com/boletas/${id}`);
         const { qrCodePrincipal, qrCodeAcompanante } = response.data;
 
         if (qrCodePrincipal && qrCodeAcompanante) {
@@ -137,15 +134,18 @@ const ticketInter = () => {
             )}
           </div>
         </div>
-{/*         <button
+        {/* Descomentar si deseas mostrar el botón de descarga */}
+        {/* 
+        <button
           onClick={handleDownloadPDF}
           className="absolute xs:w-full lg:hidden md:w-[23.7rem] xs:bottom-[5.5rem] h-14 md:bottom-[1rem] border-none normal-case left-1/2 transform -translate-x-1/2 rounded-xl bg-blue-500 text-white"
         >
           Descargar PDF
         </button>
- */}      </div>
+        */}
+      </div>
     </div>
   );
 };
 
-export default ticketInter;
+export default TicketInter;
