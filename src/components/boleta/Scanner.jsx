@@ -39,7 +39,7 @@ const Scanner = () => {
     setQrData(null);
 
     try {
-      const response = await axios.get(`http://localhost:5000/validar-qr`, {
+      const response = await axios.get(`https://backboletas.onrender.com/validar-qr`, {
         params: { uniqueCode },
       });
       setQrData(response.data);
@@ -54,7 +54,7 @@ const Scanner = () => {
     if (!qrData) return;
 
     try {
-      const response = await axios.post(`http://localhost:5000/actualizar-qr`, {
+      const response = await axios.post(`https://backboletas.onrender.com/actualizar-qr`, {
         id: qrData.id,
         type: qrData.type,
       });
