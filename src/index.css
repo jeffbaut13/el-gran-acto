@@ -31,6 +31,10 @@
   font-family: "Wayland";
   src: url("/fonts/Wayland.ttf") format("truetype");
 }
+@font-face {
+  font-family: "BebasNeue-Regular";
+  src: url("/fonts/BebasNeue-Regular.ttf") format("truetype");
+}
 
 /* @media (min-width: 1024px) { */
 @media (min-width: 300px) {

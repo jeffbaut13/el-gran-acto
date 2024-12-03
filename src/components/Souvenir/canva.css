@@ -1,0 +1,23 @@
+.canvas-container {
+  width: 100vw; /* O el tamaño que necesites */
+  height: 100vh;
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.line:after {
+  content: "";
+  width: 1700%;
+  height: 2px;
+  background-color: var(--color-primary);
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  transform: translate(1rem, -50%);
+}
+.line:last-child:after {
+  background-color: #00000000;
+}
+
+ 
