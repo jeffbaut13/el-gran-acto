@@ -8,8 +8,9 @@ import { Home } from "../pages/Home";
 import Visita from "../pages/Visita";
 import Match from "../pages/Match";
 import { Landing } from "../components/Landing/Landing";
-import Ticket from "../components/boleta/ticket";
 import Scanner from "../components/boleta/Scanner";
+import Ticket from "../components/boleta/ticket";
+import TicketInter from "../components/boleta/ticketinter";
 
 function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();
@@ -72,6 +73,18 @@ const router = createBrowserRouter([
 
         <ScrollToTopOnRouteChange />
         <Ticket />
+      </Layout>
+      </>
+    ),
+  },
+  {
+    path: "/ticketinter/:id",
+    element: (
+      <>
+      <Layout>
+
+        <ScrollToTopOnRouteChange />
+        <TicketInter />
       </Layout>
       </>
     ),
