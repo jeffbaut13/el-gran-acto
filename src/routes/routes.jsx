@@ -72,7 +72,8 @@ const router = createBrowserRouter([
       <Layout>
 
         <ScrollToTopOnRouteChange />
-        <Ticket />
+       <Ticket />
+        
       </Layout>
       </>
     ),
