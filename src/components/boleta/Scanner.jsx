@@ -34,14 +34,17 @@ const Scanner = () => {
   }, []);
 
   const handleScan = async (uniqueCode) => {
+    const cleanedCode = uniqueCode.trim();  // Eliminar espacios si existen
+    console.log('Código QR escaneado:', cleanedCode); 
     setIsLoading(true);
     setError('');
     setQrData(null);
-
+  
     try {
       const response = await axios.get(`https://backboletas.onrender.com/validar-qr`, {
-        params: { uniqueCode },
+        params: { uniqueCode: cleanedCode },
       });
+      console.log('Respuesta del servidor:', response.data); // Verifica la respuesta
       setQrData(response.data);
     } catch (err) {
       setError(err.response?.data?.error || 'Error al validar el QR');
@@ -49,7 +52,7 @@ const Scanner = () => {
       setIsLoading(false);
     }
   };
-
+  
   const handleValidate = async () => {
     if (!qrData) return;
 
