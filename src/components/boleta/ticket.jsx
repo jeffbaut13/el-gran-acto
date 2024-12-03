@@ -6,12 +6,12 @@ import jsPDF from "jspdf";
 
 const Ticket = () => {
   const { id } = useParams(); // Obtenemos el ID dinámico de la URL
-  const [qrCode, setQrCode] = useState(null); // Estado para mostrar el QR actual
+  const [qrCodePrincipal, setQrCodePrincipal] = useState(null); // Código QR principal
+  const [qrCodeAcompanante, setQrCodeAcompanante] = useState(null); // Código QR acompañante
+  const [qrCode, setQrCode] = useState(null); // Código QR actual
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  // Cambiar entre Boleta 1 y Boleta 2
-  const [selectedTicket, setSelectedTicket] = useState("principal");
+  const [selectedTicket, setSelectedTicket] = useState("principal"); // Boleta seleccionada
 
   useEffect(() => {
     const fetchTicketData = async () => {
@@ -23,8 +23,9 @@ const Ticket = () => {
         const { qrCodePrincipal, qrCodeAcompanante } = response.data;
 
         if (qrCodePrincipal && qrCodeAcompanante) {
-          // Mostrar el código QR principal por defecto
-          setQrCode(qrCodePrincipal);
+          setQrCodePrincipal(qrCodePrincipal);
+          setQrCodeAcompanante(qrCodeAcompanante);
+          setQrCode(qrCodePrincipal); // Mostrar la boleta principal por defecto
         } else {
           setError("Boleta no encontrada o incompleta");
         }
@@ -39,13 +40,18 @@ const Ticket = () => {
     if (id) fetchTicketData();
   }, [id]);
 
+  const handleSelectTicket = (type) => {
+    setSelectedTicket(type);
+    setQrCode(type === "principal" ? qrCodePrincipal : qrCodeAcompanante);
+  };
+
   const handleDownloadPDF = async () => {
     const ticketElement = document.getElementById("ticket");
     if (!ticketElement) return;
 
     try {
       const canvas = await html2canvas(ticketElement, {
-        scale: 2,
+        scale: window.devicePixelRatio > 1 ? 1 : 2,
         useCORS: true,
       });
 
@@ -62,17 +68,12 @@ const Ticket = () => {
     }
   };
 
-  const handleSelectTicket = (type) => {
-    setSelectedTicket(type);
-    setQrCode(type === "principal" ? qrCodePrincipal : qrCodeAcompanante);
-  };
-
   if (loading) {
-    return <div>Cargando boleta...</div>;
+    return <div className="text-center">Cargando boleta...</div>;
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div className="text-center text-red-500">{error}</div>;
   }
 
   return (
@@ -80,6 +81,7 @@ const Ticket = () => {
       {/* Botones para seleccionar la boleta */}
       <div className="flex justify-center gap-4 mb-4">
         <button
+          disabled={loading}
           onClick={() => handleSelectTicket("principal")}
           className={`px-4 py-2 rounded-lg ${
             selectedTicket === "principal"
@@ -90,6 +92,7 @@ const Ticket = () => {
           Boleta 1
         </button>
         <button
+          disabled={loading}
           onClick={() => handleSelectTicket("acompanante")}
           className={`px-4 py-2 rounded-lg ${
             selectedTicket === "acompanante"
@@ -106,20 +109,20 @@ const Ticket = () => {
         <div className="w-full flex justify-center h-[60%]">
           <img
             src="/imagenes/BOLETA-PARTE-UNO.png"
-            alt="Boleta base"
+            alt="Boleta base parte uno"
           />
         </div>
         <div className="w-full flex justify-center relative">
           <img
             src="/imagenes/BOLETA-PARTE-DOS.png"
-            alt="Boleta base DOS"
+            alt="Boleta base parte dos"
           />
           <div className="bg-white absolute top-[20%] left-1/2 transform -translate-x-1/2 rounded-xl">
             {qrCode ? (
               <img
                 className="xs:h-1/2 rounded-xl"
                 src={qrCode}
-                alt="QR Code"
+                alt={`QR de la boleta ${selectedTicket}`}
               />
             ) : (
               <p>QR no disponible</p>
