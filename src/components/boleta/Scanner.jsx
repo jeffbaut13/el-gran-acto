@@ -15,9 +15,9 @@ const Scanner = () => {
       setIsLoading(true);
 
       try {
-        const response = await axios.post(
-          "https://backboletas.onrender.com/validar-qr",
-          { qrCode: scannedCode }
+        // Cambiar de POST a GET y pasar el uniqueCode como query en la URL
+        const response = await axios.get(
+          `https://backboletas.onrender.com/validar-qr?uniqueCode=${scannedCode}`
         );
 
         const { message } = response.data;
