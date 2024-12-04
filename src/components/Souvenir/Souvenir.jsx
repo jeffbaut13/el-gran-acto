@@ -148,7 +148,7 @@ export const Souvenir = ({ reff }) => {
     <section
       ref={reff}
       id={`${links[4]}`}
-      className="w-full h-screen snap-item relative bg-black select-none max-lg:flex max-lg:justify-start max-lg:flex-col-reverse max-lg:pb-44"
+      className="w-full h-screen snap-item relative bg-black select-none max-lg:flex max-lg:justify-start max-lg:flex-col-reverse max-lg:pb-28 max-lg:px-4"
     >
       <Canva
         cameraControlRef={controlsRef}
@@ -177,7 +177,7 @@ export const Souvenir = ({ reff }) => {
           ))}
         </div>
       </div>
-      <div className="lg:w-[50vw] xs:w-full lg:h-full z-20 flex items-center lg:absolute xs:relative right-0 max-lg:my-12">
+      <div className="lg:w-[50vw] xs:w-full lg:h-full z-20 flex items-center lg:absolute xs:relative right-0 max-lg:my-12 bg-black bg-opacity-20 backdrop-blur-sm rounded-xl pt-4">
         <PasosComponentes
           activePaso={activePaso}
           setActivePaso={setActivePaso}
