@@ -11,7 +11,7 @@ export const PasoCuatro = ({back} ) => {
       className="my-6 py-2 px-12 max-lg:mx-auto">
            Ir a pagar
           </button>
-      <div className="w-full flex justify-between mt-4">
+      <div className="w-full flex justify-between mt-4 max-lg:hidden">
         <div className="">
           <button
             onClick={back}

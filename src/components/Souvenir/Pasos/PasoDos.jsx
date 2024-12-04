@@ -48,8 +48,8 @@ export const PasoDos = ({
           {audio ? "CREAR NUEVO AUDIO" : "GENERAR MI DEDICATORIA"}
         </button>
       </div>
-      <div className="w-full flex justify-between mt-4">
-        <div className="">
+      <div className="w-full flex justify-between mt-4 max-lg:hidden">
+        <div className="">  
           <button
             onClick={back}
             className="w-8 h-8 inline-block p-1.5 rounded-full rotate-180 HoverButtons group relative"
@@ -65,7 +65,7 @@ export const PasoDos = ({
             </span>
           </button>
         </div>
-        <div className="">
+        <div >
           {isAudioReady && (
             <button
               onClick={HandleAudio}

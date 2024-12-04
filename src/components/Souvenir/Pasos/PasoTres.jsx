@@ -138,7 +138,7 @@ export const PasoTres = ({ back, HandleAudio }) => {
         accept="image/jpeg, image/png, image/jpg"
         onChange={handleImageUpload}
       />
-      <div className="w-full flex justify-between mt-4">
+      <div className="w-full flex justify-between mt-4 max-lg:hidden">
         <div className="">
           <button
             onClick={back}
