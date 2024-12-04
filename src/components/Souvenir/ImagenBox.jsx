@@ -56,7 +56,7 @@ export const ImageBox = ({ material }) => {
     <Box
       material={material}
       position={[0, 0, 0.0216]}
-      scale={[0.052, 0.0417, 0.0007]}
+      scale={[0.050, 0.039, 0.0007]}
       rotation={[Math.PI / 2, 0, 0]}
       onPointerDown={handlePointerDown} // Inicia el drag
       onPointerUp={handlePointerUp} // Finaliza el drag

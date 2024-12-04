@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import "./canva.css";
 import { PasosComponentes } from "./PasosComponentes";
 import useAudioStore from "../../store/audioStore";
+import { isMobile } from "../../data/medidas";
+import { Loading } from "../helpers/Loading";
 
 export const Souvenir = ({ reff }) => {
   const model = useRef(null);
@@ -17,26 +19,43 @@ export const Souvenir = ({ reff }) => {
 
   const { combinedAudioUrl, isAudioReady } = useAudioStore();
 
+  console.log(isMobile);
   // Configuración de puntos de interés dinámicos
   const cameraTargets = [
     {
-      position: { x: 0.8, y: 0.5, z: 2 },
-      target: { x: 1.5, y: -0.2, z: -4 },
+      position: { x: isMobile ? 0.5 : 0.8, y: 0.5, z: isMobile ? 3 : 2 },
+      target: { x: isMobile ? -0.1 : 1.5, y: -0.2, z: isMobile ? 0 : -4 },
       zoom: 1,
     },
     {
-      position: { x: 0, y: 2.4, z: 2 },
-      target: { x: 3.7, y: -5.5, z: -3.5 },
+      position: {
+        x: isMobile ? 0.5 : 0,
+        y: 2.4,
+        z: isMobile ? 3 : 2,
+      },
+      target: {
+        x: isMobile ? -0.1 : 3.7,
+        y: isMobile ? -1.2 : -5.5,
+        z: isMobile ? 0 : -3.5,
+      },
       zoom: 1.5,
     },
     {
-      position: { x: -0.2, y: 1, z: 1.3},
-      target: { x: 6, y: -0.3, z: -5 },
+      position: {
+        x: isMobile ? -1 : -0.2,
+        y: isMobile ? 0.8 : 1,
+        z: isMobile ? 1.4 : 1.3,
+      },
+      target: {
+        x: isMobile ? 0 : 6,
+        y: isMobile ? 0 : -0.3,
+        z: isMobile ? -0.3 : -5,
+      },
       zoom: 1,
     },
     {
-      position: { x: 0.8, y: 0.5, z: 2 },
-      target: { x: 1.5, y: -0.2, z: -4 },
+      position: { x: isMobile ? 0.5 : 0.8, y: 0.5, z: isMobile ? 3 : 2 },
+      target: { x: isMobile ? -0.1 : 1.5, y: -0.2, z: isMobile ? 0 : -4 },
       zoom: 1,
     },
   ];
@@ -59,37 +78,36 @@ export const Souvenir = ({ reff }) => {
       const controls = controlsRef.current;
       const { object: camera } = controls;
 
-      gsap.to(camera.position, {
-        x: 0.8,
-        y: 0.5,
-        z: 2,
-        duration: 2,
-        onUpdate: () => controls.update(),
-      });
-
-      gsap.to(controls.target, {
-        x: 1.5,
-        y: -0.2,
-        z: -4,
-        duration: 2,
-        onUpdate: () => controls.update(),
-      });
       /* gsap.to(camera.position, {
-        x: -0.2,
+        x: -1,
         y: 0.8,
-        z: 1.1,
+        z: 1.4,
         duration: 2,
         onUpdate: () => controls.update(),
       });
 
       gsap.to(controls.target, {
-        x: 5.5,
-        y: -0.2,
-        z: -6,
+        x: 0,
+        y: 0,
+        z: -0.3,
         duration: 2,
         onUpdate: () => controls.update(),
       }); */
-      
+      gsap.to(camera.position, {
+        x: isMobile ? 0.5 : 0.8,
+        y: 0.5,
+        z: isMobile ? 3 : 2,
+        duration: 2,
+        onUpdate: () => controls.update(),
+      });
+
+      gsap.to(controls.target, {
+        x: isMobile ? -0.1 : 1.5,
+        y: -0.2,
+        z: isMobile ? 0 : -4,
+        duration: 2,
+        onUpdate: () => controls.update(),
+      });
     }
   }, [isControlsReady]);
 
@@ -139,7 +157,7 @@ export const Souvenir = ({ reff }) => {
         isAudioReady={isAudioReady}
         audioRef={audioRef}
       />
-      <div className="w-[50vw] h-full z-20 flex items-center absolute right-0">
+      <div className="lg:w-[50vw] xs:w-full lg:h-full z-20 flex items-center absolute right-0 max-lg:bottom-48">
         <PasosComponentes
           activePaso={activePaso}
           setActivePaso={setActivePaso}
@@ -148,7 +166,7 @@ export const Souvenir = ({ reff }) => {
           handleButtonClick={handleButtonClick}
         />
       </div>
-      <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20 h-4 w-1/2 inline-block  ">
+      <div className="absolute lg:bottom-16 xs:bottom-28 left-1/2 -translate-x-1/2 z-20 h-4 w-1/2 inline-block">
         <div className="flex w-full justify-between relative">
           {pasos.map((paso, i) => (
             <div
@@ -161,7 +179,7 @@ export const Souvenir = ({ reff }) => {
                   activePaso >= i ? "bg-primary" : "bg-none"
                 }  h-2 inline-block w-2 absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 ease-in-out transition-all duration-1000`}
               />
-              <span className="font-StageGroteskBold absolute whitespace-nowrap -bottom-8 -left-[250%]">
+              <span className="font-StageGroteskBold absolute whitespace-nowrap -bottom-8 -left-[250%] max-lg:hidden">
                 {paso}
               </span>
             </div>
@@ -169,9 +187,9 @@ export const Souvenir = ({ reff }) => {
         </div>
       </div>
       {audio && activePaso == 1 && (
-        <div className="absolute bottom-36 left-[22%] w-fit h-fit z-50 inline-block">
+        <div className="absolute lg:bottom-36 xs:bottom-[58%] lg:left-[22%] xs:left-1/2 max-lg:-translate-x-1/2 w-fit h-fit z-50 inline-block">
           {!isAudioReady ? (
-            <>"cargando cancion"</>
+            <Loading  texto={"Cargando dedicatoria"}/>
           ) : (
             <>
               <audio ref={audioRef} controls>

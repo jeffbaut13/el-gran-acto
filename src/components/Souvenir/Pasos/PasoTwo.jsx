@@ -11,12 +11,12 @@ export const PasoTwo = ({
 }) => {
   return (
     <>
-      <h2 className="font-Wayland text-[4.38rem] leading-[4rem]">
-        SEGURO LO <br />
-        ESCUCHARÁN <br />
+      <h2 className="font-Wayland titles max-lg:text-center">
+        SEGURO LO <br className="max-lg:hidden"/>
+        ESCUCHARÁN <br className="max-lg:hidden"/>
         +DE<span className="font-BebasNeue">75</span> VECES
       </h2>
-      <p className="py-6 leading-6">
+      <p className="py-6 leading-6 max-lg:text-center">
         {!isAudioReady
           ? "Escribe el nombre de la persona que siempre se acordará de ti cuando escuche esto."
           : "Si todo está correcto, selecciona 'Continuar'. Si necesitas corregir los datos, puedes seleccionar la opción 'Crear nuevo audio'."}
@@ -39,7 +39,7 @@ export const PasoTwo = ({
       <div className="w-full flex justify-center items-center relative">
         <button
           onClick={handleGenerateAudio}
-          className={`HoverButtons text-sm w-full px-7 py-2 text-[1.2rem] ${
+          className={`HoverButtons lg:text-sm w-full px-7 py-2 text-[1.2rem] ${
             loading || isButtonDisabled
               ? "opacity-15 pointer-events-none"
               : " opacity-100 pointer-events-auto"

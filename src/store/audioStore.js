@@ -10,7 +10,7 @@ const useAudioStore = create((set, get) => ({
   generateAndCombineAudio: async (text) => {
     const apiKey = import.meta.env.VITE_ELEVENLABS_API_KEY;
     const voiceId = import.meta.env.VITE_ELEVENLABS_VOICE_ID;
-    const localAudioPath = "/audios/cancion2.mp3";
+    const localAudioPath = "/audios/+de75-recorte.mp3";
 
     // Simular la llamada a la API de generación de audio
     set({

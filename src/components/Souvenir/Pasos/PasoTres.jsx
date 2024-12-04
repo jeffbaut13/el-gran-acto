@@ -32,7 +32,7 @@ export const PasoTres = ({back, HandleAudio}) => {
       reader.onloadend = () => {
         const img = new Image();
         img.onload = () => {
-          const width = img.width;
+          const width = img.width * 0.8;
           const height = img.height;
 
           // Calcular el MCD y la proporción base
@@ -90,12 +90,12 @@ export const PasoTres = ({back, HandleAudio}) => {
 
   return (
     <>
-      <h2 className="font-Wayland text-[4.38rem] leading-[4rem]">
+      <h2 className="font-Wayland titles max-lg:text-center">
         SUBE UNA FOTO <br />
         CON TU CLÁSICO
       </h2>
-      <p className="my-8">Haz que ese momento inolvidable sea para siempre.</p>
-      <div className="flex justify-start gap-6">
+      <p className="my-8 max-lg:text-center">Haz que ese momento inolvidable sea para siempre.</p>
+      <div className="flex lg:justify-start xs:justify-center gap-6">
         <button onClick={openFileDialog} className="py-2 px-12">
           <span className="w-8 h-8 inline-block">
             <img src="/iconos/subir-foto.svg" alt="" />
@@ -107,12 +107,12 @@ export const PasoTres = ({back, HandleAudio}) => {
           </button>
         )}
       </div>
-      <p className="my-8 text-xs">
+      <p className="my-8 text-xs max-lg:text-center">
         *Sube imágenes rectangulares para que se adapte mejor a la van.
       </p>
 
       {ajuste && (
-        <p className="mt-12">
+        <p className="mt-12 max-lg:text-center">
           Puedes ubicar la imagen en la van como más te guste.
         </p>
       )}

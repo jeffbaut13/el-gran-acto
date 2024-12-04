@@ -153,15 +153,15 @@ export function Model({ activePaso, model }) {
           castShadow
           receiveShadow
           geometry={nodes.Mesh_11002.geometry}
-          material={materials["Burned Wood.003"]}
+          material={materials["Blue Wood.003"]}
         />
-        <mesh
+        {/* <mesh
           name="Mesh_11002_1"
           castShadow
           receiveShadow
           geometry={nodes.Mesh_11002_1.geometry}
           material={materials["foto_cuchos (1).003"]}
-        />
+        /> */}
         <mesh
           name="Mesh_11002_2"
           castShadow
@@ -169,7 +169,7 @@ export function Model({ activePaso, model }) {
           geometry={nodes.Mesh_11002_2.geometry}
           material={materials["Blue Wood.003"]}
         />
-        {<ImageBox material={materials["Blue Wood.003"]} />}
+       <ImageBox material={materials["Blue Wood.003"]} />
       </group>
     </group>
   );

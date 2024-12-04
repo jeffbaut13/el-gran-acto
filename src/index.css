@@ -246,7 +246,7 @@ p{
   @apply lg:px-20 xs:px-14
 }
 .titles{
-  @apply lg:text-[4.38rem] lg:leading-[4rem] xs:text-[3.05rem] leading-[2.8rem]
+  @apply lg:text-[4.38rem] lg:leading-[4rem] xs:text-[3.2em] leading-[2.8rem]
 }
 
 

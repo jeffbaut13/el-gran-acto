@@ -69,7 +69,7 @@ export const PasosComponentes = ({
       if (text != "") setAudio(true);
       setLoading(true);
       /* await generateAndCombineAudio(
-        `Hola ${text}, ${text2} que te quiere mucho te dedica esta canción porque nunca se va a olvidar de ti.`
+        `Hola ${text}, ${text2}, que te quiere mucho te dedica esta canción porque nunca se va a olvidar de ti.`
       ); */
       await generateAndCombineAudioTest(
         `Hola ${text}, alguien muy especial te ha dedicado esta cancion por que te quiere mucho.`
@@ -101,7 +101,7 @@ export const PasosComponentes = ({
   }, [activePaso]);
 
   return (
-    <div className="w-[65%] pl-20 fade">
+    <div className="lg:w-[65%] xs:w-full lg:pl-20 max-lg:px-10 fade">
       {ActiveComponent && (
         <ActiveComponent
           HandleAudio={HandleAudio}

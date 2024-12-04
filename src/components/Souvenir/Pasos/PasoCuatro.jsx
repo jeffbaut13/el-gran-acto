@@ -1,14 +1,14 @@
 export const PasoCuatro = ({back} ) => {
   return (
     <>
-      <h2 className="font-Wayland text-[4.38rem] leading-[4rem]">
+      <h2 className="font-Wayland titles max-lg:text-center">
         ASÍ SE VE <br />
         UN REGALO <br />
         CLÁSICO
       </h2>
       <button 
       //onClick={openFileDialog} 
-      className="my-6 py-2 px-12">
+      className="my-6 py-2 px-12 max-lg:mx-auto">
            Ir a pagar
           </button>
       <div className="w-full flex justify-between mt-4">
