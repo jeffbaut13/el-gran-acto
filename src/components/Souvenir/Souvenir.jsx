@@ -163,12 +163,12 @@ export const Souvenir = ({ reff }) => {
             <div
               onClick={() => handleButtonClick(i)}
               key={i}
-              className="line cursor-pointer rounded-full w-4 h-4 inline-block border border-primary relative"
+              className="line cursor-pointer rounded-full lg:w-4 xs:w-7 lg:h-4 xs:h-7 inline-block border border-primary relative"
             >
               <span
                 className={`rounded-full ${
                   activePaso >= i ? "bg-primary" : "bg-none"
-                }  h-2 inline-block w-2 absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 ease-in-out transition-all duration-1000`}
+                }  lg:h-2 xs:h-5 inline-block lg:w-2 xs:w-5 absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 ease-in-out transition-all duration-1000`}
               />
               <span className="font-StageGroteskBold absolute whitespace-nowrap -bottom-8 -left-[250%] max-lg:hidden">
                 {paso}
