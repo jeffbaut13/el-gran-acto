@@ -3,10 +3,11 @@ import gsap from "gsap";
 import useAudioStore from "../../store/audioStore";
 
 import { isValidText } from "../../functions/Validartexto";
-import { PasoTwo } from "./Pasos/pasoTwo";
+
 import { PasoUno } from "./Pasos/PasoUno";
 import { PasoTres } from "./Pasos/PasoTres";
 import { PasoCuatro } from "./Pasos/PasoCuatro";
+import { PasoDos } from "./Pasos/PasoDos";
 
 // Componentes de ejemplo
 const Component0 = ({ HandleAudio }) => <PasoUno HandleAudio={HandleAudio} />;
@@ -21,7 +22,7 @@ const Component1 = ({
   back,
   isButtonDisabled,
 }) => (
-  <PasoTwo
+  <PasoDos
     HandleAudio={HandleAudio}
     audio={audio}
     setText={setText}

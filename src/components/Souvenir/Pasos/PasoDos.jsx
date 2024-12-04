@@ -1,4 +1,4 @@
-export const PasoTwo = ({
+export const PasoDos = ({
   HandleAudio,
   audio,
   setText,
