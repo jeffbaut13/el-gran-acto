@@ -22,12 +22,7 @@ export const PasoTres = ({back, HandleAudio}) => {
   const handleImageUpload = (e) => {
     ImgRender.ajuste = false;
     const file = e.target.files[0];
-    if (
-      file &&
-      (file.type === "image/jpeg" ||
-        file.type === "image/png" ||
-        file.type === "image/jpg")
-    ) {
+    
       const reader = new FileReader();
       reader.onloadend = () => {
         const img = new Image();
@@ -63,9 +58,7 @@ export const PasoTres = ({back, HandleAudio}) => {
       setTimeout(() => {
         ImgRender.ajuste = true;
       }, 500);
-    } else {
-      alert("Solo se permiten imágenes JPG, JPEG o PNG.");
-    }
+    
   };
 
   const posicionAutomatica = () => {
