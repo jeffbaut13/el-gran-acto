@@ -61,20 +61,27 @@ export const ImageBox = ({ material }) => {
       onPointerDown={handlePointerDown} // Inicia el drag
       onPointerUp={handlePointerUp} // Finaliza el drag
       onPointerMove={handlePointerMove} // Mueve la imagen durante el drag
+      renderOrder={1} // Prioridad en el renderizado
     >
-      <meshStandardMaterial attach="material" {...material} />
-
+      <meshStandardMaterial
+        attach="material"
+        {...material}
+        depthTest={true}
+        depthWrite={true}
+        transparent={false} // Asegura que no sea transparente
+      />
       <Decal
         depthTest={true}
         depthWrite={true}
+        transparent={false} // Asegura que no sea transparente
         position={[
-          snap.imagePositionX ? snap.imagePositionX : 0,
-          snap.imagePositionY ? snap.imagePositionY : 0,
+          snap.imagePositionX || 0,
+          snap.imagePositionY || 0,
           0.5,
         ]}
         scale={[
-          snap.imageWidth ? snap.imageWidth : 1,
-          snap.imageHeight ? snap.imageHeight : 1,
+          snap.imageWidth || 1,
+          snap.imageHeight || 1,
           0,
         ]}
         map={texture}
@@ -83,6 +90,7 @@ export const ImageBox = ({ material }) => {
       />
     </Box>
   );
+  
 };
 
 

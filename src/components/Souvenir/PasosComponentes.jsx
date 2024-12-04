@@ -10,7 +10,7 @@ import { PasoCuatro } from "./Pasos/PasoCuatro";
 import { PasoDos } from "./Pasos/PasoDos";
 
 // Componentes de ejemplo
-const Component0 = ({ HandleAudio }) => <PasoUno HandleAudio={HandleAudio} />;
+ 
 const Component1 = ({
   HandleAudio,
   audio,
@@ -50,7 +50,7 @@ export const PasosComponentes = ({
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   // Arreglo con los componentes
-  const components = [Component0, Component1, Component2, Component3];
+  const components = [  Component1, Component2, Component3];
   useEffect(() => {
     // Actualiza el estado del botón según la validación
     setIsButtonDisabled(!isValidText(text) || !isValidText(text2));
@@ -106,13 +106,13 @@ export const PasosComponentes = ({
       {ActiveComponent && (
         <ActiveComponent
           HandleAudio={HandleAudio}
-          audio={activePaso == 1 ? audio : null}
-          setText={activePaso == 1 ? setText : null}
-          setText2={activePaso == 1 ? setText2 : null}
-          isButtonDisabled={activePaso == 1 ? isButtonDisabled : null}
-          handleGenerateAudio={activePaso == 1 ? handleGenerateAudio : null}
-          loading={activePaso == 1 ? loading : null}
-          isAudioReady={activePaso == 1 ? isAudioReady : null}
+          audio={activePaso == 0 ? audio : null}
+          setText={activePaso == 0 ? setText : null}
+          setText2={activePaso == 0 ? setText2 : null}
+          isButtonDisabled={activePaso == 0 ? isButtonDisabled : null}
+          handleGenerateAudio={activePaso == 0 ? handleGenerateAudio : null}
+          loading={activePaso == 0 ? loading : null}
+          isAudioReady={activePaso == 0 ? isAudioReady : null}
           back={back}
         />
       )}

@@ -9,6 +9,7 @@ import Visita from "../pages/Visita";
 import Match from "../pages/Match";
 import { Landing } from "../components/Landing/Landing";
 import Ticket from "../components/boleta/ticket";
+import { Souvenir } from "../components/Souvenir/Souvenir";
 
 function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();
@@ -72,6 +73,18 @@ const router = createBrowserRouter([
         <ScrollToTopOnRouteChange />
         <Ticket />
       </Layout>
+      </>
+    ),
+  },
+  {
+    path: "/personalizacion",
+    element: (
+      <>
+      
+
+      
+      <Souvenir/>
+      
       </>
     ),
   },

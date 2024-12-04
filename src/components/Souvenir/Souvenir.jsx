@@ -7,30 +7,26 @@ import { PasosComponentes } from "./PasosComponentes";
 import useAudioStore from "../../store/audioStore";
 import { isMobile } from "../../data/medidas";
 import { Loading } from "../helpers/Loading";
+import { useNavigate } from "react-router-dom";
+import { Arrow } from "../helpers/Arrow";
 
 export const Souvenir = ({ reff }) => {
   const model = useRef(null);
   const audioRef = useRef(null);
-  const pasos = ["PERSONALIZAR", "DEDICADO A", "SUBE TU FOTO", "TU REGALO"];
+  const pasos = ["DEDICADO A", "SUBE TU FOTO", "TU REGALO"];
   const [activePaso, setActivePaso] = useState(0);
   const [audio, setAudio] = useState(false);
   const controlsRef = useRef(null);
   const [isControlsReady, setControlsReady] = useState(false);
-
+  const navigate = useNavigate();
   const { combinedAudioUrl, isAudioReady } = useAudioStore();
 
-   
   // Configuración de puntos de interés dinámicos
   const cameraTargets = [
     {
-      position: { x: isMobile ? 0.5 : 0.8, y: 0.5, z: isMobile ? 3 : 2 },
-      target: { x: isMobile ? -0.1 : 1.5, y: -0.2, z: isMobile ? 0 : -4 },
-      zoom: 1,
-    },
-    {
       position: {
         x: isMobile ? 0.5 : 0,
-        y: 2.4,
+        y: 1.5,
         z: isMobile ? 3 : 2,
       },
       target: {
@@ -38,18 +34,18 @@ export const Souvenir = ({ reff }) => {
         y: isMobile ? -1.2 : -5.5,
         z: isMobile ? 0 : -3.5,
       },
-      zoom: 1.5,
+      zoom: 1.1,
     },
     {
       position: {
-        x: isMobile ? -1 : -0.2,
+        x: isMobile ? -0.9 : -0.2,
         y: isMobile ? 0.8 : 1,
         z: isMobile ? 1.4 : 1.3,
       },
       target: {
         x: isMobile ? 0 : 6,
-        y: isMobile ? 0 : -0.3,
-        z: isMobile ? -0.3 : -5,
+        y: isMobile ? 0.2 : -0.3,
+        z: isMobile ? -0.5 : -5,
       },
       zoom: 1,
     },
@@ -78,33 +74,18 @@ export const Souvenir = ({ reff }) => {
       const controls = controlsRef.current;
       const { object: camera } = controls;
 
-      /* gsap.to(camera.position, {
-        x: -1,
-        y: 0.8,
-        z: 1.4,
-        duration: 2,
-        onUpdate: () => controls.update(),
-      });
-
-      gsap.to(controls.target, {
-        x: 0,
-        y: 0,
-        z: -0.3,
-        duration: 2,
-        onUpdate: () => controls.update(),
-      }); */
       gsap.to(camera.position, {
-        x: isMobile ? 0.5 : 0.8,
-        y: 0.5,
+        x: isMobile ? 0.5 : 0,
+        y: 1.5,
         z: isMobile ? 3 : 2,
         duration: 2,
         onUpdate: () => controls.update(),
       });
 
       gsap.to(controls.target, {
-        x: isMobile ? -0.1 : 1.5,
-        y: -0.2,
-        z: isMobile ? 0 : -4,
+        x: isMobile ? -0.1 : 3.7,
+        y: isMobile ? -1.2 : -5.5,
+        z: isMobile ? 0 : -3.5,
         duration: 2,
         onUpdate: () => controls.update(),
       });
@@ -145,11 +126,16 @@ export const Souvenir = ({ reff }) => {
   };
 
   return (
-    <section
-      ref={reff}
-      id={`${links[4]}`}
-      className="w-full h-screen snap-item relative bg-black select-none max-lg:flex max-lg:justify-start max-lg:flex-col-reverse max-lg:pb-24 max-lg:px-4"
-    >
+    <section className="w-full h-screen snap-item relative bg-black select-none max-lg:flex max-lg:justify-start max-lg:flex-col-reverse max-lg:pb-24 max-lg:px-4">
+      <span
+        onClick={() => navigate("/")}
+        className="fixed left-12 top-6 flex items-center justify-center gap-2 z-50 cursor-pointer"
+      >
+        <span className="w-6 h-6 rotate-180 inline-block">
+          <Arrow />
+        </span>
+        Atras
+      </span>
       <Canva
         cameraControlRef={controlsRef}
         activePaso={activePaso}
@@ -157,8 +143,21 @@ export const Souvenir = ({ reff }) => {
         isAudioReady={isAudioReady}
         audioRef={audioRef}
       />
-      <div className="lg:absolute xs:relative lg:bottom-16 left-1/2 -translate-x-1/2 z-30 h-4 w-1/2 inline-block">
+      <div className="lg:absolute xs:relative lg:bottom-16 left-1/2 -translate-x-1/2 z-30 h-4 xs:w-[65%] lg:w-1/3 inline-block">
         <div className="flex w-full justify-between relative">
+          {isMobile && (
+            <span className="lg:w-4 xs:w-7 lg:h-4 xs:h-7 ml-4 rotate-180">
+              {activePaso >= 1 && (
+                <span
+                  onClick={() => handleButtonClick(activePaso - 1)}
+                  className="w-full h-full"
+                >
+                  <Arrow />
+                </span>
+              )}
+            </span>
+          )}
+
           {pasos.map((paso, i) => (
             <div
               onClick={() => handleButtonClick(i)}
@@ -175,6 +174,19 @@ export const Souvenir = ({ reff }) => {
               </span>
             </div>
           ))}
+
+          {isMobile && (
+            <span className="lg:w-4 xs:w-7 lg:h-4 xs:h-7 ml-4">
+              {activePaso <= 1 && (
+                <span
+                  onClick={() => handleButtonClick(activePaso + 1)}
+                  className="w-full h-full"
+                >
+                  <Arrow />
+                </span>
+              )}
+            </span>
+          )}
         </div>
       </div>
       <div className="lg:w-[50vw] xs:w-full lg:h-full z-20 flex items-center lg:absolute xs:relative right-0 max-lg:my-10 max-lg:bg-black max-lg:bg-opacity-20 max-lg:backdrop-blur-sm max-lg:rounded-xl max-lg:pt-4">
@@ -186,11 +198,11 @@ export const Souvenir = ({ reff }) => {
           handleButtonClick={handleButtonClick}
         />
       </div>
-      
-      {audio && activePaso == 1 && (
+
+      {audio && activePaso >= 0 && (
         <div className="lg:absolute xs:relative lg:bottom-36 lg:left-[22%] xs:left-1/2 max-lg:-translate-x-1/2 w-fit h-fit z-50 inline-block">
           {!isAudioReady ? (
-            <Loading  texto={"Cargando dedicatoria"}/>
+            <Loading texto={"Cargando dedicatoria"} />
           ) : (
             <>
               <audio ref={audioRef} controls>
@@ -201,7 +213,6 @@ export const Souvenir = ({ reff }) => {
           )}
         </div>
       )}
-      
     </section>
   );
 };

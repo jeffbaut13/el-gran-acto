@@ -9,7 +9,7 @@ export function Model({ activePaso, model }) {
   useEffect(() => {
     const tapa = Tapa.current;
 
-    if (  activePaso == 2 || activePaso == 3 ) {
+    if (  activePaso == 1 || activePaso == 2 ) {
       if (tapa) {
         // Animación de rotación en el eje Y
         gsap.to(tapa.rotation, {
@@ -155,13 +155,13 @@ export function Model({ activePaso, model }) {
           geometry={nodes.Mesh_11002.geometry}
           material={materials["Blue Wood.003"]}
         />
-        {/* <mesh
+        <mesh
           name="Mesh_11002_1"
           castShadow
           receiveShadow
           geometry={nodes.Mesh_11002_1.geometry}
-          material={materials["foto_cuchos (1).003"]}
-        /> */}
+          material={materials["Blue Wood.003"]}
+        />
         <mesh
           name="Mesh_11002_2"
           castShadow

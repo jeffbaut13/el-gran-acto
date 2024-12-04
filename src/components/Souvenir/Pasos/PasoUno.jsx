@@ -1,4 +1,4 @@
-export const PasoUno = ({ HandleAudio }) => {
+export const PasoUno = ({ HandleAudio, btn }) => {
   return (
     <>
       <h2 className="font-Wayland titles max-lg:text-center">
@@ -14,9 +14,7 @@ export const PasoUno = ({ HandleAudio }) => {
         podrá ver y escuchar por siempre.
       </p>
       <h6 className="py-6 max-lg:w-full max-lg:text-center">$<span className="font-BebasNeue text-4xl">120.000</span></h6>
-      <button onClick={HandleAudio} className="px-7 py-1.5 text-[1.2rem] max-lg:mx-auto">
-        PERSONALIZAR
-      </button>
+      {btn}
     </>
   );
 };

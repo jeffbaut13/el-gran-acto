@@ -9,21 +9,34 @@ import {
 import { Model } from "./Model";
 
 import { Ground } from "./Ground";
-function Loader() {
+import { Loading } from "../helpers/Loading";
+import Loader from "../Loader/Loader";
+import { isMobile } from "../../data/medidas";
+function ModelLoader() {
   const { progress, active } = useProgress();
+  
 
   return (
     <Html center>
-      <p className="text-black loader">{progress.toFixed(1)} % loaded</p>
+      <Loader LoaderHide={active}/>
+      
     </Html>
   );
 }
 
-export const Canva = ({ activePaso, model, cameraControlRef, isAudioReady, audioRef }) => {
+export const Canva = ({
+  activePaso,
+  model,
+  cameraControlRef,
+  isAudioReady,
+  audioRef,
+}) => {
   return (
+    <>
+    
     <div className="canvas-container absolute top-0 left-0 z-10">
       <Canvas shadows gl={{ antialias: true }} dpr={[1, 1.5]}>
-        <OrbitControls ref={cameraControlRef} enabled={false} />
+        <OrbitControls ref={cameraControlRef} enabled={isMobile ?  true : false} />
 
         <ambientLight intensity={2} />
         <directionalLight
@@ -71,12 +84,18 @@ export const Canva = ({ activePaso, model, cameraControlRef, isAudioReady, audio
           shadow-camera-top={10}
           shadow-camera-bottom={-10}
         />
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={<ModelLoader />}>
           <Ground />
-          <Model activePaso={activePaso} model={model} isAudioReady={isAudioReady} audioRef={audioRef} />
+          <Model
+            activePaso={activePaso}
+            model={model}
+            isAudioReady={isAudioReady}
+            audioRef={audioRef}
+          />
         </Suspense>
         <Environment map={"forest"} />
       </Canvas>
     </div>
+    </>
   );
 };

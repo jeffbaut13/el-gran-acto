@@ -10,7 +10,7 @@
 
   .line:after {
     content: "";
-    width: 1700%;
+    width: 1680%;
     height: 2px;
     background-color: var(--color-primary);
     display: inline-block;

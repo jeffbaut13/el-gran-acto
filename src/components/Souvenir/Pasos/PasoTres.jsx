@@ -127,7 +127,7 @@ export const PasoTres = ({ back, HandleAudio }) => {
 
       {ajuste && (
         <p className="mt-12 max-lg:text-center">
-          Puedes ubicar la imagen en la van como más te guste.
+          La imagen es referencial y puede variar en la impresión para cubrir toda el área.
         </p>
       )}
 
