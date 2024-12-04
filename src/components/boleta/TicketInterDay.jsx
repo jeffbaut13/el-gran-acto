@@ -53,14 +53,21 @@ const TicketInterDay = () => {
     if (!ticketElement) return;
 
     try {
+      // Ajustamos html2canvas para capturar todo el contenido del ticket, incluso fuera de la vista (con scroll)
       const canvas = await html2canvas(ticketElement, {
-        scale: window.devicePixelRatio > 1 ? 1 : 2,
+        scale: 3,  // Aseguramos una alta resolución
         useCORS: true,
+        logging: true, // Para depuración
+        height: ticketElement.scrollHeight,  // Capturamos toda la altura, incluyendo el scroll
+        width: ticketElement.scrollWidth,    // Capturamos toda la anchura del contenido
+        x: 0,  // Posición inicial del canvas (a la izquierda)
+        y: 0,  // Posición inicial del canvas (arriba)
       });
 
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("portrait", "px", "a4");
 
+      // Calculamos las dimensiones del PDF para que la imagen se ajuste
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
 
@@ -134,16 +141,13 @@ const TicketInterDay = () => {
             )}
           </div>
         </div>
-        {/* Descomentar si deseas mostrar el botón de descarga */}
-        {/* 
-        <button
+         <button
           onClick={handleDownloadPDF}
-          className="absolute xs:w-full lg:hidden md:w-[23.7rem] xs:bottom-[5.5rem] h-14 md:bottom-[1rem] border-none normal-case left-1/2 transform -translate-x-1/2 rounded-xl bg-blue-500 text-white"
+          className="absolute xs:w-full lg:hidden md:w-[23.7rem] xs:bottom-[9rem] h-14 md:bottom-[1rem] border-none normal-case left-1/2 transform -translate-x-1/2 rounded-xl bg-black bg-opacity-20 text-white"
         >
           Descargar PDF
         </button>
-        */}
-      </div>
+    </div>
     </div>
   );
 };
