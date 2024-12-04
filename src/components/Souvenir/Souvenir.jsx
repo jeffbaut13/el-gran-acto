@@ -148,7 +148,7 @@ export const Souvenir = ({ reff }) => {
     <section
       ref={reff}
       id={`${links[4]}`}
-      className="w-full h-screen snap-item relative bg-black select-none"
+      className="w-full h-screen snap-item relative bg-black select-none max-lg:flex max-lg:justify-start max-lg:flex-col-reverse max-lg:pb-44"
     >
       <Canva
         cameraControlRef={controlsRef}
@@ -157,16 +157,7 @@ export const Souvenir = ({ reff }) => {
         isAudioReady={isAudioReady}
         audioRef={audioRef}
       />
-      <div className="lg:w-[50vw] xs:w-full lg:h-full z-20 flex items-center absolute right-0 max-lg:bottom-48">
-        <PasosComponentes
-          activePaso={activePaso}
-          setActivePaso={setActivePaso}
-          setAudio={setAudio}
-          audio={audio}
-          handleButtonClick={handleButtonClick}
-        />
-      </div>
-      <div className="absolute lg:bottom-16 xs:bottom-28 left-1/2 -translate-x-1/2 z-20 h-4 w-1/2 inline-block">
+      <div className="lg:absolute xs:relative lg:bottom-16 left-1/2 -translate-x-1/2 z-30 h-4 w-1/2 inline-block">
         <div className="flex w-full justify-between relative">
           {pasos.map((paso, i) => (
             <div
@@ -186,8 +177,18 @@ export const Souvenir = ({ reff }) => {
           ))}
         </div>
       </div>
+      <div className="lg:w-[50vw] xs:w-full lg:h-full z-20 flex items-center lg:absolute xs:relative right-0 max-lg:my-12">
+        <PasosComponentes
+          activePaso={activePaso}
+          setActivePaso={setActivePaso}
+          setAudio={setAudio}
+          audio={audio}
+          handleButtonClick={handleButtonClick}
+        />
+      </div>
+      
       {audio && activePaso == 1 && (
-        <div className="absolute lg:bottom-36 xs:bottom-[58%] lg:left-[22%] xs:left-1/2 max-lg:-translate-x-1/2 w-fit h-fit z-50 inline-block">
+        <div className="lg:absolute xs:relative lg:bottom-36 lg:left-[22%] xs:left-1/2 max-lg:-translate-x-1/2 w-fit h-fit z-50 inline-block">
           {!isAudioReady ? (
             <Loading  texto={"Cargando dedicatoria"}/>
           ) : (
@@ -200,6 +201,7 @@ export const Souvenir = ({ reff }) => {
           )}
         </div>
       )}
+      
     </section>
   );
 };

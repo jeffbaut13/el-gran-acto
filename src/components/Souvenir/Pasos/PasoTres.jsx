@@ -95,17 +95,17 @@ export const PasoTres = ({back, HandleAudio}) => {
         CON TU CLÁSICO
       </h2>
       <p className="my-8 max-lg:text-center">Haz que ese momento inolvidable sea para siempre.</p>
-      <div className="flex lg:justify-start xs:justify-center gap-6">
+      <div className={`flex ${ajuste ? "justify-center": "xs:justify-center lg:justify-start"}  gap-6`}>
         <button onClick={openFileDialog} className="py-2 px-12">
           <span className="w-8 h-8 inline-block">
             <img src="/iconos/subir-foto.svg" alt="" />
           </span>
         </button>
-        {ajuste && (
+        {/* {ajuste && (
           <button onClick={openFileDialog} className="py-2 px-12">
            Confirmar
           </button>
-        )}
+        )} */}
       </div>
       <p className="my-8 text-xs max-lg:text-center">
         *Sube imágenes rectangulares para que se adapte mejor a la van.
