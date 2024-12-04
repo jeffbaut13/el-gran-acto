@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Html, useGLTF } from "@react-three/drei";
 import gsap from "gsap";
+import { ImageBox } from "./ImagenBox";
 
 export function Model({ activePaso, model }) {
   const Tapa = useRef(null);
@@ -8,7 +9,7 @@ export function Model({ activePaso, model }) {
   useEffect(() => {
     const tapa = Tapa.current;
 
-    if (activePaso == 1 || activePaso == 2 || activePaso == 3) {
+    if (  activePaso == 2 || activePaso == 3 ) {
       if (tapa) {
         // Animación de rotación en el eje Y
         gsap.to(tapa.rotation, {
@@ -31,7 +32,7 @@ export function Model({ activePaso, model }) {
 
   const { nodes, materials } = useGLTF("/models/carrito.glb");
   return (
-    <group ref={model} scale={1.5} dispose={null} rotation={[0, -0.5, 0]}>
+    <group ref={model} scale={1.5} dispose={null} rotation={[0, -0.49, 0]} position={[-0.2,0,0]}>
       <group name="estructura" position={[0.166, 0.458, -0.004]} scale={7.459}>
         <mesh
           name="Mesh_11001"
@@ -130,7 +131,7 @@ export function Model({ activePaso, model }) {
         scale={7.459}
       />
       <mesh
-        onClick={() => alert("hola")}
+        //onClick={() => alert("hola")}
         name="Boton"
         castShadow
         receiveShadow
@@ -139,9 +140,7 @@ export function Model({ activePaso, model }) {
         position={[-0.034, 0.212, -0.014]}
         scale={7.459}
       />
-      {activePaso == 1 && (
-        <RingEffect position={[-0.165, 0.265, -0.124]} scale={0.04} />
-      )}
+      {/* <RingEffect position={[-0.165, 0.268, -0.124]} scale={0.04} />  */}
       <group
         ref={Tapa}
         name="Tapa"
@@ -170,6 +169,7 @@ export function Model({ activePaso, model }) {
           geometry={nodes.Mesh_11002_2.geometry}
           material={materials["Blue Wood.003"]}
         />
+        {<ImageBox material={materials["Blue Wood.003"]} />}
       </group>
     </group>
   );
@@ -177,39 +177,6 @@ export function Model({ activePaso, model }) {
 
 useGLTF.preload("/models/carrito.glb");
 
-const RingEffect = ({ position, scale }) => {
-  const rings = useRef([]);
 
-  // Animar los anillos al montarse
-  useEffect(() => {
-    rings.current.forEach((ring, i) => {
-      gsap.to(ring.scale, {
-        x: scale + i * 0.005,
-        y: scale + i * 0.005,
-        z: scale + i * 0.005,
-        duration: 1,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        delay: i * 0.3,
-      });
-    });
-  }, [scale]);
 
-  return (
-    <>
-      {[0, 1, 2].map((i) => (
-        <mesh
-          scale={0.00001}
-          key={i}
-          ref={(el) => (rings.current[i] = el)}
-          position={position}
-          rotation={[-Math.PI / 2, 0, 0]} // Asegura que los anillos estén planos
-        >
-          <ringGeometry args={[0.5 + i * 0.2, 0.7 + i * 0.2, 64]} />
-          <meshBasicMaterial color="#e9e2b4" transparent opacity={0.5} />
-        </mesh>
-      ))}
-    </>
-  );
-};
+ 

@@ -8,21 +8,20 @@ import useAudioStore from "../../store/audioStore";
 
 export const Souvenir = ({ reff }) => {
   const model = useRef(null);
+  const audioRef = useRef(null);
   const pasos = ["PERSONALIZAR", "DEDICADO A", "SUBE TU FOTO", "TU REGALO"];
   const [activePaso, setActivePaso] = useState(0);
   const [audio, setAudio] = useState(false);
   const controlsRef = useRef(null);
   const [isControlsReady, setControlsReady] = useState(false);
 
-  const { combinedAudioUrl, isAudioReady, generateAudio, playAudio } = useAudioStore();
-
-  console.log(isAudioReady);
+  const { combinedAudioUrl, isAudioReady } = useAudioStore();
 
   // Configuración de puntos de interés dinámicos
   const cameraTargets = [
     {
-      position: { x: 1.3, y: 0.8, z: 2 },
-      target: { x: 1.3, y: -0.2, z: -3 },
+      position: { x: 0.8, y: 0.5, z: 2 },
+      target: { x: 1.5, y: -0.2, z: -4 },
       zoom: 1,
     },
     {
@@ -31,13 +30,13 @@ export const Souvenir = ({ reff }) => {
       zoom: 1.5,
     },
     {
-      position: { x: -0.5, y: 1, z: 2 },
-      target: { x: 4.5, y: -0.3, z: -3 },
+      position: { x: -0.2, y: 1, z: 1.3},
+      target: { x: 6, y: -0.3, z: -5 },
       zoom: 1,
     },
     {
-      position: { x: 1.3, y: 0.8, z: 2 },
-      target: { x: 1.3, y: -0.2, z: -3 },
+      position: { x: 0.8, y: 0.5, z: 2 },
+      target: { x: 1.5, y: -0.2, z: -4 },
       zoom: 1,
     },
   ];
@@ -61,20 +60,36 @@ export const Souvenir = ({ reff }) => {
       const { object: camera } = controls;
 
       gsap.to(camera.position, {
-        x: 1.3,
-        y: 0.8,
+        x: 0.8,
+        y: 0.5,
         z: 2,
         duration: 2,
         onUpdate: () => controls.update(),
       });
 
       gsap.to(controls.target, {
-        x: 1.3,
+        x: 1.5,
         y: -0.2,
-        z: -3,
+        z: -4,
         duration: 2,
         onUpdate: () => controls.update(),
       });
+      /* gsap.to(camera.position, {
+        x: -0.2,
+        y: 0.8,
+        z: 1.1,
+        duration: 2,
+        onUpdate: () => controls.update(),
+      });
+
+      gsap.to(controls.target, {
+        x: 5.5,
+        y: -0.2,
+        z: -6,
+        duration: 2,
+        onUpdate: () => controls.update(),
+      }); */
+      
     }
   }, [isControlsReady]);
 
@@ -121,6 +136,8 @@ export const Souvenir = ({ reff }) => {
         cameraControlRef={controlsRef}
         activePaso={activePaso}
         model={model}
+        isAudioReady={isAudioReady}
+        audioRef={audioRef}
       />
       <div className="w-[50vw] h-full z-20 flex items-center absolute right-0">
         <PasosComponentes
@@ -151,13 +168,13 @@ export const Souvenir = ({ reff }) => {
           ))}
         </div>
       </div>
-      {audio && (
+      {audio && activePaso == 1 && (
         <div className="absolute bottom-36 left-[22%] w-fit h-fit z-50 inline-block">
           {!isAudioReady ? (
             <>"cargando cancion"</>
           ) : (
             <>
-              <audio controls>
+              <audio ref={audioRef} controls>
                 <source src={combinedAudioUrl} type="audio/mpeg" />
                 Your browser does not support the audio element.
               </audio>

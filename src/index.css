@@ -99,6 +99,9 @@ button {
 .HoverButtons{
   @apply transition-all ease-in-out duration-700  hover:bg-primary hover:text-second
 }
+.easeHove{
+  @apply transition-all ease-in-out duration-700
+}
 
 /* Estilos del contenedor general del calendario */
 

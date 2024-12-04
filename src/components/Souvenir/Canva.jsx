@@ -19,7 +19,7 @@ function Loader() {
   );
 }
 
-export const Canva = ({ activePaso, model, cameraControlRef }) => {
+export const Canva = ({ activePaso, model, cameraControlRef, isAudioReady, audioRef }) => {
   return (
     <div className="canvas-container absolute top-0 left-0 z-10">
       <Canvas shadows gl={{ antialias: true }} dpr={[1, 1.5]}>
@@ -73,7 +73,7 @@ export const Canva = ({ activePaso, model, cameraControlRef }) => {
         />
         <Suspense fallback={<Loader />}>
           <Ground />
-          <Model activePaso={activePaso} model={model} />
+          <Model activePaso={activePaso} model={model} isAudioReady={isAudioReady} audioRef={audioRef} />
         </Suspense>
         <Environment map={"forest"} />
       </Canvas>
