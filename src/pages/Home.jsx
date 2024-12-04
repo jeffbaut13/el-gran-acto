@@ -92,7 +92,7 @@ export const Home = () => {
       <CompartirCancion reff={section3Ref} />
       <SouvenirHome reff={section4Ref} />
       <LosClasicosCards reff={section5Ref} />
-      <MakingOf reff={section6Ref} />
+      {/* <MakingOf reff={section6Ref} /> */}
       <Compartir reff={section7Ref} />
     </>
   );

@@ -36,8 +36,8 @@
   src: url("/fonts/BebasNeue-Regular.ttf") format("truetype");
 }
 
-/* @media (min-width: 1024px) { */
-@media (min-width: 300px) {
+@media (min-width: 1024px) {
+/* @media (min-width: 300px) { */
   #root {
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
