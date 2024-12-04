@@ -9,8 +9,8 @@ export const ImageBox = ({ material }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [startPos, setStartPos] = useState({ x: 0, y: 0 }); // Posición inicial del mouse/touch
   const [initialImagePos, setInitialImagePos] = useState({
-    x: snap.imagePositionX,
-    y: snap.imagePositionY,
+    x: snap.imagePositionX? snap.imagePositionX :0,
+    y: snap.imagePositionY ? snap.imagePositionY : 0,
   }); // Posición inicial de la imagen
 
   // Función para manejar el inicio del drag
@@ -56,19 +56,24 @@ export const ImageBox = ({ material }) => {
     <Box
       material={material}
       position={[0, 0, 0.0216]}
-      scale={[0.050, 0.039, 0.0007]}
+      scale={[0.05, 0.039, 0.0007]}
       rotation={[Math.PI / 2, 0, 0]}
-      onPointerDown={handlePointerDown} // Inicia el drag
-      onPointerUp={handlePointerUp} // Finaliza el drag
-      onPointerMove={handlePointerMove} // Mueve la imagen durante el drag
     >
       <meshStandardMaterial attach="material" {...material} />
 
       <Decal
         depthTest={true}
         depthWrite={true}
-        position={[snap.imagePositionX, snap.imagePositionY, 0.5]}
-        scale={[snap.imageWidth, snap.imageHeight, 0]}
+        position={[
+          snap.imagePositionX ? snap.imagePositionX : 0,
+          snap.imagePositionY ? snap.imagePositionY : 0,
+          0.5,
+        ]}
+        scale={[
+          snap.imageWidth ? snap.imageWidth : 1,
+          snap.imageHeight ? snap.imageHeight : 1,
+          0,
+        ]}
         map={texture}
         center={[0, 0]}
         rotation={[0, 0, 0]}

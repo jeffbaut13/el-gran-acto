@@ -19,7 +19,7 @@ export const Souvenir = ({ reff }) => {
 
   const { combinedAudioUrl, isAudioReady } = useAudioStore();
 
-  console.log(isMobile);
+   
   // Configuración de puntos de interés dinámicos
   const cameraTargets = [
     {
