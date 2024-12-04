@@ -141,13 +141,13 @@ const TicketInterDay = () => {
             )}
           </div>
         </div>
-         <button
+{/*          <button
           onClick={handleDownloadPDF}
           className="absolute xs:w-full lg:hidden md:w-[23.7rem] xs:bottom-[9rem] h-14 md:bottom-[1rem] border-none normal-case left-1/2 transform -translate-x-1/2 rounded-xl bg-black bg-opacity-20 text-white"
         >
           Descargar PDF
         </button>
-    </div>
+ */}    </div>
     </div>
   );
 };
