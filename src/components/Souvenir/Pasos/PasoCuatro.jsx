@@ -1,4 +1,4 @@
-export const PasoCuatro = (back, HandleAudio) => {
+export const PasoCuatro = ({back} ) => {
   return (
     <>
       <h2 className="font-Wayland text-[4.38rem] leading-[4rem]">

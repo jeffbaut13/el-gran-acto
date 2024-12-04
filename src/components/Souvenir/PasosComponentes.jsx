@@ -34,7 +34,7 @@ const Component1 = ({
   />
 );
 const Component2 = ({HandleAudio, back}) => <PasoTres  back={back} HandleAudio={HandleAudio}/>;
-const Component3 = ({HandleAudio, back}) => <PasoCuatro back={back} HandleAudio={HandleAudio}/>;
+const Component3 = ({  back}) => <PasoCuatro back={back}  />;
 
 export const PasosComponentes = ({
   activePaso,
