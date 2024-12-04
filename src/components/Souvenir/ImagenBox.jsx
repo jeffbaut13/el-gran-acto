@@ -11,7 +11,7 @@ export const ImageBox = ({ material }) => {
   const [initialImagePos, setInitialImagePos] = useState({
     x: snap.imagePositionX? snap.imagePositionX :0,
     y: snap.imagePositionY ? snap.imagePositionY : 0,
-  }); // Posición inicial de la imagen
+  }); 
 
   // Función para manejar el inicio del drag
   const handlePointerDown = (e) => {
@@ -56,8 +56,11 @@ export const ImageBox = ({ material }) => {
     <Box
       material={material}
       position={[0, 0, 0.0216]}
-      scale={[0.05, 0.039, 0.0007]}
+      scale={[0.050, 0.039, 0.0007]}
       rotation={[Math.PI / 2, 0, 0]}
+      onPointerDown={handlePointerDown} // Inicia el drag
+      onPointerUp={handlePointerUp} // Finaliza el drag
+      onPointerMove={handlePointerMove} // Mueve la imagen durante el drag
     >
       <meshStandardMaterial attach="material" {...material} />
 
@@ -81,3 +84,5 @@ export const ImageBox = ({ material }) => {
     </Box>
   );
 };
+
+
