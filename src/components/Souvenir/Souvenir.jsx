@@ -177,7 +177,7 @@ export const Souvenir = ({ reff }) => {
           ))}
         </div>
       </div>
-      <div className="lg:w-[50vw] xs:w-full lg:h-full z-20 flex items-center lg:absolute xs:relative right-0 max-lg:my-12 bg-black bg-opacity-20 backdrop-blur-sm rounded-xl pt-4">
+      <div className="lg:w-[50vw] xs:w-full lg:h-full z-20 flex items-center lg:absolute xs:relative right-0 max-lg:my-12 max-lg:bg-black max-lg:bg-opacity-20 max:lg:backdrop-blur-sm max-lg:rounded-xl max-lg:pt-4">
         <PasosComponentes
           activePaso={activePaso}
           setActivePaso={setActivePaso}
