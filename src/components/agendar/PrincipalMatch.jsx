@@ -23,7 +23,7 @@ const PrincipalMatch = ({ cambiarComponente }) => {
           <video
             ref={videoRef}
             className="w-full h-full rounded-xl object-cover"
-            src="/videos/invita-donar.mp4"
+            src="/videos/donar.mp4"
             controls={!isPlaying ? false : true}
           ></video>
 
@@ -34,7 +34,7 @@ const PrincipalMatch = ({ cambiarComponente }) => {
             >
               <img
                 className="absolute object-cover"
-                src="/imagenes/donar.webp"
+                src="/imagenes/invita-donar.webp"
                 alt=""
               />
               <img className="w-8 relative inline-block" src="/iconos/play.svg" />
