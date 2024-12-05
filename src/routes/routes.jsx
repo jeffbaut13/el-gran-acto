@@ -8,8 +8,10 @@ import { Home } from "../pages/Home";
 import Visita from "../pages/Visita";
 import Match from "../pages/Match";
 import { Landing } from "../components/Landing/Landing";
+
+import { Souvenir } from "../components/Souvenir/Souvenir";
+
 import Scanner from "../components/boleta/Scanner";
-import Ticket from "../components/boleta/TicketInvitados";
 import TicketInter from "../components/boleta/TicketInterDay";
 import TicketInvitados from "../components/boleta/TicketInvitados";
 import TicketInterDay from "../components/boleta/TicketInterDay";
@@ -25,7 +27,7 @@ function ScrollToTopOnRouteChange() {
 }
 
 const router = createBrowserRouter([
-  /* {
+  {
     path: "/",
     element: (
       <>
@@ -54,8 +56,8 @@ const router = createBrowserRouter([
         <Match />
       </>
     ),
-  }, */
-  {
+  },
+  /* {
     path: "/",
     element: (
       <>
@@ -66,16 +68,14 @@ const router = createBrowserRouter([
       </Layout>
       </>
     ),
-  },
+  }, */
   {
     path: "/ticket/:id",
     element: (
-      <>
-      <Layout>
-
-        <ScrollToTopOnRouteChange />
-        <TicketInvitados />
-      </Layout>
+      <> 
+          <ScrollToTopOnRouteChange />
+          <TicketInvitados />
+         
       </>
     ),
   },
@@ -83,11 +83,10 @@ const router = createBrowserRouter([
     path: "/ticketinter/:id",
     element: (
       <>
-      <Layout>
-
-        <ScrollToTopOnRouteChange />
-      <TicketInterDay />
-      </Layout>
+         
+          <ScrollToTopOnRouteChange />
+          <TicketInterDay />
+       
       </>
     ),
   },
@@ -95,11 +94,16 @@ const router = createBrowserRouter([
     path: "/scanner",
     element: (
       <>
-      <Layout>
-
         <ScrollToTopOnRouteChange />
         <Scanner />
-      </Layout>
+      </>
+    ),
+  },
+  {
+    path: "/personalizacion",
+    element: (
+      <>
+        <Souvenir />
       </>
     ),
   },

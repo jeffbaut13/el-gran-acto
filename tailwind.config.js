@@ -8,6 +8,7 @@ export default {
         xs: "300px",
       },
       fontFamily: {
+        BebasNeue: ["BebasNeue-Regular", "serif"],
         Alterenate: ["Alterenate-regular", "serif"],
         StageGroteskBlack: ["StageGrotesk-black", "serif"],
         StageGroteskBold: ["StageGrotesk-bold", "serif"],

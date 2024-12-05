@@ -11,9 +11,9 @@ export const SectionMain = ({ reff }) => {
     <main
       ref={reff}
       id={`${links[0]}`}
-      className="w-full h-screen relative flex justify-between max-lg:flex-col items-end pb-24 p-responsive snap-item"
+      className="w-full h-screen relative flex justify-evenly max-lg:flex-col items-end pb-24 p-responsive snap-item"
     >
-      <div className="lg:hidden h-1/3"/>
+      <div className="lg:hidden lg:h-1/3"/>
       <VideoBackground />
       <div className="w-full flex lg:justify-start xs:justify-center flex-col">
         <div className="lg:w-[30rem] xs:w-full">

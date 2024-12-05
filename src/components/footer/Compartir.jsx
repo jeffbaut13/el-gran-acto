@@ -9,7 +9,8 @@ export const Compartir = ({ reff }) => {
   return (
     <section
       ref={reff}
-      id={`${links[7]}`}
+      id={`${links[5]}`}
+      //id={`${links[7]}`}
       className="h-screen w-full snap-item relative bg-black"
     >
       <figure className="w-full h-full absolute top-0 left-0">

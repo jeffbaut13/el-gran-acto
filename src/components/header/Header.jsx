@@ -41,7 +41,7 @@ export const Header = ({scrollIcon}) => {
 
   return (
     <>
-      <header className="block fixed top-0 left-0 px-20 w-full z-20 mt-5">
+      <header className="block fixed top-0 left-0 lg:px-20 xs:px-6 w-full z-20 mt-5">
         <MenuLink setActive={setActive} />
         <div className="w-full h-14 flex justify-between py-4 z-20 relative">
           <Link to={"/"} className="h-full w-auto">

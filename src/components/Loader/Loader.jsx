@@ -79,7 +79,7 @@ const Loader = ({ LoaderHide, Loading }) => {
           <Lottie
             lottieRef={lottieRef}
             animationData={van}
-            className="w-64 h-auto inline-block"
+            className="w-60 h-auto inline-block"
           />
         </div>
       </div>

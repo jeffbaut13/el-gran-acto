@@ -9,7 +9,7 @@ export const Burger = ({ active, handleClick, showLogo }) => {
       } burger w-6 cursor-pointer items-center h-full flex flex-col justify-between relative`}
     >
       {Array.from({ length: 3 }, (_, i) => (
-        <div key={i} className={`line lineBurger lineBurger${i + 1} bg-primary`} />
+        <div key={i} className={`lineBurger lineBurger${i + 1} bg-primary`} />
       ))}
     </span>
   );

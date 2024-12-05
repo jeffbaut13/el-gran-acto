@@ -7,7 +7,7 @@ export const PopUp = ({ viejito, open }) => {
   return (
     <div className="w-full h-full lg:p-2">
       <div className="w-full h-full flex flex-col items-center justify-center">
-        <h2 className="xs:w-[85%] lg:w-[70%] text-start font-Wayland lg:text-[2.838rem] xs:text-2xl">
+        <h2 className="xs:w-[85%] lg:w-[70%] text-start font-Wayland lg:text-[2.838rem] xs:text-2xl my-2">
           {viejito.nombre} / {viejito.role}
         </h2>
         <ReactPlayer

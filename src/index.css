@@ -31,9 +31,13 @@
   font-family: "Wayland";
   src: url("/fonts/Wayland.ttf") format("truetype");
 }
+@font-face {
+  font-family: "BebasNeue-Regular";
+  src: url("/fonts/BebasNeue-Regular.ttf") format("truetype");
+}
 
-/* @media (min-width: 1024px) { */
-@media (min-width: 300px) {
+@media (min-width: 1024px) {
+/* @media (min-width: 300px) { */
   #root {
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
@@ -94,6 +98,9 @@ button {
 }
 .HoverButtons{
   @apply transition-all ease-in-out duration-700  hover:bg-primary hover:text-second
+}
+.easeHove{
+  @apply transition-all ease-in-out duration-700
 }
 
 /* Estilos del contenedor general del calendario */
@@ -239,7 +246,7 @@ p{
   @apply lg:px-20 xs:px-14
 }
 .titles{
-  @apply lg:text-[4.38rem] lg:leading-[4rem] xs:text-[3.05rem] leading-[2.8rem]
+  @apply lg:text-[4.38rem] lg:leading-[4rem] xs:text-[3.2em] leading-[2.8rem]
 }
 
 
