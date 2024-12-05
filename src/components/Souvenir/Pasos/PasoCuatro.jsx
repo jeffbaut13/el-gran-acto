@@ -1,20 +1,9 @@
+import { firestore } from "../../firestore/firestore-config";
 import Formulario from "../FormAlcarrito";
+import { query, where, getDocs, collection } from "firebase/firestore";
 
 export const PasoCuatro = ({ back }) => {
-  const verificarArchivos = async (email) => {
-    // Simular llamada a base de datos
-    const fakeDatabase = [
-      { email: "usuario1@example.com", archivos: true, estadoPago: true },
-      { email: "usuario2@example.com", archivos: false, estadoPago: false },
-    ];
-
-    const registro = fakeDatabase.find((user) => user.email === email);
-    return registro ? registro.archivos : false; // Retorna true si tiene archivos
-  };
-
-  const procesarPago = () => {
-    alert("Procesando pago...");
-  };
+  
   return (
     <>
       <h2 className="font-Wayland titles max-lg:text-center">
@@ -22,11 +11,8 @@ export const PasoCuatro = ({ back }) => {
         UN REGALO <br />
         CLÁSICO
       </h2>
-      <Formulario
-        verificarArchivos={verificarArchivos}
-        procesarPago={procesarPago}
-      />
-       
+      <Formulario />
+
       <div className="w-full flex justify-between mt-4 max-lg:hidden">
         <div className="">
           <button

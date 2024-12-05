@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import {
@@ -8,64 +8,63 @@ import {
 import useAudioStore from "../../store/audioStore";
 import { useSnapshot } from "valtio";
 import ImgRender from "../../store/valtioStore";
+import { Loading } from "../helpers/Loading";
 
-const Formulario = ({ verificarArchivos, procesarPago }) => {
-  const { combinedAudioUrl, isAudioReady } = useAudioStore(); // Audio desde Zustand
+const Formulario = () => {
+  const [loadingButton, setLoadingButton] = useState(false);
+  const { urlFirabesAudio } = useAudioStore(); // Audio desde Zustand
   const snap = useSnapshot(ImgRender); // Imagen desde Valtio
 
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {
-    try {
-      // Rescatar datos desde Zustand y Valtio
+  const email = watch("email", ""); // Observar el valor del email
+  const aceptaTerminos = watch("aceptaTerminos", false); // Observar el checkbox
 
-      const audio = combinedAudioUrl; // URL del audio
+  const onSubmit = async (data) => {
+    setLoadingButton(true);
+    try {
+      const audio = urlFirabesAudio; // URL del audio
       const imagen = snap.Imagen; // URL o archivo de la imagen desde Valtio
 
-      // Validar archivos existentes
-      const emailEnUso = await verificarArchivos(data.email);
-      if (emailEnUso) {
-        alert(
-          "Este correo ya tiene archivos asociados. ¿Desea grabar uno nuevo o ir a pagar lo existente?"
-        );
-        return;
-      }
-
       // Validar estado de audio e imagen
-      if (!audio ) {
+      if (!audio) {
         alert("No encontramos audio de dedicatoria graba uno.");
         return;
       }
-      if ( !imagen || imagen === "/imagenes/file.webp") {
-        alert("Sube una image.");
+      if (!imagen || imagen === "/imagenes/file.webp") {
+        alert("Sube una imagen.");
         return;
       }
 
-      // Crear un ID aleatorio (puedes usar cualquier librería como uuid)
-      const idGenerado = Math.random().toString(36).substring(2, 10);
-
-      // Enviar datos a Firebase
       const promoId = "granacto"; // Ejemplo de promoId
-      const email = data.email;
-
       const idDoc = await enviarDatosAFirebase({
-        email,
+        email: data.email,
         audio,
         imagen,
         promoId,
+        orderId: "",
       });
 
       // Redirigir al usuario
-      redireccionar(promoId, email, idDoc);
+      redireccionar(promoId, data.email, idDoc);
     } catch (error) {
       console.error("Error al enviar datos:", error);
       alert("Hubo un error al procesar tu solicitud.");
+      setLoadingButton(false);
     }
   };
+
+  const isButtonDisabled =
+    loadingButton ||
+    !urlFirabesAudio ||
+    snap.Imagen === "/imagenes/file.webp" ||
+    email.trim() === "" ||
+    !aceptaTerminos;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -115,10 +114,12 @@ const Formulario = ({ verificarArchivos, procesarPago }) => {
 
       <button
         type="submit"
-        className="my-6 py-2 px-12 max-lg:mx-auto"
-        //disabled={!isAudioReady || ImgRender.Imagen === "/imagenes/file.webp"}
+        className={`my-6 py-2 px-12 max-lg:mx-auto ${
+          isButtonDisabled ? "opacity-35 pointer-events-none" : ""
+        }`}
+        disabled={isButtonDisabled}
       >
-        Ir a pagar
+        {loadingButton ? <Loading texto={"Redirigiendo..."} /> : "Ir a pagar"}
       </button>
     </form>
   );

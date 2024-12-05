@@ -69,12 +69,12 @@ export const PasosComponentes = ({
     } else {
       if (text != "") setAudio(true);
       setLoading(true);
-      await generateAndCombineAudio(
+      /* await generateAndCombineAudio(
         `Hola ${text}, ${text2}, que te quiere mucho te dedica esta canción porque nunca se va a olvidar de ti.`
-      );
-      /* await generateAndCombineAudioTest(
-        `Hola ${text}, alguien muy especial te ha dedicado esta cancion por que te quiere mucho.`
       ); */
+      await generateAndCombineAudioTest(
+        `Hola ${text}, alguien muy especial te ha dedicado esta cancion por que te quiere mucho.`
+      );
       setLoading(false);
     }
   };
