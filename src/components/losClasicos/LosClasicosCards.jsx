@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, Fragment } from "react";
 import { SlideClasicos } from "./SlideClasicos";
 import "./clip-path.css";
 import { SliderOneSlide } from "./SliderOneSlide";
@@ -50,7 +50,7 @@ export const LosClasicosCards = ({ reff }) => {
                   i === name ? (
                     <PopUp key={i} viejito={viejito} open={open} />
                   ) : (
-                    <React.Fragment key={i}></React.Fragment> // Añadimos la key al Fragment vacío
+                    <Fragment key={i}></Fragment> // Añadimos la key al Fragment vacío
                   )
                 )}
               </div>

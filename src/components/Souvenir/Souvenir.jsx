@@ -31,29 +31,33 @@ export const Souvenir = ({ reff }) => {
       },
       target: {
         x: isMobile ? -0.1 : 3.2,
-        y: isMobile ? -0 : -2,
+        y: isMobile ? -1 : -2,
         z: isMobile ? 0 : -5,
       },
       zoom: 1,
     },
     {
       position: {
-        x: isMobile ? -0.9 : -1.7,
+        x: isMobile ? -1.3 : -1.7,
         y: isMobile ? 0.8 : 0.8,
         z: isMobile ? 1.4 : 2,
       },
       target: {
-        x: isMobile ? 0 : 0.6,
-        y: isMobile ? 0.2 : 1,
+        x: isMobile ? 0.15 : 0.6,
+        y: isMobile ? 0.6 : 1,
         z: isMobile ? -0.5 : 0,
       },
-      zoom: 4,
+      zoom: isMobile ? 2 : 4,
     },
     {
-      position: { x: isMobile ? 0.5 : 0.1, y: 1, z: isMobile ? 3 : 2 },
+      position: {
+        x: isMobile ? 0.5 : 0.1,
+        y: 1,
+        z: isMobile ? 3 : 2,
+      },
       target: {
         x: isMobile ? -0.1 : 3.2,
-        y: isMobile ? -0 : -2,
+        y: isMobile ? -0.6 : -2,
         z: isMobile ? 0 : -5,
       },
       zoom: 1,
@@ -88,7 +92,7 @@ export const Souvenir = ({ reff }) => {
 
       gsap.to(controls.target, {
         x: isMobile ? -0.1 : 3.2,
-        y: isMobile ? -0 : -2,
+        y: isMobile ? -1 : -2,
         z: isMobile ? 0 : -5,
         duration: 2,
         onUpdate: () => controls.update(),
