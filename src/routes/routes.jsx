@@ -9,10 +9,12 @@ import Visita from "../pages/Visita";
 import Match from "../pages/Match";
 import { Landing } from "../components/Landing/Landing";
 import Scanner from "../components/boleta/Scanner";
-import Ticket from "../components/boleta/TicketInvitados";
+/* import Ticket from "../components/boleta/TicketInvitados";
 import TicketInter from "../components/boleta/TicketInterDay";
-import TicketInvitados from "../components/boleta/TicketInvitados";
+ */import TicketInvitados from "../components/boleta/TicketInvitados";
 import TicketInterDay from "../components/boleta/TicketInterDay";
+import Ticket from "../components/boleta/ticket";
+import { Souvenir } from "../components/Souvenir/Souvenir";
 
 function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();
@@ -25,7 +27,7 @@ function ScrollToTopOnRouteChange() {
 }
 
 const router = createBrowserRouter([
-  /* {
+  {
     path: "/",
     element: (
       <>
@@ -54,8 +56,8 @@ const router = createBrowserRouter([
         <Match />
       </>
     ),
-  }, */
-  {
+  },
+  /* {
     path: "/",
     element: (
       <>
@@ -66,7 +68,7 @@ const router = createBrowserRouter([
       </Layout>
       </>
     ),
-  },
+  }, */
   {
     path: "/ticket/:id",
     element: (
@@ -100,6 +102,18 @@ const router = createBrowserRouter([
         <ScrollToTopOnRouteChange />
         <Scanner />
       </Layout>
+      </>
+    ),
+  },
+  {
+    path: "/personalizacion",
+    element: (
+      <>
+      
+
+      
+      <Souvenir/>
+      
       </>
     ),
   },

@@ -24,8 +24,8 @@ export const VideoBackground = () => {
             })`,
           }}
         >
-          <div className="absolute top-0 left-0 bg-black lg:bg-opacity-10 xs:bg-opacity-60 w-full h-full" />
-          {/* <video
+          <div className="absolute top-0 left-0 bg-black lg:bg-opacity-60 xs:bg-opacity-60 w-full h-full" />
+          <video
             ref={videoRef}
             className="video w-full h-full object-cover z-10"
             autoPlay
@@ -43,7 +43,7 @@ export const VideoBackground = () => {
               }
               type="video/mp4"
             />
-          </video> */}
+          </video>
         </div>
         <div className="absolute bottom-0 left-0 bg-gradient-to-t from-second from-20% w-full h-40" />
       </div>
