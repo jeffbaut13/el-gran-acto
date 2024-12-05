@@ -8,12 +8,17 @@ import { Home } from "../pages/Home";
 import Visita from "../pages/Visita";
 import Match from "../pages/Match";
 import { Landing } from "../components/Landing/Landing";
+ 
+/* import Ticket from "../components/boleta/ticket";
+ */import { Souvenir } from "../components/Souvenir/Souvenir";
+ 
 import Scanner from "../components/boleta/Scanner";
 /* import Ticket from "../components/boleta/TicketInvitados";
 import TicketInter from "../components/boleta/TicketInterDay";
  */import TicketInvitados from "../components/boleta/TicketInvitados";
 import TicketInterDay from "../components/boleta/TicketInterDay";
-import { Souvenir } from "../components/Souvenir/Souvenir";
+/* import { Souvenir } from "../components/Souvenir/Souvenir";
+ */ 
 
 function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();

@@ -10,6 +10,9 @@ const Layout = ({ children }) => {
     <>
     
     {/* {Loading && <Loader LoaderHide={LoaderHide} Loading={Loading}/>}  */}
+
+    {/* {Loading && <Loader LoaderHide={LoaderHide} Loading={Loading}/>}  */}
+ 
     
       <Header scrollIcon={scrollIcon} />
       {children}
