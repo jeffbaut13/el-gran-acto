@@ -13,7 +13,6 @@ import Scanner from "../components/boleta/Scanner";
 import TicketInter from "../components/boleta/TicketInterDay";
  */import TicketInvitados from "../components/boleta/TicketInvitados";
 import TicketInterDay from "../components/boleta/TicketInterDay";
-import Ticket from "../components/boleta/ticket";
 import { Souvenir } from "../components/Souvenir/Souvenir";
 
 function ScrollToTopOnRouteChange() {
