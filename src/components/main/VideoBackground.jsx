@@ -1,5 +1,8 @@
 import { useRef } from "react";
 import { mobile, tablet } from "../../data/medidas";
+import ReactPlayer from "react-player";
+import ReactVideo from "../videoComercial/ReactVideo";
+import { videos } from "../../data/Videos";
 
 export const VideoBackground = () => {
   const videoRef = useRef(null);
@@ -23,9 +26,11 @@ export const VideoBackground = () => {
               isMobile ? backgroundImageM : backgroundImage
             })`,
           }}
-        >
+        > 
           <div className="absolute top-0 left-0 bg-black lg:bg-opacity-60 xs:bg-opacity-60 w-full h-full" />
-          <video
+
+          <ReactVideo url={videos.resumen} playinline={true} play={true} muted={true}/>
+          {/* <video
             ref={videoRef}
             className="video w-full h-full object-cover z-10"
             autoPlay
@@ -43,7 +48,7 @@ export const VideoBackground = () => {
               }
               type="video/mp4"
             />
-          </video>
+          </video> */}
         </div>
         <div className="absolute bottom-0 left-0 bg-gradient-to-t from-second from-20% w-full h-40" />
       </div>

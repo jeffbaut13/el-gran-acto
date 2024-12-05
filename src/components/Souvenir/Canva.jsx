@@ -18,8 +18,8 @@ function ModelLoader() {
 
   return (
     <Html center>
-      <Loader LoaderHide={active}/>
-      
+      {/* <Loader LoaderHide={active}/> */}
+      <Loading />
     </Html>
   );
 }

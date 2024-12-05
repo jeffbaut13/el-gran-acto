@@ -57,14 +57,14 @@ const useAudioStore = create((set, get) => ({
         formdata.append("audioFiles", generatedAudioBlob, "audio1.mp3");
         formdata.append("audioFiles", audioBlob2, "audio2.mp3");
 
-        const response = await fetch("http://localhost:3000/combine-audios", {
-          method: "POST",
-          body: formdata,
-        });
-        /* const response = await fetch("https://backboletas.onrender.com/combine-audios", {
+        /* const response = await fetch("http://localhost:3000/combine-audios", {
           method: "POST",
           body: formdata,
         }); */
+        const response = await fetch("https://backboletas.onrender.com/combine-audios", {
+          method: "POST",
+          body: formdata,
+        });
 
         if (!response.ok) throw new Error("Error al combinar los audios");
 
