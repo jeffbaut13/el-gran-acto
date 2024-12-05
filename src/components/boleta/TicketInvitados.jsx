@@ -4,7 +4,7 @@ import axios from "axios";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-const Ticket = () => {
+const TicketInvitados = () => {
   const { id } = useParams(); // Obtenemos el ID dinámico de la URL
   const [qrCodePrincipal, setQrCodePrincipal] = useState(null); // Código QR principal
   const [qrCodeAcompanante, setQrCodeAcompanante] = useState(null); // Código QR acompañante
@@ -16,20 +16,21 @@ const Ticket = () => {
   useEffect(() => {
     const fetchTicketData = async () => {
       try {
-        const response = await axios.get(
-          `https://backboletas.onrender.com/boletas/${id}`
-        );
-
+        const response = await axios.get(`https://backboletas.onrender.com/boletas/${id}`);
         const { qrCodePrincipal, qrCodeAcompanante } = response.data;
 
+        // Si ambos QR existen
         if (qrCodePrincipal && qrCodeAcompanante) {
           setQrCodePrincipal(qrCodePrincipal);
           setQrCodeAcompanante(qrCodeAcompanante);
           setQrCode(qrCodePrincipal); // Mostrar la boleta principal por defecto
-        } else if (qrCodePrincipal) {
+        } 
+        // Si solo hay un QR disponible, mostramos el correspondiente
+        else if (qrCodePrincipal) {
           setQrCodePrincipal(qrCodePrincipal);
           setQrCode(qrCodePrincipal); // Solo la boleta principal
-        } else if (qrCodeAcompanante) {
+        } 
+        else if (qrCodeAcompanante) {
           setQrCodeAcompanante(qrCodeAcompanante);
           setQrCode(qrCodeAcompanante); // Solo la boleta acompañante
         } else {
@@ -137,15 +138,15 @@ const Ticket = () => {
             )}
           </div>
         </div>
-        <button
+{/*          <button
           onClick={handleDownloadPDF}
           className="absolute xs:w-full lg:hidden md:w-[23.7rem] xs:bottom-[5.5rem] h-14 md:bottom-[1rem] border-none normal-case left-1/2 transform -translate-x-1/2 rounded-xl bg-blue-500 text-white"
         >
           Descargar PDF
         </button>
-      </div>
+ */}      </div>
     </div>
   );
 };
 
-export default Ticket;
+export default TicketInvitados;

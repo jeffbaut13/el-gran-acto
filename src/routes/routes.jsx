@@ -8,8 +8,11 @@ import { Home } from "../pages/Home";
 import Visita from "../pages/Visita";
 import Match from "../pages/Match";
 import { Landing } from "../components/Landing/Landing";
-import Ticket from "../components/boleta/ticket";
 import Scanner from "../components/boleta/Scanner";
+import Ticket from "../components/boleta/TicketInvitados";
+import TicketInter from "../components/boleta/TicketInterDay";
+import TicketInvitados from "../components/boleta/TicketInvitados";
+import TicketInterDay from "../components/boleta/TicketInterDay";
 import { InterDay } from "../pages/InterDay";
 
 function ScrollToTopOnRouteChange() {
@@ -68,10 +71,23 @@ const router = createBrowserRouter([
     path: "/ticket/:id",
     element: (
       <>
-        <Layout>
-          <ScrollToTopOnRouteChange />
-          <Ticket />
-        </Layout>
+      <Layout>
+
+        <ScrollToTopOnRouteChange />
+        <TicketInvitados />
+      </Layout>
+      </>
+    ),
+  },
+  {
+    path: "/ticketinter/:id",
+    element: (
+      <>
+      <Layout>
+
+        <ScrollToTopOnRouteChange />
+      <TicketInterDay />
+      </Layout>
       </>
     ),
   },
