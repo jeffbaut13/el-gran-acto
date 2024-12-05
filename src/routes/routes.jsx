@@ -8,8 +8,16 @@ import { Home } from "../pages/Home";
 import Visita from "../pages/Visita";
 import Match from "../pages/Match";
 import { Landing } from "../components/Landing/Landing";
+ 
 import Ticket from "../components/boleta/ticket";
 import { Souvenir } from "../components/Souvenir/Souvenir";
+ 
+import Scanner from "../components/boleta/Scanner";
+import Ticket from "../components/boleta/TicketInvitados";
+import TicketInter from "../components/boleta/TicketInterDay";
+import TicketInvitados from "../components/boleta/TicketInvitados";
+import TicketInterDay from "../components/boleta/TicketInterDay";
+ 
 
 function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();
@@ -71,7 +79,31 @@ const router = createBrowserRouter([
       <Layout>
 
         <ScrollToTopOnRouteChange />
-        <Ticket />
+        <TicketInvitados />
+      </Layout>
+      </>
+    ),
+  },
+  {
+    path: "/ticketinter/:id",
+    element: (
+      <>
+      <Layout>
+
+        <ScrollToTopOnRouteChange />
+      <TicketInterDay />
+      </Layout>
+      </>
+    ),
+  },
+  {
+    path: "/scanner",
+    element: (
+      <>
+      <Layout>
+
+        <ScrollToTopOnRouteChange />
+        <Scanner />
       </Layout>
       </>
     ),
