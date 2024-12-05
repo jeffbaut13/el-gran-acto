@@ -34,7 +34,7 @@ const PrincipalMatch = ({ cambiarComponente }) => {
             >
               <img
                 className="absolute object-cover"
-                src="/imagenes/invita-donar.webp"
+                src="/imagenes/donar.webp"
                 alt=""
               />
               <img className="w-8 relative inline-block" src="/iconos/play.svg" />
