@@ -10,7 +10,8 @@ export const SouvenirHome = ({ reff }) => {
   return (
     <section
       ref={reff}
-      id={`${links[4]}`}
+      //id={`${links[4]}`}
+      id={`${links[3]}`}
       className="w-full h-screen snap-item relative bg-black select-none max-lg:flex max-lg:justify-start"
     >
       <figure className="absolute w-full h-full">
@@ -27,7 +28,7 @@ export const SouvenirHome = ({ reff }) => {
             btn={
               <button
                 onClick={() => navigate("/personalizacion")}
-                className="px-7 py-1.5 text-[1.2rem] max-lg:mx-auto"
+                className="px-7 py-1.5 text-[1.2rem] max-lg:mx-auto HoverButtons"
               >
                 PERSONALIZAR
               </button>

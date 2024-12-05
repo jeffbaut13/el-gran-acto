@@ -32,7 +32,7 @@ export function Model({ activePaso, model }) {
 
   const { nodes, materials } = useGLTF("/models/carrito.glb");
   return (
-    <group ref={model} scale={1.5} dispose={null} rotation={[0, -0.49, 0]} position={[-0.2,0,0]}>
+    <group ref={model} scale={1.5} dispose={null} rotation={[0, -0.7, 0]} position={[-0.2,0,0]}>
       <group name="estructura" position={[0.166, 0.458, -0.004]} scale={7.459}>
         <mesh
           name="Mesh_11001"
