@@ -8,6 +8,7 @@ export default {
         xs: "300px",
       },
       fontFamily: {
+        Fontfabric: ["Fontfabric-Regular", "serif"],
         Alterenate: ["Alterenate-regular", "serif"],
         StageGroteskBlack: ["StageGrotesk-black", "serif"],
         StageGroteskBold: ["StageGrotesk-bold", "serif"],

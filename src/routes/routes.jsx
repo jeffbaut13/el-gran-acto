@@ -10,6 +10,7 @@ import Match from "../pages/Match";
 import { Landing } from "../components/Landing/Landing";
 import Ticket from "../components/boleta/ticket";
 import Scanner from "../components/boleta/Scanner";
+import { InterDay } from "../pages/InterDay";
 
 function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();
@@ -56,11 +57,10 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-      <Layout>
-
-        <ScrollToTopOnRouteChange />
-        <Landing />
-      </Layout>
+        <Layout>
+          <ScrollToTopOnRouteChange />
+          <Landing />
+        </Layout>
       </>
     ),
   },
@@ -68,11 +68,10 @@ const router = createBrowserRouter([
     path: "/ticket/:id",
     element: (
       <>
-      <Layout>
-
-        <ScrollToTopOnRouteChange />
-        <Ticket />
-      </Layout>
+        <Layout>
+          <ScrollToTopOnRouteChange />
+          <Ticket />
+        </Layout>
       </>
     ),
   },
@@ -80,11 +79,29 @@ const router = createBrowserRouter([
     path: "/scanner",
     element: (
       <>
-      <Layout>
-
-        <ScrollToTopOnRouteChange />
-        <Scanner />
-      </Layout>
+        <Layout>
+          <ScrollToTopOnRouteChange />
+          <Scanner />
+        </Layout>
+      </>
+    ),
+  },
+  {
+    path: "/interday2024",
+    element: (
+      <>
+        <InterDay />
+      </>
+    ),
+  },
+  {
+    path: "/elgranacto",
+    element: (
+      <>
+        <Layout>
+          <ScrollToTopOnRouteChange />
+          <Scanner />
+        </Layout>
       </>
     ),
   },
