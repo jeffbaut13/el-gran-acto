@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { links } from "../header/MenuLink";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { isMobile } from "../../data/medidas";
 
 export const ButtonSouvenir = ({ showButton }) => {
   const [hover, sethover] = useState(false);
@@ -14,7 +15,7 @@ export const ButtonSouvenir = ({ showButton }) => {
       });
     } else {
       gsap.to(buttonRef.current, {
-        translateX: "-200%",
+        translateX: isMobile ? "200%" : "-200%",
         pointerEvents: "none",
       });
     }
@@ -54,7 +55,7 @@ export const ButtonSouvenir = ({ showButton }) => {
       onMouseEnter={() => sethover(true)}
       onMouseLeave={() => sethover(false)}
       ref={buttonRef}
-      className="buttonRegalo w-14 hover:w-72 group fixed bottom-6 left-7 z-[19] hover:bg-[#00000030] h-14 bg-transparent border-2 border-primary rounded-full p-3  transition-all ease-in-out duration-200 overflow-hidden"
+      className="buttonRegalo w-14 hover:w-72 group fixed lg:bottom-6 max-lg:top-[25%] lg:left-7 max-lg:right-1 z-[19] hover:bg-[#00000030] h-14 bg-transparent border-2 border-primary rounded-full p-3  transition-all ease-in-out duration-200 overflow-hidden"
       onClick={() => handleClick(`${links[4]}`)}
     >
       <figure className="imgButton w-full group-hover:w-8 h-8 inline-block transition-all ease-in-out duration-200">

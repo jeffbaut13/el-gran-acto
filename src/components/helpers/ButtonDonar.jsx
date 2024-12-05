@@ -2,13 +2,14 @@ import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { links } from "../header/MenuLink";
+import { isMobile } from "../../data/medidas";
 
 export const ButtonDonar = ({ showButton }) => {
   const buttonRef = useRef(null);
   useEffect(() => {
     if (showButton) {
       gsap.to(buttonRef.current, {
-        translateX: "-17%",
+        translateX: isMobile ?"0%" :"-17%",
 
         pointerEvents: "all",
       });
