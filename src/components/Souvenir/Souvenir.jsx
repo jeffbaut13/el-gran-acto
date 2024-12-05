@@ -38,20 +38,24 @@ export const Souvenir = ({ reff }) => {
     },
     {
       position: {
-        x: isMobile ? -0.9 : -1.6,
+        x: isMobile ? -0.9 : -1.7,
         y: isMobile ? 0.8 : 0.8,
         z: isMobile ? 1.4 : 2,
       },
       target: {
-        x: isMobile ? 0 : 0.7,
+        x: isMobile ? 0 : 0.6,
         y: isMobile ? 0.2 : 1,
         z: isMobile ? -0.5 : 0,
       },
-      zoom: 3.5,
+      zoom: 4,
     },
     {
-      position: { x: isMobile ? 0.5 : 0.8, y: 0.5, z: isMobile ? 3 : 2 },
-      target: { x: isMobile ? -0.1 : 1.5, y: -0.2, z: isMobile ? 0 : -4 },
+      position: { x: isMobile ? 0.5 : 0.1, y: 1, z: isMobile ? 3 : 2 },
+      target: {
+        x: isMobile ? -0.1 : 3.2,
+        y: isMobile ? -0 : -2,
+        z: isMobile ? 0 : -5,
+      },
       zoom: 1,
     },
   ];
