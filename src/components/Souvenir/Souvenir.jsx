@@ -38,16 +38,16 @@ export const Souvenir = ({ reff }) => {
     },
     {
       position: {
-        x: isMobile ? -0.9 : -0.2,
-        y: isMobile ? 0.8 : 1,
-        z: isMobile ? 1.4 : 1.3,
+        x: isMobile ? -0.9 : -1.6,
+        y: isMobile ? 0.8 : 0.8,
+        z: isMobile ? 1.4 : 2,
       },
       target: {
-        x: isMobile ? 0 : 6,
-        y: isMobile ? 0.2 : -0.3,
-        z: isMobile ? -0.5 : -5,
+        x: isMobile ? 0 : 0.7,
+        y: isMobile ? 0.2 : 1,
+        z: isMobile ? -0.5 : 0,
       },
-      zoom: 1,
+      zoom: 3.5,
     },
     {
       position: { x: isMobile ? 0.5 : 0.8, y: 0.5, z: isMobile ? 3 : 2 },
@@ -75,17 +75,17 @@ export const Souvenir = ({ reff }) => {
       const { object: camera } = controls;
 
       gsap.to(camera.position, {
-        x: isMobile ? -0.9 : -0.2,
-        y: isMobile ? 0.8 : 1,
-        z: isMobile ? 1.4 : 1.3,
+        x: isMobile ? -0.9 : -1.1,
+        y: isMobile ? 0.8 : 0.7,
+        z: isMobile ? 1.4 : 2,
         duration: 2,
         onUpdate: () => controls.update(),
       });
 
       gsap.to(controls.target, {
-        x: isMobile ? 0 : 6,
-        y: isMobile ? 0.2 : -0.3,
-        z: isMobile ? -0.5 : -5,
+        x: isMobile ? 0 : 1.2,
+        y: isMobile ? 0.2 : 0,
+        z: isMobile ? -0.5 : 0,
         duration: 2,
         onUpdate: () => controls.update(),
       });
