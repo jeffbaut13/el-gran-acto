@@ -14,6 +14,7 @@ import TicketInter from "../components/boleta/TicketInterDay";
 import TicketInvitados from "../components/boleta/TicketInvitados";
 import TicketInterDay from "../components/boleta/TicketInterDay";
 import { InterDay } from "../pages/InterDay";
+import { ElgranActo } from "../pages/ElgranActo";
 
 function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();
@@ -114,10 +115,7 @@ const router = createBrowserRouter([
     path: "/elgranacto",
     element: (
       <>
-        <Layout>
-          <ScrollToTopOnRouteChange />
-          <Scanner />
-        </Layout>
+        <ElgranActo />
       </>
     ),
   },
