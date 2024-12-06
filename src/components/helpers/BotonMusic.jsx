@@ -1,10 +1,16 @@
+import { Link } from "react-router-dom";
 import { IconPlay } from "./IconPlay";
 
 export const BotonMusic = ({ url }) => {
   return (
-    <button
-      onClick={() => window.location.href = "https://www.youtube.com/watch?v=77_C-xjRY8o"}
-      className="group text-[1.15rem] leading-3 py-2 HoverButtons"
+    <Link
+      to={
+        "https://open.spotify.com/intl-es/track/295154lymhmyPKQBrbNlct?si=81fa405da16e423d"
+      }
+      onClick={() =>
+        (window.location.href = "https://www.youtube.com/watch?v=77_C-xjRY8o")
+      }
+      className="button group text-[1.15rem] leading-3 py-2 HoverButtons"
     >
       <span className="w-10 h-auto pr-3 ml-3.5">
         <IconPlay customStyle={true} />
@@ -17,7 +23,6 @@ export const BotonMusic = ({ url }) => {
           EL GRAN EXITO DE “LOS CLÁSICOS”
         </span>
       </span>
-    </button>
+    </Link>
   );
 };
-
