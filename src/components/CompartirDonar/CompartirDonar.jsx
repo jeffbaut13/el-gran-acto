@@ -28,7 +28,7 @@ export const CompartirDonar = ({ reff }) => {
             INVITA A <br className="max-lg:hidden" />
             OTRA PERSONA <br className="lg:hidden" /> A{" "}
             <br className="max-lg:hidden" />
-            DONAR SU TIEMPO
+            ENTREGAR SU TIEMPO
           </h2>
           <hr className="w-full my-4" />
 
