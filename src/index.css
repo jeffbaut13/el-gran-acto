@@ -4,6 +4,10 @@
 
  
 @font-face {
+  font-family: "Fontfabric-Regular";
+  src: url("/fonts/Fontfabric-UniNeueRegular.ttf") format("truetype");
+}
+@font-face {
   font-family: "Alterenate-regular";
   src: url("/fonts/Alternate-Regular.ttf") format("truetype");
 }

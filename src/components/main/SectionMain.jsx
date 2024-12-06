@@ -6,6 +6,30 @@ import { VideoBackground } from "./VideoBackground";
 
 export const SectionMain = ({ reff }) => {
   const { playVideo, play, closeVideo } = usePlayVideo();
+  const handleClick = (hash) => {
+    if (window.location.pathname === "/") {
+      window.location.hash = hash;
+
+      // Delay para asegurar que el hash esté aplicado antes de hacer el scroll
+      setTimeout(() => {
+        const section = document.getElementById(hash.replace("#", ""));
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 0);
+    } else {
+      // Navega al home y añade el hash
+      navigate(`/${hash}`);
+
+      // Delay para asegurar que el DOM del home está cargado antes de intentar hacer scroll
+      setTimeout(() => {
+        const section = document.getElementById(hash.replace("#", ""));
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300); // Ajusta este valor si es necesario para darle más tiempo al DOM para cargar
+    }
+  };
 
   return (
     <main
@@ -44,7 +68,7 @@ export const SectionMain = ({ reff }) => {
           <BotonMusic />
         </div>
         <div className="flex flex-col items-center">
-          <button className="leading-[1.1rem] text-[1.15rem] py-1 px-14 HoverButtons">
+          <button onClick={()=>handleClick(`${links[1]}`)} className="leading-[1.1rem] text-[1.15rem] py-1 px-14 HoverButtons">
             DONA TIEMPO <br />A UN ABUELITO
           </button>
         </div>

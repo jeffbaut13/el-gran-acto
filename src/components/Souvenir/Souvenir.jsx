@@ -133,10 +133,35 @@ export const Souvenir = ({ reff }) => {
     }
   };
 
+  const handleClick = (hash) => {
+    if (window.location.pathname === "/") {
+      window.location.hash = hash;
+
+      // Delay para asegurar que el hash esté aplicado antes de hacer el scroll
+      setTimeout(() => {
+        const section = document.getElementById(hash.replace("#", ""));
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 0);
+    } else {
+      // Navega al home y añade el hash
+      navigate(`/${hash}`);
+
+      // Delay para asegurar que el DOM del home está cargado antes de intentar hacer scroll
+      setTimeout(() => {
+        const section = document.getElementById(hash.replace("#", ""));
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300); // Ajusta este valor si es necesario para darle más tiempo al DOM para cargar
+    }
+  };
+
   return (
     <section className="w-full h-screen snap-item relative bg-black select-none max-lg:flex max-lg:justify-start max-lg:flex-col-reverse max-lg:pb-24 max-lg:px-4">
       <span
-        onClick={() => navigate("/")}
+        onClick={() => handleClick("#UN-REGALO-INOLVIDABLE")}
         className="fixed left-12 top-6 flex items-center justify-center gap-2 z-50 cursor-pointer"
       >
         <span className="w-6 h-6 rotate-180 inline-block">
