@@ -47,6 +47,7 @@ const router = createBrowserRouter([
         <Visita />
       </>
     ),
+     errorElement: <ErrorPage />,
   },
   {
     path: "match",
@@ -56,6 +57,7 @@ const router = createBrowserRouter([
         <Match />
       </>
     ),
+     errorElement: <ErrorPage />,
   },
   /* {
     path: "/",
@@ -78,6 +80,7 @@ const router = createBrowserRouter([
          
       </>
     ),
+     errorElement: <ErrorPage />,
   },
   {
     path: "/ticketinter/:id",
@@ -89,6 +92,7 @@ const router = createBrowserRouter([
        
       </>
     ),
+     errorElement: <ErrorPage />,
   },
   {
     path: "/scanner",
@@ -98,6 +102,7 @@ const router = createBrowserRouter([
         <Scanner />
       </>
     ),
+     errorElement: <ErrorPage />,
   },
   {
     path: "/personalizacion",
@@ -106,6 +111,7 @@ const router = createBrowserRouter([
         <Souvenir />
       </>
     ),
+     errorElement: <ErrorPage />,
   },
 ]);
 

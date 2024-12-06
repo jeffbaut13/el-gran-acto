@@ -1,7 +1,10 @@
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { firestore , storage } from "../../components/firestore/firestore-config";
-import { v4 as uuidv4 } from 'uuid';
+import {
+  firestore,
+  storage,
+} from "../../components/firestore/firestore-config";
+import { v4 as uuidv4 } from "uuid";
 
 const generarURLsUnicas = () => {
   const uniqueId = uuidv4(); // Genera un identificador único
@@ -29,13 +32,17 @@ const base64ToBlob = (base64) => {
   return new Blob([ab], { type: mimeString });
 };
 
+export const enviarDatosAFirebase = async ({
+  email,
+  audio,
+  imagen,
+  promoId,
+  idGenerado,
+}) => {
+  const image = base64ToBlob(imagen);
 
-export const enviarDatosAFirebase = async ({ email, audio, imagen, promoId, orderId }) => {
-
-  const image = base64ToBlob(imagen)
- 
   const { audioPath, imagenPath } = generarURLsUnicas();
-  
+
   try {
     // Crear referencias en Storage
     const audioRef = ref(storage, audioPath);
@@ -46,16 +53,19 @@ export const enviarDatosAFirebase = async ({ email, audio, imagen, promoId, orde
     const imagenSnapshot = await uploadBytes(imagenRef, image);
 
     // Obtener URLs de descarga
-    const audioURL = await getDownloadURL(audioSnapshot.ref)
+    const audioURL = await getDownloadURL(audioSnapshot.ref);
     const imagenURL = await getDownloadURL(imagenSnapshot.ref);
 
     // Crear registro en Firestore
     const docRef = await addDoc(collection(firestore, "souvenir"), {
+      userId: email + "_" + idGenerado,
       email,
       audio: audioURL,
       imagen: imagenURL,
       promoId,
-      orderId,
+      numeroOrden: "",
+      stock: "",
+      orderStatus:"",
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
     });
@@ -67,13 +77,12 @@ export const enviarDatosAFirebase = async ({ email, audio, imagen, promoId, orde
   }
 };
 
-
 export const redireccionar = (promoId, email, idGenerado) => {
-   
+  
   const dataSend = {
     email,
     promoid: promoId,
-    id: idGenerado,
+    userId: email + "_" + idGenerado,
   };
   const queryString = Object.keys(dataSend)
     .map((key) => `${key}=${encodeURIComponent(dataSend[key])}`)
@@ -81,5 +90,5 @@ export const redireccionar = (promoId, email, idGenerado) => {
 
   const urlAlcarrito = "https://www.alcarrito.com/promo/addtocart";
   window.location.href = `${urlAlcarrito}?${queryString}`;
-};
 
+};

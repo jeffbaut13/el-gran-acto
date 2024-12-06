@@ -21,7 +21,7 @@ export const Compartir = ({ reff }) => {
           COMPARTE LA EXPERIENCIA <br/> DE ESTE GRAN ACTO
         </h2>
         <div className="flex justify-center lg:gap-16 xs:gap-4 mt-2">
-          <Socials social={social} />
+          <Socials texto={"En Navidad, entregar es mejor que recibir, por eso quiero que ingreses y conozcas cómo puedes dar un regalo inolvidable, en "} url={"https://ElGranActo.com"}/>
         </div>
       </div>
     </section>

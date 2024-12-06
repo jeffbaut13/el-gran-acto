@@ -41,25 +41,26 @@ const Formulario = () => {
         return;
       }
 
-      const promoId = "granacto"; // Ejemplo de promoId
+      const promoId = "clasicos"; // Ejemplo de promoId
+      const idGenerado = Math.random().toString(36).substring(2, 10);
       const idDoc = await enviarDatosAFirebase({
         email: data.email,
         audio,
         imagen,
         promoId,
-        orderId: "",
+        idGenerado,
       });
 
       // Redirigir al usuario
-      redireccionar(promoId, data.email, idDoc);
+      redireccionar(promoId, data.email, idGenerado);
+      setLoadingButton(false);
     } catch (error) {
       console.error("Error al enviar datos:", error);
       alert("Hubo un error al procesar tu solicitud.");
       setLoadingButton(false);
     }
   };
-
-  const isButtonDisabled =
+    const isButtonDisabled =
     loadingButton ||
     !urlFirabesAudio ||
     snap.Imagen === "/imagenes/file.webp" ||
