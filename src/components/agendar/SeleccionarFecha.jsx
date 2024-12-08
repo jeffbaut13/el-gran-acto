@@ -33,7 +33,7 @@ const SeleccionarFecha = ({ onAgendarClick }) => {
           />
           
 
-          <div className=" flex justify-between w-[70%] px-2  horas absolute border border-primary rounded-lg bottom-[-4.5rem] bg-black bg-opacity-85 items-start">
+          <div className=" flex justify-between w-[70%] px-2  horas absolute border border-primary rounded-lg bottom-[-3rem] bg-black bg-opacity-85 items-start">
 <div className=" flex flex-col">
 
           <p> 10:00 am - 10:30 am</p>

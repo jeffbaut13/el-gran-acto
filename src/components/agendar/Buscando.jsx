@@ -1,6 +1,6 @@
 import React from "react";
 import  Lottie  from "lottie-react";
-import casetRotando from "./caseteDos.json";
+import casetRotando from "./load-agenda.json";
 
 const Buscando = () => {
   return (

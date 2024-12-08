@@ -79,17 +79,17 @@ export const Souvenir = ({ reff }) => {
       const { object: camera } = controls;
 
       gsap.to(camera.position, {
-        x: isMobile ? -0.9 : -1.1,
-        y: isMobile ? 0.8 : 0.7,
-        z: isMobile ? 1.4 : 2,
+        x: isMobile ? 0.5 : 0.1,
+        y: 1,
+        z: isMobile ? 3 : 2,
         duration: 2,
         onUpdate: () => controls.update(),
       });
 
       gsap.to(controls.target, {
-        x: isMobile ? 0 : 1.2,
-        y: isMobile ? 0.2 : 0,
-        z: isMobile ? -0.5 : 0,
+        x: isMobile ? -0.1 : 3.2,
+        y: isMobile ? -0 : -2,
+        z: isMobile ? 0 : -5,
         duration: 2,
         onUpdate: () => controls.update(),
       });
