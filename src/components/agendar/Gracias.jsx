@@ -22,7 +22,7 @@ const Gracias = ({ nombreUsuario, tipoInteraccion, fecha, hora, abuelito }) => {
     <div className="w-full h-full flex flex-col items-center justify-center">
       <div className="border border-primary bg-black bg-opacity-85 md:w-[70%] md:h-[80%] xs:w-[25rem] xs:h-[25rem] rounded-xl flex flex-col justify-center items-center">
         <h1 className="lg:text-[2rem] xs:text-[1.7rem] font-Wayland text-center leading-7">
-          {nombreUsuario.toUpperCase()}, AHORA HACES PARTE DE EL GRAN ACTO
+          {nombreUsuario.replace(/\s+/g, '').toUpperCase()}, AHORA HACES PARTE DE EL GRAN ACTO
         </h1>
         {tipoInteraccion === "visita" ? (
           <p className="font-StageGroteskRegular lg:px-40 xs:px-1 my-10 text-center leading-5">
