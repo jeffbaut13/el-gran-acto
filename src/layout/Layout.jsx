@@ -9,11 +9,9 @@ const Layout = ({ children }) => {
   return (
     <>
     
-<<<<<<< HEAD
-    {/* {Loading && <Loader LoaderHide={LoaderHide} Loading={Loading}/>}  */}
-=======
-   {/*  {Loading && <Loader LoaderHide={LoaderHide} Loading={Loading}/>}  */}
->>>>>>> d7bf48d31d8524dc906727a78b3fdf6e25da832c
+
+    {Loading && <Loader LoaderHide={LoaderHide} Loading={Loading}/>} 
+ 
     
       <Header scrollIcon={scrollIcon} />
       {children}

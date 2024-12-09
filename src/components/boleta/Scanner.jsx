@@ -85,12 +85,12 @@ const Scanner = () => {
         <div className="flex flex-col items-center mt-4">
           <p className="text-green-500">
             {qrData.message} ({qrData.type === 'principal' ? 'Boleta Principal' : 'Acompañante'}) -{' '}
-            {qrData.usado ? 'Ya utilizada' : 'Disponible'}
+            {qrData.usado ? 'Boleta ya utilizada' : 'Disponible'}
           </p>
           {!qrData.usado && (
             <button
               onClick={handleValidate}
-              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md"
+              className="mt-4 px-6 py-4 bg-blue-500 text-white rounded-md"
             >
               Validar Código
             </button>

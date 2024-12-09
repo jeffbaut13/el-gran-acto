@@ -72,7 +72,7 @@ const Loader = ({ LoaderHide, Loading }) => {
     <div className="bg-black flex justify-center fixed top-0 left-0 loadingBox items-center flex-col w-full h-full z-[205]">
       <div className="mask1 w-full  inline-block">
         <div className="loading opacity-100 w-full h-full flex flex-col items-center justify-center">
-          <span className="text-[--second] font-StageGroteskBlack text-xl">
+          <span className="text-[--second] font-neue text-xl">
             {percentage}
             <span className=" ">%</span>
           </span>

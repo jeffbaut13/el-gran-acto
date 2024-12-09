@@ -1,5 +1,8 @@
 import { useRef } from "react";
 import { mobile, tablet } from "../../data/medidas";
+import ReactPlayer from "react-player";
+import ReactVideo from "../videoComercial/ReactVideo";
+import { videos } from "../../data/Videos";
 
 export const VideoBackground = () => {
   const videoRef = useRef(null);
@@ -7,8 +10,8 @@ export const VideoBackground = () => {
   const backgroundImage = "/imagenes/background.webp";
   const backgroundImageM = "/imagenes/backgroundM.webp";
   //const videoSrcMobile = "/videos/intro-vertical.mp4";
-  const videoSrcMobile = "/videos/intro.mp4";
-  const videoSrcDesktop = "/videos/intro.mp4";
+  const videoSrcMobile = "/videos/introM.mp4";
+   const videoSrcDesktop = "/videos/intro.mp4";
 
   const isMobile = mobile || tablet;
 
@@ -23,8 +26,10 @@ export const VideoBackground = () => {
               isMobile ? backgroundImageM : backgroundImage
             })`,
           }}
-        >
+        > 
           <div className="absolute top-0 left-0 bg-black lg:bg-opacity-60 xs:bg-opacity-60 w-full h-full" />
+
+          {/* <ReactVideo url={videos.resumen} playinline={true} play={true} muted={true}/> */}
           <video
             ref={videoRef}
             className="video w-full h-full object-cover z-10"

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { PreguntasBackGround } from "./PreguntasBackGround";
-import Buscando from "./Buscando"; // Importar el componente Buscando
-import Viejito from "./Viejito"; // Importar el componente Viejito
-import SeleccionarFecha from "./SeleccionarFecha"; // Importar el componente Viejito
+import Buscando from "./Buscando";
+import Viejito from "./Viejito";
+import SeleccionarFecha from "./SeleccionarFecha";
 
 const Preguntas = () => {
   const preguntasData = [
@@ -58,6 +58,7 @@ const Preguntas = () => {
     Array(preguntasData.length).fill(null)
   );
   const [estado, setEstado] = useState("preguntas"); // 'preguntas', 'buscando', 'viejito', 'seleccionarFecha'
+  const [tipoInteraccion, setTipoInteraccion] = useState(null); // Estado para manejar el tipo de interacción
 
   const handleSeleccionarOpcion = (indice) => {
     const nuevasRespuestas = [...respuestas];
@@ -78,9 +79,10 @@ const Preguntas = () => {
     }
   };
 
-  const mostrarBuscando = () => {
+  const mostrarBuscando = (interaccion) => {
+    setTipoInteraccion(interaccion); // Guardar la interacción seleccionada
     setEstado("buscando");
-    setTimeout(() => setEstado("viejito"), 5000);
+    setTimeout(() => setEstado("viejito"), 100);
   };
 
   const handleAgendar = () => {
@@ -94,7 +96,7 @@ const Preguntas = () => {
       <PreguntasBackGround />
       <div className="w-full h-full flex flex-col items-center justify-center">
         {preguntaIndex < 1 && (
-          <div className=" w-[25rem] text-center ">
+          <div className="w-[25rem] text-center">
             <p>
               Respondiendo unas sencillas preguntas, <br />
               nuestro sistema te podrá asignar al abuelito con el que te podrás
@@ -102,17 +104,16 @@ const Preguntas = () => {
             </p>
           </div>
         )}
+
         {estado === "preguntas" && (
           <div className="border border-primary w-[25rem] h-[28rem] mt-5 rounded-xl flex flex-col items-center justify-center">
             <div className="px-14 w-full">
-              <p className="text-center font-StageGroteskBold mb-5 ">
-                {pregunta}
-              </p>
+              <p className="text-center font-StageGroteskBold mb-5">{pregunta}</p>
               {opciones.map((texto, index) => (
                 <button
                   key={index}
                   onClick={() => handleSeleccionarOpcion(index)}
-                  className="border border-primary my-2 rounded-md w-full h-10 flex justify-start font-StageGroteskRegular capitalize bg-transparent text-primary hover:bg-primary hover:text-black"
+                  className="border border-primary my-2 rounded-md w-full h-10 flex justify-start font-StageGroteskRegular capitalize bg-transparent text-primary lg:hover:bg-primary lg:hover:text-black"
                 >
                   <p className="pl-2">{String.fromCharCode(65 + index)}</p>
                   <p className="ml-2">{texto}</p>
@@ -131,10 +132,10 @@ const Preguntas = () => {
         )}
 
         {estado === "visita" && (
-          <div className="visita flex gap-5">
+          <div className="visita  xs:flex xs:flex-col md:flex md:flex-row gap-5">
             <button
-              onClick={mostrarBuscando}
-              className="flex flex-col w-[33rem] h-[8rem] bg-transparent border border-primary font-Wayland HoverButtons"
+              onClick={() => mostrarBuscando("visita")}
+              className="flex flex-col md:w-[33rem] md:h-[8rem] xs:w-[25rem] xs:h-[9rem] bg-transparent border border-primary font-Wayland lg:hover:scale-105"
             >
               <div className="flex border-b-[1px] border-primary w-[90%] justify-between">
                 <span className="text-primary text-[2rem]">Agendar Visita</span>
@@ -145,15 +146,15 @@ const Preguntas = () => {
                 />
               </div>
               <div className="w-[90%] flex">
-                <p className="text-primary  text-start capitalize font-StageGroteskRegular">
-                  Programa una visita y dona tu tiempo en el ancianato de
+                <p className="text-primary text-start capitalize font-StageGroteskRegular">
+                  Programa una visita y entrega tu tiempo en el ancianato de
                   Facatativá.
                 </p>
               </div>
             </button>
             <button
-              onClick={mostrarBuscando}
-              className="flex flex-col w-[33rem] h-[8rem] bg-transparent border border-primary font-Wayland HoverButtons"
+              onClick={() => mostrarBuscando("videollamada")}
+              className="flex flex-col md:w-[33rem] md:h-[8rem] xs:w-[25rem] xs:h-[9rem] bg-transparent border border-primary font-Wayland lg:hover:scale-105"
             >
               <div className="flex border-b-[1px] border-primary w-[90%] justify-between">
                 <span className="text-primary text-[2rem]">
@@ -162,12 +163,12 @@ const Preguntas = () => {
                 <img
                   className="w-8"
                   src="/iconos/flechaVisita.svg"
-                  alt="Visita"
+                  alt="Videollamada"
                 />
               </div>
               <div className="w-[90%] flex">
-                <p className="text-primary  text-start capitalize font-StageGroteskRegular">
-                  Programa una visita y dona tu tiempo en el ancianato de
+                <p className="text-primary text-start capitalize font-StageGroteskRegular">
+                  Realiza una videollamada y entrega tu tiempo en el ancianato de
                   Facatativá.
                 </p>
               </div>
@@ -177,9 +178,14 @@ const Preguntas = () => {
 
         {estado === "buscando" && <Buscando />}
 
-        {estado === "viejito" && <Viejito onAgendar={handleAgendar} />}
+        {estado === "viejito" && (
+  <Viejito
+    onAgendar={() => setEstado("seleccionarFecha")}
+    tipoInteraccion={tipoInteraccion}
+  />
+)}
 
-        {estado === "seleccionarFecha" && <SeleccionarFecha />}
+{estado === "seleccionarFecha" && <SeleccionarFecha />}
       </div>
     </div>
   );

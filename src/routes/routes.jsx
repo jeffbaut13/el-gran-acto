@@ -8,16 +8,15 @@ import { Home } from "../pages/Home";
 import Visita from "../pages/Visita";
 import Match from "../pages/Match";
 import { Landing } from "../components/Landing/Landing";
-<<<<<<< HEAD
+
+import { Souvenir } from "../components/Souvenir/Souvenir";
+
 import Scanner from "../components/boleta/Scanner";
-import Ticket from "../components/boleta/TicketInvitados";
 import TicketInter from "../components/boleta/TicketInterDay";
 import TicketInvitados from "../components/boleta/TicketInvitados";
 import TicketInterDay from "../components/boleta/TicketInterDay";
-=======
-import Ticket from "../components/boleta/ticket";
-import { Souvenir } from "../components/Souvenir/Souvenir";
->>>>>>> d7bf48d31d8524dc906727a78b3fdf6e25da832c
+import { InterDay } from "../pages/InterDay";
+import { ElgranActo } from "../pages/ElgranActo";
 
 function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();
@@ -50,6 +49,7 @@ const router = createBrowserRouter([
         <Visita />
       </>
     ),
+    errorElement: <ErrorPage />,
   },
   {
     path: "match",
@@ -59,16 +59,16 @@ const router = createBrowserRouter([
         <Match />
       </>
     ),
+    errorElement: <ErrorPage />,
   },
   /* {
     path: "/",
     element: (
       <>
-      <Layout>
-
-        <ScrollToTopOnRouteChange />
-        <Landing />
-      </Layout>
+        <Layout>
+          <ScrollToTopOnRouteChange />
+          <Landing />
+        </Layout>
       </>
     ),
   }, */
@@ -76,49 +76,76 @@ const router = createBrowserRouter([
     path: "/ticket/:id",
     element: (
       <>
-      <Layout>
-
         <ScrollToTopOnRouteChange />
         <TicketInvitados />
-      </Layout>
       </>
     ),
+    errorElement: <ErrorPage />,
   },
   {
     path: "/ticketinter/:id",
     element: (
       <>
-      <Layout>
-
         <ScrollToTopOnRouteChange />
-      <TicketInterDay />
-      </Layout>
+        <TicketInterDay />
       </>
     ),
+    errorElement: <ErrorPage />,
   },
   {
     path: "/scanner",
     element: (
       <>
-      <Layout>
-
         <ScrollToTopOnRouteChange />
         <Scanner />
-      </Layout>
       </>
     ),
+    errorElement: <ErrorPage />,
   },
   {
     path: "/personalizacion",
     element: (
       <>
-      
-
-      
-      <Souvenir/>
-      
+        <Souvenir />
       </>
     ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/interday2024",
+    element: (
+      <>
+        <InterDay />
+      </>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/elgranacto",
+    element: (
+      <>
+        <ElgranActo />
+      </>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/interday2024",
+    element: (
+      <>
+        <InterDay />
+      </>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/elgranacto",
+    element: (
+      <>
+        <ElgranActo />
+      </>
+    ),
+    errorElement: <ErrorPage />,
   },
 ]);
 

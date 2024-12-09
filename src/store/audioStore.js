@@ -5,6 +5,7 @@ const useAudioStore = create((set, get) => ({
   audioUrl: null,
   isAudioReady: false,
   combinedAudioUrl: null, // Nueva URL del audio combinado
+  urlFirabesAudio: null,
 
   // Generar audio con ElevenLabs y combinarlo con un MP3 local
   generateAndCombineAudio: async (text) => {
@@ -57,14 +58,14 @@ const useAudioStore = create((set, get) => ({
         formdata.append("audioFiles", generatedAudioBlob, "audio1.mp3");
         formdata.append("audioFiles", audioBlob2, "audio2.mp3");
 
-        const response = await fetch("http://localhost:3000/combine-audios", {
-          method: "POST",
-          body: formdata,
-        });
-        /* const response = await fetch("https://backboletas.onrender.com/combine-audios", {
+        /* const response = await fetch("http://localhost:3000/combine-audios", {
           method: "POST",
           body: formdata,
         }); */
+        const response = await fetch("https://backboletas.onrender.com/combine-audios", {
+          method: "POST",
+          body: formdata,
+        });
 
         if (!response.ok) throw new Error("Error al combinar los audios");
 
@@ -74,6 +75,7 @@ const useAudioStore = create((set, get) => ({
         // Guardar la URL del audio combinado en el estado
         set({
           combinedAudioUrl: url,
+          urlFirabesAudio: combinedBlob,
           isAudioReady: true,
         });
       } catch (error) {
@@ -89,6 +91,13 @@ const useAudioStore = create((set, get) => ({
     set({
       isAudioReady: false,
     });
+
+    const fetchAudioBlob = async (audioPath) => {
+      const response = await fetch(audioPath);
+      if (!response.ok)
+        throw new Error(`Error al obtener el audio: ${audioPath}`);
+      return await response.blob();
+    };
 
     const simulateApiCall = () => {
       return new Promise((resolve) => {
@@ -108,32 +117,17 @@ const useAudioStore = create((set, get) => ({
       const simulatedResponse = await simulateApiCall();
       console.log("Respuesta simulada:", simulatedResponse);
 
-      const formdata = new FormData();
-      const generatedAudioBlob = new Blob(["Simulated audio 1"], {
-        type: "audio/mpeg",
-      });
-      const audioBlob2 = new Blob(["Simulated audio 2"], {
-        type: "audio/mpeg",
-      });
+       
+      const localAudioPath = "/audios/+de75-recorte.mp3"
 
       try {
-        formdata.append("audioFiles", generatedAudioBlob, "audio1.mp3");
-        formdata.append("audioFiles", audioBlob2, "audio2.mp3");
-
-        // Simular la combinación de audios
-        console.log("Simulando la combinación de audios...");
-        const combineResponse = await simulateApiCall();
-        console.log("Respuesta simulada de combinación:", combineResponse);
-
-        // Crear una URL para simular el audio combinado
-        const combinedBlob = new Blob(["Simulated combined audio"], {
-          type: "audio/mpeg",
-        });
-        const url = URL.createObjectURL(combinedBlob);
+        const audioBlob2 = await fetchAudioBlob(localAudioPath);
+        const url = URL.createObjectURL(audioBlob2); // Crear URL para el Blob
 
         // Guardar la URL del audio combinado en el estado
         set({
           combinedAudioUrl: url,
+          urlFirabesAudio: audioBlob2,
           isAudioReady: true,
         });
       } catch (error) {

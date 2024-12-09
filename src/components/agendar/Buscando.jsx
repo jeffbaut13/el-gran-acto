@@ -1,21 +1,27 @@
-import React from "react";
-import  Lottie  from "lottie-react";
+import React, { useEffect, useState } from "react";
+import Lottie from "lottie-react";
 import casetRotando from "./caseteDos.json";
 
 const Buscando = () => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let interval = null;
+    if (count < 75) {
+      interval = setInterval(() => {
+        setCount((prevCount) => prevCount + 1);
+      }, 100); // Incrementa el contador cada 50ms
+    } else {
+      clearInterval(interval); // Detén el intervalo cuando alcance 75
+    }
+    return () => clearInterval(interval);
+  }, [count]);
+
   return (
-    <div className=" w-full h-full flex items-center justify-center">
-      <div className=" flex flex-col items-center justify-center w-[40rem]">
-        <Lottie
-          animationData={casetRotando}
-          loop={true} // Define si se repite
-          style={{ width: 200 }} // Ajusta el tamaño
-        />
-        <h1 className="  w-full text-center font-Wayland mt-10 text-[3rem] leading-[3rem]">
-          ESTAMOS BUSCANDO AL ABUELITO <br />
-          CON EL QUE MEJOR TE ENTIENDAS
-        </h1>
-      </div>
+    <div className="w-full h-full flex items-center justify-center">
+      <p className="text-[3rem] font-Wayland">
+        + DE <span className=" font-neue">{count}</span>
+      </p>
     </div>
   );
 };

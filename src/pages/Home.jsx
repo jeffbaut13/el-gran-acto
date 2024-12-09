@@ -16,7 +16,8 @@ import { LosClasicosCards } from "../components/losClasicos/LosClasicosCards";
 import { SouvenirHome } from "../components/Souvenir/SouvenirHome";
 
 export const Home = () => {
-  const { playVideo, play, closeVideo, scrollShow,scrollHide  } = usePlayVideo();
+  const { playVideo, play, closeVideo, scrollShow, scrollHide } =
+    usePlayVideo();
   const [showButton, setShowButton] = useState(false);
   const [showButtonDonar, setShowButtonDonar] = useState(false);
 
@@ -47,10 +48,10 @@ export const Home = () => {
   });
 
   useEffect(() => {
-    if(inViewSection){
-      scrollShow()
-    }else{
-      scrollHide()
+    if (inViewSection) {
+      scrollShow();
+    } else {
+      scrollHide();
     }
     if (inViewSection1 || inViewSection2 || inViewSection3) {
       setShowButton(true);
@@ -77,22 +78,35 @@ export const Home = () => {
     inViewSection6,
     inViewSection7,
   ]);
- 
 
-  
   return (
     <>
-      <ButtonSouvenir showButton={showButton} />
+      {/* <ButtonSouvenir showButton={showButton} />
       <ButtonDonar showButton={showButtonDonar} />
       <VideoComercial playVideo={playVideo} setPlayVideo={closeVideo} />
-      <SectionMain reff={section0Ref}/>
-      <SectionAgendar reff={section1Ref} />
-
+      <SectionMain reff={section0Ref}/> */}
+      {/* <SectionAgendar reff={section1Ref} /> */}
+      {/*
       <CompartirDonar reff={section2Ref} />
       <CompartirCancion reff={section3Ref} />
       <SouvenirHome reff={section4Ref} />
+      <LosClasicosCards reff={section5Ref} />*/}
+      {/* <MakingOf reff={section6Ref} /> */}
+
+      {/*    <Compartir reff={section7Ref} /> */}
+
+      <ButtonSouvenir showButton={showButton} />
+      <ButtonDonar showButton={showButtonDonar} />
+      <VideoComercial playVideo={playVideo} setPlayVideo={closeVideo} />
+      <SectionMain reff={section0Ref} />
+      <SectionAgendar reff={section1Ref} />
+
+      <CompartirDonar reff={section2Ref} />
+      {/*  <CompartirCancion reff={section3Ref} /> */}
+      <SouvenirHome reff={section4Ref} />
       <LosClasicosCards reff={section5Ref} />
       {/* <MakingOf reff={section6Ref} /> */}
+
       <Compartir reff={section7Ref} />
     </>
   );

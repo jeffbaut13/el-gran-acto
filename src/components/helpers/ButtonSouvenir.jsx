@@ -21,6 +21,7 @@ export const ButtonSouvenir = ({ showButton }) => {
     }
   }, [showButton]);
 
+
   const navigate = useNavigate();
 
   const handleClick = (hash) => {
@@ -55,13 +56,13 @@ export const ButtonSouvenir = ({ showButton }) => {
       onMouseEnter={() => sethover(true)}
       onMouseLeave={() => sethover(false)}
       ref={buttonRef}
-      className="buttonRegalo w-14 hover:w-72 group fixed lg:bottom-6 max-lg:top-[25%] lg:left-7 max-lg:right-1 z-[19] hover:bg-[#00000030] h-14 bg-transparent border-2 border-primary rounded-full p-3  transition-all ease-in-out duration-200 overflow-hidden"
-      onClick={() => handleClick(`${links[4]}`)}
+      className="buttonRegalo w-14 lg:hover:w-72 group fixed lg:bottom-6 max-lg:top-[25%] lg:left-7 max-lg:right-1 z-[19] hover:bg-[#00000030] h-14 bg-transparent border-2 border-primary rounded-full p-3 transition-all ease-in-out duration-200 overflow-hidden"
+      onClick={() => handleClick(`${links[3]}`)}
     >
       <figure className="imgButton w-full group-hover:w-8 h-8 inline-block transition-all ease-in-out duration-200">
         <img className="regaloIcon" src="/iconos/regalo.svg" alt="" />
       </figure>
-      <span className="textButton text-sm text-primary inline-block w-0 group-hover:w-[70%] text-center whitespace-nowrap pointer-events-none  transition-all ease-in-out duration-200 group-hover:">
+      <span className="textButton text-sm text-primary inline-block w-0 max-lg:hidden lg:group-hover:w-[70%] text-center whitespace-nowrap pointer-events-none  transition-all ease-in-out duration-200 group-hover:">
         <span className="textMessage opacity-0 group-hover:opacity-100 inline-block ml-2 delay-150 transition-all ease-in-out duration-200 translate-x-11 group-hover:translate-x-0">
           COMPRA AQUÍ <br /> UN REGALO INOLVIDABLE
         </span>
