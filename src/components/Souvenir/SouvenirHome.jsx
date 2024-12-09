@@ -24,6 +24,7 @@ export const SouvenirHome = ({ reff }) => {
       <div className="content relative flex max-lg:flex-col w-full h-full px-10">
         <div className="lg:w-1/2 xs:w-full xs:h-[60%] lg:h-full" />
         <div className="lg:w-1/2 xs:w-full xs:flex-1 lg:h-full flex lg:justify-center lg:items-start flex-col lg:pl-20">
+        
           <PasoUno
             btn={
               <button
