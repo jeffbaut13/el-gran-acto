@@ -2,8 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 export const links = [
   "INICIO",
-  "DONA-TU-TIEMPO",
-  "INVITA-A-DONAR",
+  "ENTREGA-TU-TIEMPO",
+  "INVITA-A-ENTREGAR",
   /* "LA-CANCIÓN", */
   "UN-REGALO-INOLVIDABLE",
   "CONOCE-A-LOS-CLÁSICOS",

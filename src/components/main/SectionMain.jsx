@@ -69,7 +69,7 @@ export const SectionMain = ({ reff }) => {
         </div>
         <div className="flex flex-col items-center">
           <button onClick={()=>handleClick(`${links[1]}`)} className="leading-[1.1rem] text-[1.15rem] py-1 px-14 HoverButtons">
-            DONA TIEMPO <br />A UN ABUELITO
+            ENTREGA TIEMPO <br />A UN ABUELITO
           </button>
         </div>
       </div>

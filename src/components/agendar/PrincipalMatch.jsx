@@ -44,7 +44,7 @@ const PrincipalMatch = ({ cambiarComponente }) => {
 
         <div className="flex-1">
           <h1 className="titles font-Wayland mt-5 max-lg:text-center">
-            DONA TIEMPO A UN ABUELITO EN NAVIDAD
+            ENTREGA TIEMPO A UN ABUELITO EN NAVIDAD
           </h1>
           <p className="lg:text-start  mt-5 xs:text-center w-full">
             En Navidad, entregar es mejor que recibir, por eso nos unimos al
