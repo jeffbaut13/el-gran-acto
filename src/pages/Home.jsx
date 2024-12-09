@@ -70,6 +70,7 @@ export const Home = () => {
       setShowButtonDonar(false);
     }
   }, [
+    inViewSection,
     inViewSection1,
     inViewSection2,
     inViewSection3,
