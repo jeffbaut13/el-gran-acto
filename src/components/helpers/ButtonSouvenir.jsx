@@ -52,12 +52,10 @@ export const ButtonSouvenir = ({ showButton }) => {
     <>
       {isMobile ? (
         <button
-        ref={buttonRef}
-          
+          ref={buttonRef}
           className="buttonRegalo w-84 group fixed lg:bottom-6 max-lg:top-[28%] lg:left-7 max-lg:-right-[4.8rem] z-[19] bg-[#00000030] border-2 border-primary rounded-full px-3 py-1.5 transition-all ease-in-out duration-200 overflow-hidden items-center justify-between -rotate-90"
           onClick={() => handleClick(`${links[3]}`)}
         >
-          
           <figure className="imgButton w-6 inline-block transition-all ease-in-out duration-200">
             <img className="regaloIcon" src="/iconos/regalo.svg" alt="" />
           </figure>
