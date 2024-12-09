@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import React, { useEffect, useRef } from "react";
+import { isMobile } from "../../data/medidas";
 
 export const Scroll = ({ scrollIcon }) => {
   const iconoScroll = useRef(null);
@@ -7,7 +8,7 @@ export const Scroll = ({ scrollIcon }) => {
   useEffect(() => {
     if (scrollIcon) {
       gsap.to(".scroll", {
-        translateY: 0,
+        translateY: isMobile ? -25 : 0,
         duration: 0.5,
         ease: "power1.inOut",
       });

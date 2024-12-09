@@ -59,7 +59,7 @@ export const ButtonDonar = ({ showButton }) => {
         onClick={() => handleClick(`${links[1]}`)}
       >
         <span className="whitespace-nowrap -rotate-90">
-          DONA TIEMPO <br />A UN ABUELITO
+          ENTREGA TIEMPO <br />A UN ABUELITO
         </span>
       </button>
     </div>
