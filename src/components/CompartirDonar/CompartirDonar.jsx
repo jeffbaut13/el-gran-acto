@@ -40,7 +40,7 @@ export const CompartirDonar = ({ reff }) => {
               Invitar a través de:
             </h4>
             <div className="w-full flex justify-between mt-2 gap-4">
-              <Socials texto={"En Navidad, entregar es mejor que recibir. Por eso, te estoy invitado a donar tu tiempo a un abuelito en: ElGranActo.com"} url={"https://ElGranActo.com"} />
+              <Socials texto={"En Navidad, entregar es mejor que recibir. Por eso, te estoy invitado a donar tu tiempo a un abuelito en: "} url={"https://ElGranActo.com"} />
             </div>
           </div>
         </div>
