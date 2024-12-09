@@ -76,7 +76,7 @@ export const PasosComponentes = ({
       if (text != "") setAudio(true);
       setLoading(true);
       await generateAndCombineAudio(
-        `Hola ${text}. ${text2} que te quiere mucho te dedica esta canción porque nunca se va a olvidar de ti.`
+        `Hola ${text}. ${text2} que los queremos mucho les dedicamos esta canción, porque nunca nos vamos a olvidar de ustedes.`
       );
 /*        await generateAndCombineAudioTest(
         `Hola ${text}, alguien muy especial te ha dedicado esta cancion por que te quiere mucho.`

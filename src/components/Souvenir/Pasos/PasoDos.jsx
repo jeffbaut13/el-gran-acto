@@ -17,7 +17,7 @@ export const PasoDos = ({
     const wordCount = value.trim().split(/\s+/).length;
 
     // Permitir cambios solo si hay 2 palabras o menos
-    if (wordCount <= 2) {
+    if (wordCount <= 3) {
       setter(value);
     }
   }
