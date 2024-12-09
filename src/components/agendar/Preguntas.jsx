@@ -147,7 +147,7 @@ const Preguntas = () => {
               </div>
               <div className="w-[90%] flex">
                 <p className="text-primary text-start capitalize font-StageGroteskRegular">
-                  Programa una visita y dona tu tiempo en el ancianato de
+                  Programa una visita y entrega tu tiempo en el ancianato de
                   Facatativá.
                 </p>
               </div>
@@ -168,7 +168,7 @@ const Preguntas = () => {
               </div>
               <div className="w-[90%] flex">
                 <p className="text-primary text-start capitalize font-StageGroteskRegular">
-                  Realiza una videollamada y dona tu tiempo en el ancianato de
+                  Realiza una videollamada y entrega tu tiempo en el ancianato de
                   Facatativá.
                 </p>
               </div>
