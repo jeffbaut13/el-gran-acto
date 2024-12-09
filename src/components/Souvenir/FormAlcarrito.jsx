@@ -108,6 +108,7 @@ const Formulario = () => {
           <a
             href="https://www.interrapidisimo.com/proteccion-de-datos-personales/"
             className="text-primary"
+            target="_blank"
           >
             <strong className="font-StageGroteskBlack">
               Política de tratamiento de datos Personales{" "}
