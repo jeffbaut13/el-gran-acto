@@ -20,7 +20,7 @@ const Buscando = () => {
   return (
     <div className="w-full h-full flex items-center justify-center">
       <p className="text-[3rem] font-Wayland">
-        + DE <span>{count}</span>
+        + DE <span className=" font-n">{count}</span>
       </p>
     </div>
   );
