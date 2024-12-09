@@ -18,6 +18,7 @@ import TicketInterDay from "../components/boleta/TicketInterDay";
 import { InterDay } from "../pages/InterDay";
 import { ElgranActo } from "../pages/ElgranActo";
 import Agotados from "../components/agendar/Agotados";
+import { GraciasSouvenir } from "../components/Souvenir/GraciasSouvenir";
 
 function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();
@@ -153,6 +154,15 @@ const router = createBrowserRouter([
     element: (
       <>
         <Agotados />
+      </>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/gracias",
+    element: (
+      <>
+        <GraciasSouvenir />
       </>
     ),
     errorElement: <ErrorPage />,
