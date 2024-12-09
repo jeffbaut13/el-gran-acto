@@ -20,23 +20,23 @@ const Gracias = ({ nombreUsuario, tipoInteraccion, fecha, hora, abuelito }) => {
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
-      <div className="border border-primary bg-black bg-opacity-85 md:w-[70%] md:h-[80%] xs:w-[25rem] xs:h-[30rem] rounded-xl flex flex-col justify-center items-center">
-        <h1 className="text-[2rem] font-Wayland text-center">
+      <div className="border border-primary bg-black bg-opacity-85 md:w-[70%] md:h-[80%] xs:w-[25rem] xs:h-[25rem] rounded-xl flex flex-col justify-center items-center">
+        <h1 className="lg:text-[2rem] xs:text-[1.7rem] font-Wayland text-center leading-7">
           {nombreUsuario.toUpperCase()}, AHORA HACES PARTE DEL GRAN ACTO
         </h1>
         {tipoInteraccion === "visita" ? (
-          <p className="font-StageGroteskRegular md:px-40 my-10 text-center">
+          <p className="font-StageGroteskRegular lg:px-40 xs:px-1 my-10 text-center leading-5">
             Tu cita quedó agendada para el {fecha}, de {formatearHora(hora)}, en el Centro de Bienestar del Anciano San José, Cra. 6 # 6-29, Facatativá, Cundinamarca.
           </p>
         ) : (
-          <p className="font-StageGroteskRegular px-40 my-10 text-center">
+          <p className="font-StageGroteskRegularlg:px-40 xs:px-1 my-10 text-center leading-5">
             Tu videollamada con {abuelito}, quedó agendada para el {fecha}, de {formatearHora(hora)}.
           </p>
         )}
         {tipoInteraccion === "visita" ? (
-          <p>¡Te esperamos, gracias por donar tu tiempo!</p>
+          <p className="font-StageGroteskRegular lg:px-40 xs:px-1 text-center leading-5">¡Te esperamos, gracias por donar tu tiempo!</p>
         ) : (
-          <p>
+          <p className="font-StageGroteskRegular lg:px-40 xs:px-1 text-center leading-5">
             Gracias por donar tu tiempo, pronto recibirás un mail con el link de la videollamada.
           </p>
         )}

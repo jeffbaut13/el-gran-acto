@@ -113,7 +113,7 @@ const Preguntas = () => {
                 <button
                   key={index}
                   onClick={() => handleSeleccionarOpcion(index)}
-                  className="border border-primary my-2 rounded-md w-full h-10 flex justify-start font-StageGroteskRegular capitalize bg-transparent text-primary hover:bg-primary hover:text-black"
+                  className="border border-primary my-2 rounded-md w-full h-10 flex justify-start font-StageGroteskRegular capitalize bg-transparent text-primary lg:hover:bg-primary lg:hover:text-black"
                 >
                   <p className="pl-2">{String.fromCharCode(65 + index)}</p>
                   <p className="ml-2">{texto}</p>
@@ -135,7 +135,7 @@ const Preguntas = () => {
           <div className="visita  xs:flex xs:flex-col md:flex md:flex-row gap-5">
             <button
               onClick={() => mostrarBuscando("visita")}
-              className="flex flex-col md:w-[33rem] md:h-[8rem] xs:w-[25rem] xs:h-[9rem] bg-transparent border border-primary font-Wayland hover:scale-105"
+              className="flex flex-col md:w-[33rem] md:h-[8rem] xs:w-[25rem] xs:h-[9rem] bg-transparent border border-primary font-Wayland lg:hover:scale-105"
             >
               <div className="flex border-b-[1px] border-primary w-[90%] justify-between">
                 <span className="text-primary text-[2rem]">Agendar Visita</span>
@@ -154,7 +154,7 @@ const Preguntas = () => {
             </button>
             <button
               onClick={() => mostrarBuscando("videollamada")}
-              className="flex flex-col md:w-[33rem] md:h-[8rem] xs:w-[25rem] xs:h-[9rem] bg-transparent border border-primary font-Wayland hover:scale-105"
+              className="flex flex-col md:w-[33rem] md:h-[8rem] xs:w-[25rem] xs:h-[9rem] bg-transparent border border-primary font-Wayland lg:hover:scale-105"
             >
               <div className="flex border-b-[1px] border-primary w-[90%] justify-between">
                 <span className="text-primary text-[2rem]">

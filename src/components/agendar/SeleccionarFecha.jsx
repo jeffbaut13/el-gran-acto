@@ -145,7 +145,7 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
   }
 
   return (
-    <div className="w-full h-screen flex py-12 px-20">
+    <div className="w-full h-screen flex md:py-12 xs:py-2 px-20">
       <div className="w-full h-full flex flex-col justify-center items-center">
         <p className=" xs:w-[25rem] md:w-auto text-center">Selecciona el día, la hora y registra tus datos para donar tu tiempo.</p>
         <div className="xs:flex xs:flex-col md:flex md:flex-row gap-5">
@@ -204,9 +204,9 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
           </div>
 
           {/* Formulario */}
-          <div className="border border-primary rounded-xl mt-4 w-[21rem] h-[26rem]">
+          <div className="border border-primary rounded-xl mt-4 w-[21rem] md:h-[26rem] xs:h-[20rem]">
             <form className="px-5 w-full flex flex-col justify-center h-full">
-              <fieldset className="flex flex-col items-center py-5">
+              <fieldset className="flex flex-col items-center md:py-5 xs:py-2">
                 <label>Nombre:</label>
                 <input
                   name="nombre"
@@ -216,7 +216,7 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
                   placeholder="Ingresa tu nombre"
                 />
               </fieldset>
-              <fieldset className="flex flex-col items-center py-5">
+              <fieldset className="flex flex-col items-center md:py-5 xs:py-2">
                 <label>Celular:</label>
                 <input
                   name="celular"
@@ -226,7 +226,7 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
                   placeholder="Ingresa tu número"
                 />
               </fieldset>
-              <fieldset className="flex flex-col items-center py-5">
+              <fieldset className="flex flex-col items-center md:py-5 xs:py-2">
                 <label>Correo:</label>
                 <input
                   name="correo"
@@ -236,7 +236,7 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
                   placeholder="correo@correo.com"
                 />
               </fieldset>
-              <fieldset className="flex flex-col items-center py-5">
+              <fieldset className="flex flex-col items-center md:py-5 xs:py-2">
                 <label>Acompañantes:</label>
                 <select
                   name="acompanantes"
