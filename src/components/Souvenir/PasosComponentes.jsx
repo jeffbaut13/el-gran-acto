@@ -10,12 +10,14 @@ import { PasoCuatro } from "./Pasos/PasoCuatro";
 import { PasoDos } from "./Pasos/PasoDos";
 
 // Componentes de ejemplo
- 
+
 const Component1 = ({
   HandleAudio,
   audio,
   setText,
   setText2,
+  text,
+  text2,
   handleGenerateAudio,
   loading,
   isAudioReady,
@@ -27,6 +29,8 @@ const Component1 = ({
     audio={audio}
     setText={setText}
     setText2={setText2}
+    text={text}
+    text2={text2}
     handleGenerateAudio={handleGenerateAudio}
     loading={loading}
     isAudioReady={isAudioReady}
@@ -34,8 +38,10 @@ const Component1 = ({
     isButtonDisabled={isButtonDisabled}
   />
 );
-const Component2 = ({HandleAudio, back}) => <PasoTres  back={back} HandleAudio={HandleAudio}/>;
-const Component3 = ({  back}) => <PasoCuatro back={back}  />;
+const Component2 = ({ HandleAudio, back }) => (
+  <PasoTres back={back} HandleAudio={HandleAudio} />
+);
+const Component3 = ({ back }) => <PasoCuatro back={back} />;
 
 export const PasosComponentes = ({
   activePaso,
@@ -50,7 +56,7 @@ export const PasosComponentes = ({
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   // Arreglo con los componentes
-  const components = [  Component1, Component2, Component3];
+  const components = [Component1, Component2, Component3];
   useEffect(() => {
     // Actualiza el estado del botón según la validación
     setIsButtonDisabled(!isValidText(text) || !isValidText(text2));
@@ -72,7 +78,7 @@ export const PasosComponentes = ({
       await generateAndCombineAudio(
         `Hola ${text}, ${text2}, que te quiere mucho te dedica esta canción porque nunca se va a olvidar de ti.`
       );
-     /*  await generateAndCombineAudioTest(
+      /*  await generateAndCombineAudioTest(
         `Hola ${text}, alguien muy especial te ha dedicado esta cancion por que te quiere mucho.`
       ); */
       setLoading(false);
@@ -107,8 +113,10 @@ export const PasosComponentes = ({
         <ActiveComponent
           HandleAudio={HandleAudio}
           audio={activePaso == 0 ? audio : null}
+          text={activePaso == 0 ? text : null}
           setText={activePaso == 0 ? setText : null}
           setText2={activePaso == 0 ? setText2 : null}
+          text2={activePaso == 0 ? text2 : null}
           isButtonDisabled={activePaso == 0 ? isButtonDisabled : null}
           handleGenerateAudio={activePaso == 0 ? handleGenerateAudio : null}
           loading={activePaso == 0 ? loading : null}
