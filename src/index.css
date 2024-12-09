@@ -131,6 +131,7 @@ button, .button {
 /* Navegación (flechas) */
 .react-datepicker__navigation {
   top: 1rem;
+  display: none
 }
 p{
   @apply text-lg leading-4 ;
