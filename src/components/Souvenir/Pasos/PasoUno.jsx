@@ -13,7 +13,7 @@ export const PasoUno = ({ HandleAudio, btn }) => {
         un mensaje único que tu abuelo, padre, o hijo  <br className="max-lg:hidden"/>
         podrá ver y escuchar por siempre.
       </p>
-      <h6 className="py-6 max-lg:w-full max-lg:text-center">$<span className="font-BebasNeue text-4xl">120.000</span></h6>
+      <h6 className="py-6 max-lg:w-full max-lg:text-center">$<span className="font-BebasNeue text-4xl">99.900</span></h6>
       {btn}
     </>
   );
