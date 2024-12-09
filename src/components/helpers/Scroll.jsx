@@ -8,7 +8,7 @@ export const Scroll = ({ scrollIcon }) => {
   useEffect(() => {
     if (scrollIcon) {
       gsap.to(".scroll", {
-        translateY: isMobile ? -50 : 0,
+        translateY: isMobile ? -30 : 0,
         duration: 0.5,
         ease: "power1.inOut",
       });
