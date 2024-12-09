@@ -102,7 +102,7 @@ const router = createBrowserRouter([
     ),
     errorElement: <ErrorPage />,
   },
-  {
+  /* {
     path: "/personalizacion",
     element: (
       <>
@@ -110,7 +110,7 @@ const router = createBrowserRouter([
       </>
     ),
     errorElement: <ErrorPage />,
-  },
+  }, */
   {
     path: "/interday2024",
     element: (
