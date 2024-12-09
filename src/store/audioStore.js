@@ -67,7 +67,7 @@ const useAudioStore = create((set, get) => ({
           body: formdata,
         });
 
-        if (!response.ok) throw new Error("Error al combinar los audios");
+        if (!response.ok) throw new Error("Error al combinar los audios, en produccion");
 
         const combinedBlob = await response.blob(); // Convertir la respuesta en Blob
         const url = URL.createObjectURL(combinedBlob); // Crear URL para el Blob

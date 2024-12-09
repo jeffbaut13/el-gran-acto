@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-
 import {
   enviarDatosAFirebase,
   redireccionar,
@@ -9,9 +8,11 @@ import useAudioStore from "../../store/audioStore";
 import { useSnapshot } from "valtio";
 import ImgRender from "../../store/valtioStore";
 import { Loading } from "../helpers/Loading";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Formulario = () => {
   const [loadingButton, setLoadingButton] = useState(false);
+  const [recaptchaValid, setRecaptchaValid] = useState(false); // Estado para el ReCAPTCHA
   const { urlFirabesAudio } = useAudioStore(); // Audio desde Zustand
   const snap = useSnapshot(ImgRender); // Imagen desde Valtio
 
@@ -60,12 +61,18 @@ const Formulario = () => {
       setLoadingButton(false);
     }
   };
-    const isButtonDisabled =
+
+  const handleRecaptchaChange = (value) => {
+    setRecaptchaValid(!!value); // Actualiza el estado si el ReCAPTCHA es válido
+  };
+
+  const isButtonDisabled =
     loadingButton ||
     !urlFirabesAudio ||
     snap.Imagen === "/imagenes/file.webp" ||
     email.trim() === "" ||
-    !aceptaTerminos;
+    !aceptaTerminos ||
+    !recaptchaValid; // Asegúrate de que el ReCAPTCHA sea válido
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -101,6 +108,7 @@ const Formulario = () => {
           <a
             href="https://www.interrapidisimo.com/proteccion-de-datos-personales/"
             className="text-primary"
+            target="_blank"
           >
             <strong className="font-StageGroteskBlack">
               Política de tratamiento de datos Personales{" "}
@@ -111,6 +119,10 @@ const Formulario = () => {
         <p className="text-red-400 w-full">
           {errors.aceptaTerminos && <>{errors.aceptaTerminos.message}</>}
         </p>
+        <ReCAPTCHA
+          sitekey={import.meta.env.VITE_RECAPTCHA_SITEKEY} // Accede al sitekey desde el .env
+          onChange={handleRecaptchaChange} // Llama al controlador
+        />
       </div>
 
       <button
@@ -127,3 +139,7 @@ const Formulario = () => {
 };
 
 export default Formulario;
+
+
+
+
