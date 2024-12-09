@@ -64,7 +64,6 @@ export const enviarDatosAFirebase = async ({
       imagen: imagenURL,
       promoId,
       numeroOrden: "",
-      stock: "",
       orderStatus:"",
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
