@@ -140,8 +140,9 @@ const Formulario = () => {
       </form>
       <ReCAPTCHA
         ref={recaptchaRef} // Referencia para usar el método `executeAsync`
-        sitekey="6LdEFpcqAAAAALJ2b3D7M1WKjVtHSxVz0iSsWI6u"
+        sitekey={import.meta.env.VITE_RECAPTCHA_SITEKEY} // Accede al sitekey desde el .env
         size="invisible" // Configurar como invisible
+        className="capcha fixed bottom-0 z-50"
       />
     </>
   );
