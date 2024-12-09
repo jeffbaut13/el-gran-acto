@@ -244,10 +244,10 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
                   onChange={manejarCambioFormulario}
                   className="bg-transparent border border-primary rounded-lg w-full text-center placeholder:text-primary placeholder:opacity-35"
                 >
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
+                  <option className=" w-full text-center" value="0">0</option>
+                  <option className=" w-full text-center" value="1">1</option>
+                  <option className=" w-full text-center" value="2">2</option>
+                  <option className=" w-full text-center" value="3">3</option>
                 </select>
               </fieldset>
             </form>
