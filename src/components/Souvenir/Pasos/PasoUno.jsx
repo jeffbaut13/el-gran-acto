@@ -14,7 +14,7 @@ export const PasoUno = ({ HandleAudio, btn }) => {
         podrá ver y escuchar por siempre.
       </p>
       <h6 className="py-6 max-lg:w-full max-lg:text-center">$<span className="font-neue text-4xl">99.900</span></h6>
-      <p>PRÓXIMAMENTE ESTARÁ HABILITADO</p>
+      <p>Esta entrega viene en camino y pronto podrás tenerla en casa.</p>
       {/* 
       {btn} */}
     </>
