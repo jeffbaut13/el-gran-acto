@@ -242,12 +242,12 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
                   name="acompanantes"
                   value={formData.acompanantes}
                   onChange={manejarCambioFormulario}
-                  className="bg-transparent border border-primary rounded-lg w-full flex-col flexCenter placeholder:text-primary placeholder:opacity-35"
+                  className="bg-transparent border border-primary rounded-lg w-full flexCenter placeholder:text-primary placeholder:opacity-35"
                 >
-                  <option className=" w-full text-center" value="0">0</option>
-                  <option className=" w-full text-center" value="1">1</option>
-                  <option className=" w-full text-center" value="2">2</option>
-                  <option className=" w-full text-center" value="3">3</option>
+                  <option className="w-full text-center" value="0">0</option>
+                  <option className="w-full text-center" value="1">1</option>
+                  <option className="w-full text-center" value="2">2</option>
+                  <option className="w-full text-center" value="3">3</option>
                 </select>
               </fieldset>
             </form>
