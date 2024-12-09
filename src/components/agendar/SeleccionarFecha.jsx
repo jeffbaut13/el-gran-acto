@@ -187,7 +187,7 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
             {selectedDate && (
               <>
                 <select
-                  className="border border-primary rounded-lg p-2 pl-[calc(50%-45px)]"
+                  className="border border-primary rounded-lg p-2 text-center"
                   value={selectedHour}
                   onChange={(e) => setSelectedHour(e.target.value)}
                 >

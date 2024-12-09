@@ -13,7 +13,7 @@ import { Souvenir } from "../components/Souvenir/Souvenir";
 
 import Scanner from "../components/boleta/Scanner";
 import TicketInter from "../components/boleta/TicketInterDay";
- import TicketInvitados from "../components/boleta/TicketInvitados";
+import TicketInvitados from "../components/boleta/TicketInvitados";
 import TicketInterDay from "../components/boleta/TicketInterDay";
 import { InterDay } from "../pages/InterDay";
 import { ElgranActo } from "../pages/ElgranActo";
