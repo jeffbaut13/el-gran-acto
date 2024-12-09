@@ -107,13 +107,13 @@ const Preguntas = () => {
 
         {estado === "preguntas" && (
           <div className="border border-primary w-[25rem] h-[28rem] mt-5 rounded-xl flex flex-col items-center justify-center">
-            <div className="px-14 w-full">
-              <p className="text-center font-StageGroteskBold mb-5">{pregunta}</p>
+            <div className="px-12 w-full">
+              <p className="text-center font-StageGroteskBold mb-5 ">{pregunta}</p>
               {opciones.map((texto, index) => (
                 <button
                   key={index}
                   onClick={() => handleSeleccionarOpcion(index)}
-                  className="border border-primary my-2 rounded-md w-full h-10 flex justify-start font-StageGroteskRegular capitalize bg-transparent text-primary lg:hover:bg-primary lg:hover:text-black"
+                  className="border border-primary normal-case  my-2 rounded-md w-full h-10 flex text-start justify-start font-StageGroteskRegular bg-transparent text-primary lg:hover:bg-primary lg:hover:text-black"
                 >
                   <p className="pl-2">{String.fromCharCode(65 + index)}</p>
                   <p className="ml-2">{texto}</p>
