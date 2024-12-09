@@ -14,7 +14,7 @@ export const PasoDos = ({
       <h2 className="font-Wayland titles max-lg:text-center">
         SEGURO LO <br className="max-lg:hidden"/>
         ESCUCHARÁN <br className="max-lg:hidden"/>
-        +DE<span className="font-BebasNeue">75</span> VECES
+        +DE<span className="font-neue">75</span> VECES
       </h2>
       <p className="py-6 leading-6 max-lg:text-center">
         {!isAudioReady

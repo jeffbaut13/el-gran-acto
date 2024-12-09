@@ -47,7 +47,7 @@ export const ErrorPage = () => {
           <div className="flex flex-col items-center lg:justify-between xs:justify-around w-full h-full z-10 relative py-14">
             {/* Fondo de la pantalla principal */}
             <div className="titulo w-full flex flex-col gap-3 justify-center items-center">
-              <h2 className="text-primary  lg:text-5xl xs:text-4xl font-BebasNeue">
+              <h2 className="text-primary  lg:text-5xl xs:text-4xl font-neue">
                 404
               </h2>
               <h1 className="text-primary   lg:text-5xl xs:text-4xl text-center">
