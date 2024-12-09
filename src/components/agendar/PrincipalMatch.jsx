@@ -64,7 +64,7 @@ const PrincipalMatch = ({ cambiarComponente }) => {
             </button>
             <button className="py-2 px-3.5 max-lg:w-40 text-base HoverButtons"
             onClick={() => cambiarComponente("Reagendar")}>
-              REAGENDAR
+              CANCELAR CITA
             </button>
           </div>
         </div>
