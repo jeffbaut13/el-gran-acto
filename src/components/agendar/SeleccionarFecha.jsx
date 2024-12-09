@@ -3,8 +3,8 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import es from "date-fns/locale/es";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
-import Gracias from "./Gracias"; // Importa el componente Gracias
-import Agotados from "./Agotados"; // Importa el componente Agotados
+import Gracias from "./Gracias";
+import Agotados from "./Agotados";
 
 const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -20,7 +20,9 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
   });
   const [registroExitoso, setRegistroExitoso] = useState(false); // Controla la redirección
   const [sinOpciones, setSinOpciones] = useState(false); // Controla si se muestran opciones disponibles
-  const [datosGracias, setDatosGracias] = useState({}); // Datos para el componente Gracias
+  const [datosGracias, setDatosGracias] = useState({});
+  const [autorizacion, setAutorizacion] = useState(false); // Estado para el checkbox
+  const [errorAutorizacion, setErrorAutorizacion] = useState(""); // Mensaje de error para el checkbox
 
   registerLocale("es", es);
 
@@ -49,7 +51,7 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
           );
 
         if (opciones.length === 0) {
-          setSinOpciones(true); // No hay opciones disponibles
+          setSinOpciones(true);
           return;
         }
 
@@ -73,28 +75,29 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
     obtenerFechasDesdeFirestore();
   }, [documentoId, tipoInteraccion]);
 
-  // Manejar selección de fecha
   const manejarSeleccionFecha = (date) => {
     setSelectedDate(date);
 
-    // Actualizar las horas disponibles para la fecha seleccionada
     const fechaSeleccionada = date
       ? date.toLocaleDateString("es-ES", { day: "2-digit", month: "2-digit", year: "numeric" })
       : null;
     setHorasDisponibles(mapaHoras[fechaSeleccionada] || []);
-    setSelectedHour(""); // Limpiar hora seleccionada si se cambia la fecha
+    setSelectedHour(""); // Limpiar la hora si se cambia la fecha
   };
 
-  // Manejar cambios en el formulario
   const manejarCambioFormulario = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Guardar datos en el backend
   const registrarDatos = async () => {
     if (!selectedDate || !selectedHour || !formData.nombre || !formData.celular || !formData.correo) {
       alert("Por favor, completa todos los campos y selecciona una fecha y hora.");
+      return;
+    }
+
+    if (!autorizacion) {
+      setErrorAutorizacion("Debes aceptar el tratamiento de datos para continuar.");
       return;
     }
 
@@ -128,9 +131,9 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
           tipoInteraccion,
           fecha: fechaSeleccionada,
           hora: selectedHour,
-          abuelito: documentoId, // Usa el nombre real si está disponible
+          abuelito: documentoId,
         });
-        setRegistroExitoso(true); // Mostrar Gracias.jsx
+        setRegistroExitoso(true);
       }
     } catch (error) {
       console.error("Error al registrar los datos:", error);
@@ -138,7 +141,6 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
     }
   };
 
-  // Mostrar el componente Agotados si no hay opciones disponibles
   if (sinOpciones) {
     return <Agotados />;
   }
@@ -158,9 +160,10 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
   return (
     <div className="w-full h-screen flex lg:py-12 xs:py-2 px-20">
       <div className="w-full h-full flex flex-col justify-center items-center">
-        <p className=" xs:w-[25rem] md:w-auto text-center ">Selecciona el día, la hora y registra tus datos para donar tu tiempo.</p>
+        <p className="xs:w-[25rem] md:w-auto text-center">
+          Selecciona el día, la hora y registra tus datos para donar tu tiempo.
+        </p>
         <div className="xs:flex xs:flex-col md:flex md:flex-row gap-5">
-          {/* Calendario */}
           <div className="relative border border-primary rounded-xl mt-4 calendario flex flex-col items-center justify-center backdrop-blur-2xl">
             <DatePicker
               selected={selectedDate}
@@ -193,10 +196,8 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
                 return fechasDisponibles.includes(formattedDate);
               }}
             />
-             {/* Mostrar las horas disponibles */}
-          <div className="flex flex-col items-center justify-center">
-            {selectedDate && (
-              <>
+            <div className="flex flex-col items-center justify-center">
+              {selectedDate && (
                 <select
                   className="border border-primary rounded-lg p-2 text-center"
                   value={selectedHour}
@@ -209,13 +210,11 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
                     </option>
                   ))}
                 </select>
-              </>
-            )}
-          </div>
+              )}
+            </div>
           </div>
 
-          {/* Formulario */}
-          <div className="border border-primary rounded-xl mt-4 w-[21rem] md:h-[26rem] xs:h-[20rem]">
+          <div className="border border-primary rounded-xl mt-4 w-[21rem] md:h-[26rem] xs:h-[22rem]">
             <form className="px-5 w-full flex flex-col justify-center h-full">
               <fieldset className="flex flex-col items-center md:py-5 xs:py-2">
                 <label>Nombre:</label>
@@ -247,25 +246,37 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
                   placeholder="correo@correo.com"
                 />
               </fieldset>
-              <fieldset className="flex flex-col items-center md:py-5 xs:py-2">
-                <label>Acompañantes:</label>
-                <select
-                  name="acompanantes"
-                  value={formData.acompanantes}
-                  onChange={manejarCambioFormulario}
-                  className="bg-transparent border border-primary rounded-lg pl-[calc(50%-9px)]  placeholder:text-primary placeholder:opacity-35"
-                >
-                  <option  value="0">0</option>
-                  <option  value="1">1</option>
-                  <option  value="2">2</option>
-                  <option  value="3">3</option>
-                </select>
-              </fieldset>
+              <div className="flex flex-wrap items-center gap-4 mt-4">
+                <input
+                  className="w-4 h-4"
+                  type="checkbox"
+                  checked={autorizacion}
+                  onChange={() => {
+                    setAutorizacion(!autorizacion);
+                    setErrorAutorizacion("");
+                  }}
+                />
+                <span className="text-primary font-StageGroteskRegular lg:text-xs xs:text-sm max-lg:w-[92%]">
+                  Autorizo el tratamiento de mis datos personales para la
+                  finalidad descrita en la{" "}
+                  <a
+                    href="https://www.interrapidisimo.com/proteccion-de-datos-personales/"
+                    className="text-primary" target="_blank"
+                  >
+                    <strong className="font-StageGroteskBlack">
+                      Política de tratamiento de datos Personales{" "}
+                    </strong>
+                  </a>
+                  de Inter Rapidísimo.
+                </span>
+              </div>
+              {errorAutorizacion && (
+                <p className="text-red-400 w-full">{errorAutorizacion}</p>
+              )}
             </form>
           </div>
         </div>
 
-        {/* Botón de registro */}
         <button
           onClick={registrarDatos}
           className="button_large HoverButtons mt-5"
