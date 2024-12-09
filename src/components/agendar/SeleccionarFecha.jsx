@@ -4,6 +4,7 @@ import es from "date-fns/locale/es";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import Gracias from "./Gracias"; // Importa el componente Gracias
+import Agotados from "./Agotados"; // Importa el componente Agotados
 
 const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -18,6 +19,7 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
     acompanantes: "0",
   });
   const [registroExitoso, setRegistroExitoso] = useState(false); // Controla la redirección
+  const [sinOpciones, setSinOpciones] = useState(false); // Controla si se muestran opciones disponibles
   const [datosGracias, setDatosGracias] = useState({}); // Datos para el componente Gracias
 
   registerLocale("es", es);
@@ -45,6 +47,11 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
               opcion.estado === false &&
               opcion.interaccion === tipoInteraccion
           );
+
+        if (opciones.length === 0) {
+          setSinOpciones(true); // No hay opciones disponibles
+          return;
+        }
 
         // Crear el array de fechas únicas
         const fechas = [...new Set(opciones.map((opcion) => opcion.fecha))];
@@ -131,6 +138,11 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
     }
   };
 
+  // Mostrar el componente Agotados si no hay opciones disponibles
+  if (sinOpciones) {
+    return <Agotados />;
+  }
+
   if (registroExitoso) {
     return (
       <Gracias
@@ -139,7 +151,6 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
         fecha={datosGracias.fecha}
         hora={datosGracias.hora}
         abuelito={datosGracias.abuelito}
-       
       />
     );
   }
