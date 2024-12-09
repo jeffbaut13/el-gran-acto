@@ -1,5 +1,5 @@
 export const videos = {
-  comercial: "https://www.youtube.com/watch?v=jLVI88fkNKs",
+  comercial: "https://www.youtube.com/watch?v=yV3bIwC3y1g",
   resumen: "https://www.youtube.com/watch?v=jLVI88fkNKs",
   esperanza: "/videos/esperanza.mp4",
   fernando: "/videos/fernando.mp4",

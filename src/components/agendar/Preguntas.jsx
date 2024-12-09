@@ -132,10 +132,10 @@ const Preguntas = () => {
         )}
 
         {estado === "visita" && (
-          <div className="visita flex gap-5">
+          <div className="visita  xs:flex xs:flex-col md:flex md:flex-row gap-5">
             <button
-              onClick={() => mostrarBuscando("Visita")}
-              className="flex flex-col w-[33rem] h-[8rem] bg-transparent border border-primary font-Wayland hover:scale-105"
+              onClick={() => mostrarBuscando("visita")}
+              className="flex flex-col md:w-[33rem] md:h-[8rem] xs:w-[25rem] xs:h-[9rem] bg-transparent border border-primary font-Wayland hover:scale-105"
             >
               <div className="flex border-b-[1px] border-primary w-[90%] justify-between">
                 <span className="text-primary text-[2rem]">Agendar Visita</span>
@@ -154,7 +154,7 @@ const Preguntas = () => {
             </button>
             <button
               onClick={() => mostrarBuscando("videollamada")}
-              className="flex flex-col w-[33rem] h-[8rem] bg-transparent border border-primary font-Wayland hover:scale-105"
+              className="flex flex-col md:w-[33rem] md:h-[8rem] xs:w-[25rem] xs:h-[9rem] bg-transparent border border-primary font-Wayland hover:scale-105"
             >
               <div className="flex border-b-[1px] border-primary w-[90%] justify-between">
                 <span className="text-primary text-[2rem]">
@@ -179,10 +179,13 @@ const Preguntas = () => {
         {estado === "buscando" && <Buscando />}
 
         {estado === "viejito" && (
-          <Viejito onAgendar={handleAgendar} tipoInteraccion={tipoInteraccion} />
-        )}
+  <Viejito
+    onAgendar={() => setEstado("seleccionarFecha")}
+    tipoInteraccion={tipoInteraccion}
+  />
+)}
 
-        {estado === "seleccionarFecha" && <SeleccionarFecha />}
+{estado === "seleccionarFecha" && <SeleccionarFecha />}
       </div>
     </div>
   );

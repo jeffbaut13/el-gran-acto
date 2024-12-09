@@ -4,6 +4,10 @@
 
  
 @font-face {
+  font-family: "Fontfabric-Regular";
+  src: url("/fonts/Fontfabric-UniNeueRegular.ttf") format("truetype");
+}
+@font-face {
   font-family: "Alterenate-regular";
   src: url("/fonts/Alternate-Regular.ttf") format("truetype");
 }
@@ -93,7 +97,7 @@ strong {
   @apply bg-transparent hover:bg-primary border border-primary text-primary hover:text-black px-3.5 py-2 rounded-lg font-StageGroteskLigth hover:font-StageGroteskBlack text-[1rem];
   
 }
-button {
+button, .button {
   @apply font-StageGroteskBlack border border-primary text-primary flexCenter rounded-lg uppercase tracking-wide;
 }
 .HoverButtons{
@@ -120,6 +124,7 @@ button {
   font-weight: bold;
   text-transform: uppercase;
   text-align: center;
+  color: #e9e2b4;
   margin-bottom: 0.5rem;
 }
 

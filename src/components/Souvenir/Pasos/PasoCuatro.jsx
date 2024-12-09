@@ -1,4 +1,9 @@
-export const PasoCuatro = ({back} ) => {
+import { firestore } from "../../firestore/firestore-config";
+import Formulario from "../FormAlcarrito";
+import { query, where, getDocs, collection } from "firebase/firestore";
+
+export const PasoCuatro = ({ back }) => {
+  
   return (
     <>
       <h2 className="font-Wayland titles max-lg:text-center">
@@ -6,11 +11,8 @@ export const PasoCuatro = ({back} ) => {
         UN REGALO <br />
         CLÁSICO
       </h2>
-      <button 
-      //onClick={openFileDialog} 
-      className="my-6 py-2 px-12 max-lg:mx-auto">
-           Ir a pagar
-          </button>
+      <Formulario />
+
       <div className="w-full flex justify-between mt-4 max-lg:hidden">
         <div className="">
           <button

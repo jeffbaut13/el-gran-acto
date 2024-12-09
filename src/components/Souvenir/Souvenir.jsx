@@ -31,29 +31,33 @@ export const Souvenir = ({ reff }) => {
       },
       target: {
         x: isMobile ? -0.1 : 3.2,
-        y: isMobile ? -0 : -2,
+        y: isMobile ? -1 : -2,
         z: isMobile ? 0 : -5,
       },
       zoom: 1,
     },
     {
       position: {
-        x: isMobile ? -0.9 : -1.7,
+        x: isMobile ? -1.3 : -1.7,
         y: isMobile ? 0.8 : 0.8,
         z: isMobile ? 1.4 : 2,
       },
       target: {
-        x: isMobile ? 0 : 0.6,
-        y: isMobile ? 0.2 : 1,
+        x: isMobile ? 0.15 : 0.6,
+        y: isMobile ? 0.6 : 1,
         z: isMobile ? -0.5 : 0,
       },
-      zoom: 4,
+      zoom: isMobile ? 2 : 4,
     },
     {
-      position: { x: isMobile ? 0.5 : 0.1, y: 1, z: isMobile ? 3 : 2 },
+      position: {
+        x: isMobile ? 0.5 : 0.1,
+        y: 1,
+        z: isMobile ? 3 : 2,
+      },
       target: {
         x: isMobile ? -0.1 : 3.2,
-        y: isMobile ? -0 : -2,
+        y: isMobile ? -0.6 : -2,
         z: isMobile ? 0 : -5,
       },
       zoom: 1,
@@ -88,7 +92,7 @@ export const Souvenir = ({ reff }) => {
 
       gsap.to(controls.target, {
         x: isMobile ? -0.1 : 3.2,
-        y: isMobile ? -0 : -2,
+        y: isMobile ? -1 : -2,
         z: isMobile ? 0 : -5,
         duration: 2,
         onUpdate: () => controls.update(),
@@ -129,10 +133,35 @@ export const Souvenir = ({ reff }) => {
     }
   };
 
+  const handleClick = (hash) => {
+    if (window.location.pathname === "/") {
+      window.location.hash = hash;
+
+      // Delay para asegurar que el hash esté aplicado antes de hacer el scroll
+      setTimeout(() => {
+        const section = document.getElementById(hash.replace("#", ""));
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 0);
+    } else {
+      // Navega al home y añade el hash
+      navigate(`/${hash}`);
+
+      // Delay para asegurar que el DOM del home está cargado antes de intentar hacer scroll
+      setTimeout(() => {
+        const section = document.getElementById(hash.replace("#", ""));
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300); // Ajusta este valor si es necesario para darle más tiempo al DOM para cargar
+    }
+  };
+
   return (
     <section className="w-full h-screen snap-item relative bg-black select-none max-lg:flex max-lg:justify-start max-lg:flex-col-reverse max-lg:pb-24 max-lg:px-4">
       <span
-        onClick={() => navigate("/")}
+        onClick={() => handleClick("#UN-REGALO-INOLVIDABLE")}
         className="fixed left-12 top-6 flex items-center justify-center gap-2 z-50 cursor-pointer"
       >
         <span className="w-6 h-6 rotate-180 inline-block">
