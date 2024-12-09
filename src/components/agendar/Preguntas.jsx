@@ -82,7 +82,7 @@ const Preguntas = () => {
   const mostrarBuscando = (interaccion) => {
     setTipoInteraccion(interaccion); // Guardar la interacción seleccionada
     setEstado("buscando");
-    setTimeout(() => setEstado("viejito"), 2000);
+    setTimeout(() => setEstado("viejito"), 1000);
   };
 
   const handleAgendar = () => {

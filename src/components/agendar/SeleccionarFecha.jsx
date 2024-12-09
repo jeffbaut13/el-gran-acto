@@ -147,7 +147,7 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
   return (
     <div className="w-full h-screen flex md:py-12 xs:py-2 px-20">
       <div className="w-full h-full flex flex-col justify-center items-center">
-        <p className=" xs:w-[25rem] md:w-auto text-center">Selecciona el día, la hora y registra tus datos para donar tu tiempo.</p>
+        <p className=" xs:w-[25rem] md:w-auto text-center ">Selecciona el día, la hora y registra tus datos para donar tu tiempo.</p>
         <div className="xs:flex xs:flex-col md:flex md:flex-row gap-5">
           {/* Calendario */}
           <div className="relative border border-primary rounded-xl mt-4 calendario flex flex-col items-center justify-center backdrop-blur-2xl">
