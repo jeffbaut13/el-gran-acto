@@ -8,10 +8,12 @@ import { Home } from "../pages/Home";
 import Visita from "../pages/Visita";
 import Match from "../pages/Match";
 import { Landing } from "../components/Landing/Landing";
+
+import { Souvenir } from "../components/Souvenir/Souvenir";
+
 import Scanner from "../components/boleta/Scanner";
-import Ticket from "../components/boleta/TicketInvitados";
 import TicketInter from "../components/boleta/TicketInterDay";
-import TicketInvitados from "../components/boleta/TicketInvitados";
+ import TicketInvitados from "../components/boleta/TicketInvitados";
 import TicketInterDay from "../components/boleta/TicketInterDay";
 import { InterDay } from "../pages/InterDay";
 import { ElgranActo } from "../pages/ElgranActo";
@@ -27,7 +29,7 @@ function ScrollToTopOnRouteChange() {
 }
 
 const router = createBrowserRouter([
-  /* {
+  {
     path: "/",
     element: (
       <>
@@ -47,6 +49,7 @@ const router = createBrowserRouter([
         <Visita />
       </>
     ),
+    errorElement: <ErrorPage />,
   },
   {
     path: "match",
@@ -56,8 +59,9 @@ const router = createBrowserRouter([
         <Match />
       </>
     ),
-  }, */
-  {
+    errorElement: <ErrorPage />,
+  },
+  /* {
     path: "/",
     element: (
       <>
@@ -67,41 +71,45 @@ const router = createBrowserRouter([
         </Layout>
       </>
     ),
-  },
+  }, */
   {
     path: "/ticket/:id",
     element: (
       <>
-      <Layout>
-
         <ScrollToTopOnRouteChange />
         <TicketInvitados />
-      </Layout>
       </>
     ),
+    errorElement: <ErrorPage />,
   },
   {
     path: "/ticketinter/:id",
     element: (
       <>
-      <Layout>
-
         <ScrollToTopOnRouteChange />
-      <TicketInterDay />
-      </Layout>
+        <TicketInterDay />
       </>
     ),
+    errorElement: <ErrorPage />,
   },
   {
     path: "/scanner",
     element: (
       <>
-        <Layout>
-          <ScrollToTopOnRouteChange />
-          <Scanner />
-        </Layout>
+        <ScrollToTopOnRouteChange />
+        <Scanner />
       </>
     ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/personalizacion",
+    element: (
+      <>
+        <Souvenir />
+      </>
+    ),
+    errorElement: <ErrorPage />,
   },
   {
     path: "/interday2024",
@@ -110,6 +118,7 @@ const router = createBrowserRouter([
         <InterDay />
       </>
     ),
+    errorElement: <ErrorPage />,
   },
   {
     path: "/elgranacto",
@@ -118,6 +127,25 @@ const router = createBrowserRouter([
         <ElgranActo />
       </>
     ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/interday2024",
+    element: (
+      <>
+        <InterDay />
+      </>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/elgranacto",
+    element: (
+      <>
+        <ElgranActo />
+      </>
+    ),
+    errorElement: <ErrorPage />,
   },
 ]);
 

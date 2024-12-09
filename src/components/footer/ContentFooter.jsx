@@ -32,7 +32,8 @@ const campañas = [
 export const ContentFooter = () => {
   return (
     <section
-      id={`${links[8]}`}
+      id={`${links[6]}`}
+      //id={`${links[8]}`}
       className="w-full h-screen bg-[#131313] text-primary flex flex-col justify-center lg:px-10 snap-item gap-4"
     >
       <h2 className="font-Wayland w-full text-center text-[3.15rem] leading-[3rem]">

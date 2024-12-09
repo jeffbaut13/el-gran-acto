@@ -1,39 +1,50 @@
 import React, { Suspense, useEffect, useRef } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
-import { useProgress, Html, OrbitControls } from "@react-three/drei";
+import {
+  useProgress,
+  Html,
+  OrbitControls,
+  Environment,
+} from "@react-three/drei";
+import { Model } from "./Model";
 
-import { PortaRetrato } from "./PortaRetrato";
-
-function Loader() {
+import { Ground } from "./Ground";
+import { Loading } from "../helpers/Loading";
+import Loader from "../Loader/Loader";
+import { isMobile } from "../../data/medidas";
+function ModelLoader() {
   const { progress, active } = useProgress();
+  
 
   return (
     <Html center>
-      <p className="text-black loader">{progress.toFixed(1)} % loaded</p>
+      {/* <Loader LoaderHide={active}/> */}
+      <Loading />
     </Html>
   );
 }
 
 export const Canva = ({
-  open,
-  snap,
+  activePaso,
+  model,
   cameraControlRef,
-  group,
-
-  abrirDije,
+  isAudioReady,
+  audioRef,
 }) => {
   return (
     <>
+    
+    <div className="canvas-container absolute top-0 left-0 z-10">
       <Canvas shadows gl={{ antialias: true }} dpr={[1, 1.5]}>
-        <OrbitControls ref={cameraControlRef} enabled={false} />
+        <OrbitControls ref={cameraControlRef} enabled={isMobile ?  true : false} />
 
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={2} />
         <directionalLight
           castShadow
-          //color={"#e9e2b4"}
+          color={"#066e79"}
           //color={"blue"}
           position={[-10, 30, -10]}
-          intensity={6}
+          intensity={10}
           shadow-bias={-0.001}
           shadow-mapSize-width={2048}
           shadow-mapSize-height={2048}
@@ -45,8 +56,8 @@ export const Canva = ({
         />
         <directionalLight
           castShadow
-          ////color={"red"}
-          color={"#e9e2b4"}
+          //color={"red"}
+          //color={"#066e79"}
           position={[10, 20, 10]}
           intensity={6}
           shadow-bias={-0.001}
@@ -62,8 +73,8 @@ export const Canva = ({
         <pointLight
           castShadow
           position={[0, 2, 0]}
-          intensity={10}
-          color={"#e9e2b4"}
+          intensity={5}
+          color={"#066e79"}
           shadow-bias={-0.001}
           shadow-mapSize-width={2048}
           shadow-mapSize-height={2048}
@@ -73,10 +84,18 @@ export const Canva = ({
           shadow-camera-top={10}
           shadow-camera-bottom={-10}
         />
-        <Suspense fallback={<Loader />}>
-          <PortaRetrato />
+        <Suspense fallback={<ModelLoader />}>
+          <Ground />
+          <Model
+            activePaso={activePaso}
+            model={model}
+            isAudioReady={isAudioReady}
+            audioRef={audioRef}
+          />
         </Suspense>
+        <Environment map={"forest"} />
       </Canvas>
+    </div>
     </>
   );
 };

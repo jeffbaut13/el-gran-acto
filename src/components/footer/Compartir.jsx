@@ -9,7 +9,8 @@ export const Compartir = ({ reff }) => {
   return (
     <section
       ref={reff}
-      id={`${links[7]}`}
+      id={`${links[5]}`}
+      //id={`${links[7]}`}
       className="h-screen w-full snap-item relative bg-black"
     >
       <figure className="w-full h-full absolute top-0 left-0">
@@ -20,7 +21,7 @@ export const Compartir = ({ reff }) => {
           COMPARTE LA EXPERIENCIA <br/> DE ESTE GRAN ACTO
         </h2>
         <div className="flex justify-center lg:gap-16 xs:gap-4 mt-2">
-          <Socials social={social} />
+          <Socials texto={"En Navidad, entregar es mejor que recibir, por eso quiero que ingreses y conozcas cómo puedes dar un regalo inolvidable, en "} url={"https://ElGranActo.com"}/>
         </div>
       </div>
     </section>

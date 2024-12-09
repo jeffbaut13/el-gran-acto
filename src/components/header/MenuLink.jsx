@@ -4,13 +4,24 @@ export const links = [
   "INICIO",
   "DONA-TU-TIEMPO",
   "INVITA-A-DONAR",
+  /* "LA-CANCIÓN", */
+  "UN-REGALO-INOLVIDABLE",
+  "CONOCE-A-LOS-CLÁSICOS",
+  /* "DETRÁS-DE-CÁMARAS", */
+  "COMPARTE",
+  "NUESTRAS-ENTREGAS",
+];
+/* export const links = [
+  "INICIO",
+  "DONA-TU-TIEMPO",
+  "INVITA-A-DONAR",
   "LA-CANCIÓN",
   "UN-REGALO-INOLVIDABLE",
   "CONOCE-A-LOS-CLÁSICOS",
   "DETRÁS-DE-CÁMARAS",
   "COMPARTE",
   "NUESTRAS-ENTREGAS",
-];
+]; */
 export const MenuLink = ({ setActive }) => {
   const navigate = useNavigate();
 

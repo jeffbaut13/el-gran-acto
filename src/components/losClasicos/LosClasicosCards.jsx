@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, Fragment } from "react";
 import { SlideClasicos } from "./SlideClasicos";
 import "./clip-path.css";
 import { SliderOneSlide } from "./SliderOneSlide";
@@ -18,7 +18,8 @@ export const LosClasicosCards = ({ reff }) => {
   return (
     <section
       ref={reff}
-      id={`${links[5]}`}
+      id={`${links[4]}`}
+      //id={`${links[5]}`}
       className="h-screen w-full flex flex-col justify-center items-center snap-item bg-black relative z-[5]"
     >
       <div className="w-full h-full absolute top-0 left-0 opacity-30 z-0 bg-second"></div>
@@ -49,13 +50,15 @@ export const LosClasicosCards = ({ reff }) => {
                   i === name ? (
                     <PopUp key={i} viejito={viejito} open={open} />
                   ) : (
-                    <></>
+                    <Fragment key={i}></Fragment> // Añadimos la key al Fragment vacío
                   )
                 )}
               </div>
             </>
           )}
-          <div className={`w-full h-full absolute z-20 max-lg:overflow-x-scroll`}>
+          <div
+            className={`w-full h-full absolute z-20 max-lg:overflow-x-scroll`}
+          >
             <HoverCard
               abuelitos={abuelitos}
               setName={setName}

@@ -2,10 +2,67 @@ import gsap from "gsap";
 import { links } from "../header/MenuLink";
 import { Canva } from "./Canva";
 import { useEffect, useRef, useState } from "react";
+import "./canva.css";
+import { PasosComponentes } from "./PasosComponentes";
+import useAudioStore from "../../store/audioStore";
+import { isMobile } from "../../data/medidas";
+import { Loading } from "../helpers/Loading";
+import { useNavigate } from "react-router-dom";
+import { Arrow } from "../helpers/Arrow";
 
 export const Souvenir = ({ reff }) => {
+  const model = useRef(null);
+  const audioRef = useRef(null);
+  const pasos = ["DEDICADO A", "SUBE TU FOTO", "TU REGALO"];
+  const [activePaso, setActivePaso] = useState(0);
+  const [audio, setAudio] = useState(false);
   const controlsRef = useRef(null);
   const [isControlsReady, setControlsReady] = useState(false);
+  const navigate = useNavigate();
+  const { combinedAudioUrl, isAudioReady } = useAudioStore();
+
+  // Configuración de puntos de interés dinámicos
+  const cameraTargets = [
+    {
+      position: {
+        x: isMobile ? 0.5 : 0.1,
+        y: 1,
+        z: isMobile ? 3 : 2,
+      },
+      target: {
+        x: isMobile ? -0.1 : 3.2,
+        y: isMobile ? -1 : -2,
+        z: isMobile ? 0 : -5,
+      },
+      zoom: 1,
+    },
+    {
+      position: {
+        x: isMobile ? -1.3 : -1.7,
+        y: isMobile ? 0.8 : 0.8,
+        z: isMobile ? 1.4 : 2,
+      },
+      target: {
+        x: isMobile ? 0.15 : 0.6,
+        y: isMobile ? 0.6 : 1,
+        z: isMobile ? -0.5 : 0,
+      },
+      zoom: isMobile ? 2 : 4,
+    },
+    {
+      position: {
+        x: isMobile ? 0.5 : 0.1,
+        y: 1,
+        z: isMobile ? 3 : 2,
+      },
+      target: {
+        x: isMobile ? -0.1 : 3.2,
+        y: isMobile ? -0.6 : -2,
+        z: isMobile ? 0 : -5,
+      },
+      zoom: 1,
+    },
+  ];
 
   // Marcar los controles como listos
   useEffect(() => {
@@ -19,58 +76,176 @@ export const Souvenir = ({ reff }) => {
     return () => clearInterval(interval); // Limpiar al desmontar
   }, []);
 
-  // Ejecutar la animación cuando los controles estén listos
+  // Animación inicial de la cámara cuando los controles están listos
   useEffect(() => {
-    if (isControlsReady && controlsRef.current) {
+    if (isControlsReady && controlsRef.current && activePaso == 0) {
       const controls = controlsRef.current;
-      const { object: camera } = controls; // Acceder a la cámara desde OrbitControls
+      const { object: camera } = controls;
 
-      // Animación de la posición de la cámara
       gsap.to(camera.position, {
-        x: 1.3,
-        y: 1.2,
-        z: 2,
+        x: isMobile ? 0.5 : 0.1,
+        y: 1,
+        z: isMobile ? 3 : 2,
         duration: 2,
-        onUpdate: () => {
-          controls.update(); // Actualizar la posición
-        },
+        onUpdate: () => controls.update(),
       });
 
-      // Animación del punto de enfoque
       gsap.to(controls.target, {
-        x: 1.3,
-        y: 0,
-        z: -4,
+        x: isMobile ? -0.1 : 3.2,
+        y: isMobile ? -1 : -2,
+        z: isMobile ? 0 : -5,
         duration: 2,
+        onUpdate: () => controls.update(),
+      });
+    }
+  }, [isControlsReady]);
+
+  // Animar la cámara hacia un punto específico
+  const handleButtonClick = (partKey) => {
+    setActivePaso(partKey);
+    if (controlsRef.current) {
+      const controls = controlsRef.current;
+      const { position, target, zoom } = cameraTargets[partKey];
+
+      // Animar la posición de la cámara
+      gsap.to(controls.object.position, {
+        ...position,
+        duration: 1.5,
+        onUpdate: () => controls.update(),
+      });
+
+      // Animar el punto de enfoque (target)
+      gsap.to(controls.target, {
+        ...target,
+        duration: 1.5,
+        onUpdate: () => controls.update(),
+      });
+
+      // Animar el zoom
+      gsap.to(controls.object, {
+        zoom,
+        duration: 1.5,
         onUpdate: () => {
-          controls.update(); // Actualizar el enfoque
+          controls.object.updateProjectionMatrix();
+          controls.update();
         },
       });
     }
-  }, [isControlsReady]); // Ejecutar cuando `isControlsReady` cambie
+  };
+
+  const handleClick = (hash) => {
+    if (window.location.pathname === "/") {
+      window.location.hash = hash;
+
+      // Delay para asegurar que el hash esté aplicado antes de hacer el scroll
+      setTimeout(() => {
+        const section = document.getElementById(hash.replace("#", ""));
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 0);
+    } else {
+      // Navega al home y añade el hash
+      navigate(`/${hash}`);
+
+      // Delay para asegurar que el DOM del home está cargado antes de intentar hacer scroll
+      setTimeout(() => {
+        const section = document.getElementById(hash.replace("#", ""));
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300); // Ajusta este valor si es necesario para darle más tiempo al DOM para cargar
+    }
+  };
 
   return (
-    <section
-      ref={reff}
-      id={`${links[4]}`}
-      className="w-full h-screen snap-item relative bg-black"
-    >
-      <Canva cameraControlRef={controlsRef} />
-      <div className="absolute w-full h-full z-10 top-0 left-0 flex items-center">
-        <div className="w-1/2"></div>
-        <div className="w-1/2 pl-20">
-          <h2 className="font-Wayland text-[4.38rem] leading-[4rem]">
-            UN REGALO <br />
-            INOLVIDABLE
-          </h2>
-          <p className="py-6">
-            Creamos este cuadro que podrás personalizar con <br /> la mejor foto de esa
-            persona que tanto quieres y <br /> una dedicatoria única para que ese <br />
-            abuelo, ese padre o esos hijos, jamás se olviden de ti.
-          </p>
-          <button className="px-7 py-1.5 text-[1.46rem]">PERSONALIZAR</button>
+    <section className="w-full h-screen snap-item relative bg-black select-none max-lg:flex max-lg:justify-start max-lg:flex-col-reverse max-lg:pb-24 max-lg:px-4">
+      <span
+        onClick={() => handleClick("#UN-REGALO-INOLVIDABLE")}
+        className="fixed left-12 top-6 flex items-center justify-center gap-2 z-50 cursor-pointer"
+      >
+        <span className="w-6 h-6 rotate-180 inline-block">
+          <Arrow />
+        </span>
+        Atras
+      </span>
+      <Canva
+        cameraControlRef={controlsRef}
+        activePaso={activePaso}
+        model={model}
+        isAudioReady={isAudioReady}
+        audioRef={audioRef}
+      />
+      <div className="lg:absolute xs:relative lg:bottom-16 left-1/2 -translate-x-1/2 z-30 h-4 xs:w-[65%] lg:w-1/3 inline-block">
+        <div className="flex w-full justify-between relative">
+          {isMobile && (
+            <span className="lg:w-4 xs:w-7 lg:h-4 xs:h-7 ml-4 rotate-180">
+              {activePaso >= 1 && (
+                <span
+                  onClick={() => handleButtonClick(activePaso - 1)}
+                  className="w-full h-full"
+                >
+                  <Arrow />
+                </span>
+              )}
+            </span>
+          )}
+
+          {pasos.map((paso, i) => (
+            <div
+              onClick={() => handleButtonClick(i)}
+              key={i}
+              className="line cursor-pointer rounded-full lg:w-4 xs:w-7 lg:h-4 xs:h-7 inline-block border border-primary relative"
+            >
+              <span
+                className={`rounded-full ${
+                  activePaso >= i ? "bg-primary" : "bg-none"
+                }  lg:h-2 xs:h-5 inline-block lg:w-2 xs:w-5 absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 ease-in-out transition-all duration-1000`}
+              />
+              <span className="font-StageGroteskBold absolute whitespace-nowrap -bottom-8 -left-[250%] max-lg:hidden">
+                {paso}
+              </span>
+            </div>
+          ))}
+
+          {isMobile && (
+            <span className="lg:w-4 xs:w-7 lg:h-4 xs:h-7 ml-4">
+              {activePaso <= 1 && (
+                <span
+                  onClick={() => handleButtonClick(activePaso + 1)}
+                  className="w-full h-full"
+                >
+                  <Arrow />
+                </span>
+              )}
+            </span>
+          )}
         </div>
       </div>
+      <div className="lg:w-[50vw] xs:w-full lg:h-full z-20 flex items-center lg:absolute xs:relative right-0 max-lg:my-10 max-lg:bg-black max-lg:bg-opacity-20 max-lg:backdrop-blur-sm max-lg:rounded-xl max-lg:pt-4">
+        <PasosComponentes
+          activePaso={activePaso}
+          setActivePaso={setActivePaso}
+          setAudio={setAudio}
+          audio={audio}
+          handleButtonClick={handleButtonClick}
+        />
+      </div>
+
+      {audio && activePaso >= 0 && (
+        <div className="lg:absolute xs:relative lg:bottom-36 lg:left-[22%] xs:left-1/2 max-lg:-translate-x-1/2 w-fit h-fit z-50 inline-block">
+          {!isAudioReady ? (
+            <Loading texto={"Cargando dedicatoria"} />
+          ) : (
+            <>
+              <audio ref={audioRef} controls>
+                <source src={combinedAudioUrl} type="audio/mpeg" />
+                Your browser does not support the audio element.
+              </audio>
+            </>
+          )}
+        </div>
+      )}
     </section>
   );
 };
