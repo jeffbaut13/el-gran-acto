@@ -11,6 +11,7 @@ export const BotonMusic = ({ url }) => {
         (window.location.href = "https://www.youtube.com/watch?v=77_C-xjRY8o")
       }
       className="button group text-[1.15rem] leading-3 py-2 HoverButtons"
+      target="_blank"
     >
       <span className="w-10 h-auto pr-3 ml-3.5">
         <IconPlay customStyle={true} />
