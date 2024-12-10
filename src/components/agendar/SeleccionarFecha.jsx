@@ -267,6 +267,15 @@ const SeleccionarFecha = ({ documentoId, tipoInteraccion }) => {
                       Política de tratamiento de datos Personales{" "}
                     </strong>
                   </a>
+y en los {" "}
+                  <a
+                    href="https://interrapidisimo.com/wp-content/uploads/TERMINOS-Y-CONDICIONES-DE-USO-DE-IMAGEN.pdf"
+                    className="text-primary" target="_blank"
+                  >
+                    <strong className="font-StageGroteskBlack">
+                     TÉRMINOS Y CONDICIONES DE USO DE IMAGEN{" "}
+                    </strong>
+                  </a>
                   de Inter Rapidísimo.
                 </span>
               </div>
