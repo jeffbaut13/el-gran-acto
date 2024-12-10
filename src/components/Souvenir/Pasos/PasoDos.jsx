@@ -10,9 +10,8 @@ export const PasoDos = ({
   isAudioReady,
   back,
   isButtonDisabled,
+  DedicateNumber,
 }) => {
-  
-
   const handleInputChange = (setter, value) => {
     const wordCount = value.trim().split(/\s+/).length;
 
@@ -20,7 +19,7 @@ export const PasoDos = ({
     if (wordCount <= 2) {
       setter(value);
     }
-  }
+  };
   return (
     <>
       <h2 className="font-Wayland titles max-lg:text-center">
@@ -34,7 +33,7 @@ export const PasoDos = ({
           : "Si todo está correcto, selecciona 'Continuar'. Si necesitas corregir los datos, puedes seleccionar la opción 'Crear nuevo audio'."}
       </p>
       <div className="flex flex-col justify-between w-full gap-2">
-      <input
+        <input
           className="w-full py-2 px-3.5 border border-primary rounded-lg mb-6"
           type="text"
           placeholder="Tu nombre acá"
@@ -86,6 +85,19 @@ export const PasoDos = ({
           )}
         </div>
       </div>
+      {DedicateNumber >= 1 && DedicateNumber < 2 ? (
+        <p className="w-full text-center">
+          Te queda {2 - DedicateNumber} intento más
+        </p>
+      ) : DedicateNumber >= 2 ? (
+        <p className="w-full text-center">
+          Puedes volver a intertarlo en 24 horas
+        </p>
+      ) : (
+        <p className="w-full text-center">
+          Puedes realizar hasta 2 dedicatorias
+        </p>
+      )}
     </>
   );
 };

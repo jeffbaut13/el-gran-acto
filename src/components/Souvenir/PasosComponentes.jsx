@@ -13,6 +13,7 @@ import { PasoDos } from "./Pasos/PasoDos";
 
 const Component1 = ({
   HandleAudio,
+  DedicateNumber,
   audio,
   setText,
   setText2,
@@ -27,6 +28,7 @@ const Component1 = ({
   <PasoDos
     HandleAudio={HandleAudio}
     audio={audio}
+    DedicateNumber={DedicateNumber}
     setText={setText}
     setText2={setText2}
     text={text}
@@ -65,8 +67,18 @@ export const PasosComponentes = ({
   // Obtener el componente correspondiente
   const ActiveComponent = components[activePaso];
 
-  const { generateAndCombineAudio, isAudioReady, generateAndCombineAudioTest } =
-    useAudioStore();
+  const {
+    generateAndCombineAudio,
+    isAudioReady,
+    generateAndCombineAudioTest,
+    DedicateNumber,
+    checkAndResetDedicateNumber,
+  } = useAudioStore();
+
+  useEffect(() => {
+    // Validar y resetear DedicateNumber al cargar el sitio
+    checkAndResetDedicateNumber();
+  }, [checkAndResetDedicateNumber]);
 
   const handleGenerateAudio = async () => {
     if (text == "") {
@@ -78,7 +90,7 @@ export const PasosComponentes = ({
       await generateAndCombineAudio(
         `Hola ${text}. ${text2} que te quiere mucho te dedica esta canción porque nunca se va a olvidar de ti.`
       );
-/*        await generateAndCombineAudioTest(
+      /*        await generateAndCombineAudioTest(
         `Hola ${text}, alguien muy especial te ha dedicado esta cancion por que te quiere mucho.`
       ); */
       setLoading(false);
@@ -112,6 +124,7 @@ export const PasosComponentes = ({
       {ActiveComponent && (
         <ActiveComponent
           HandleAudio={HandleAudio}
+          DedicateNumber={activePaso == 0 ? DedicateNumber : null}
           audio={activePaso == 0 ? audio : null}
           text={activePaso == 0 ? text : null}
           setText={activePaso == 0 ? setText : null}

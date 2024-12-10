@@ -64,9 +64,10 @@ export const enviarDatosAFirebase = async ({
       imagen: imagenURL,
       promoId,
       numeroOrden: "",
-      orderStatus:"",
+      orderStatus: "",
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
+      preparado: false,
     });
 
     return docRef.id; // Retornar el ID del documento creado
@@ -77,7 +78,6 @@ export const enviarDatosAFirebase = async ({
 };
 
 export const redireccionar = (promoId, email, idGenerado) => {
-  
   const dataSend = {
     email,
     promoid: promoId,
@@ -89,5 +89,4 @@ export const redireccionar = (promoId, email, idGenerado) => {
 
   const urlAlcarrito = "https://www.alcarrito.com/promo/addtocart";
   window.location.href = `${urlAlcarrito}?${queryString}`;
-
 };
