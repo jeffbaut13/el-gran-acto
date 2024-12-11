@@ -1,7 +1,7 @@
 export const abuelitos = [
   {
     nombre: "FERNANDO",
-    role: "COROS",
+    role: "GUITARRA",
     imagen: "/imagenes/abuelo0.webp",
     descripcion: "",
     video: "/videos/fernando.mp4",
@@ -29,7 +29,7 @@ export const abuelitos = [
   },
   {
     nombre: "HENRY",
-    role: "MARACAS",
+    role: "PERCUSIÓN",
     imagen: "/imagenes/abuelo4.webp",
     descripcion: "",
     video: "/videos/henry.mp4",
