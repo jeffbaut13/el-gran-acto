@@ -3,6 +3,7 @@ import { PreguntasBackGround } from "./PreguntasBackGround";
 import Buscando from "./Buscando";
 import Viejito from "./Viejito";
 import SeleccionarFecha from "./SeleccionarFecha";
+import Agotados from "./Agotados"; // Importa el componente Agotados
 
 const Preguntas = () => {
   const preguntasData = [
@@ -57,7 +58,7 @@ const Preguntas = () => {
   const [respuestas, setRespuestas] = useState(
     Array(preguntasData.length).fill(null)
   );
-  const [estado, setEstado] = useState("preguntas"); // 'preguntas', 'buscando', 'viejito', 'seleccionarFecha'
+  const [estado, setEstado] = useState("preguntas"); // 'preguntas', 'buscando', 'viejito', 'seleccionarFecha', 'agotados'
   const [tipoInteraccion, setTipoInteraccion] = useState(null); // Estado para manejar el tipo de interacción
 
   const handleSeleccionarOpcion = (indice) => {
@@ -80,6 +81,14 @@ const Preguntas = () => {
   };
 
   const mostrarBuscando = (interaccion) => {
+    // Simular la lógica de verificación de disponibilidad
+    const hayOpcionesDisponibles = interaccion === "visita" ? true : false; // Cambia esto por una lógica real.
+
+    if (!hayOpcionesDisponibles) {
+      setEstado("agotados"); // Cambiar a estado agotados si no hay opciones
+      return;
+    }
+
     setTipoInteraccion(interaccion); // Guardar la interacción seleccionada
     setEstado("buscando");
     setTimeout(() => setEstado("viejito"), 100);
@@ -178,14 +187,16 @@ const Preguntas = () => {
 
         {estado === "buscando" && <Buscando />}
 
-        {estado === "viejito" && (
-  <Viejito
-    onAgendar={() => setEstado("seleccionarFecha")}
-    tipoInteraccion={tipoInteraccion}
-  />
-)}
+        {estado === "agotados" && <Agotados />}
 
-{estado === "seleccionarFecha" && <SeleccionarFecha />}
+        {estado === "viejito" && (
+          <Viejito
+            onAgendar={() => setEstado("seleccionarFecha")}
+            tipoInteraccion={tipoInteraccion}
+          />
+        )}
+
+        {estado === "seleccionarFecha" && <SeleccionarFecha />}
       </div>
     </div>
   );
