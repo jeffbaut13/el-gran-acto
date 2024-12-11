@@ -4,7 +4,7 @@ import { links } from "../header/MenuLink";
 const campañas = [
   {
     title: "Entregar es mejor que recibir",
-    url: "https://entregamagica.com/",
+    url: "https://cartadedavid.granentrega.com",
     img: "entrega-david",
   },
   {
