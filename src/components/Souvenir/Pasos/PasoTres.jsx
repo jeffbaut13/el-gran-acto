@@ -126,8 +126,9 @@ export const PasoTres = ({ back, HandleAudio }) => {
       </p>
 
       {ajuste && (
-        <p className="mt-12 max-lg:text-center">
-          La imagen es referencial y puede variar en la impresión para cubrir toda el área.
+        <p className="my-12 max-lg:text-center">
+          La imagen es referencial y puede variar en la impresión para cubrir
+          toda el área.
         </p>
       )}
 
@@ -138,41 +139,27 @@ export const PasoTres = ({ back, HandleAudio }) => {
         accept="image/jpeg, image/png, image/jpg"
         onChange={handleImageUpload}
       />
-      <div className="w-full flex justify-between mt-4 max-lg:hidden">
-        <div className="">
+      
+        <div className="w-full flex justify-center max-lg:flex-col max-lg:my-6 items-center relative lg:gap-2 xs:gap-4 h-10">
           <button
             onClick={back}
-            className="w-8 h-8 inline-block p-1.5 rounded-full rotate-180 HoverButtons group relative"
-            //className="absolute w-8 h-8 inline-block -left-14 p-1.5 rounded-full rotate-180 HoverButtons group"
+            className={`HoverButtons lg:text-sm w-full px-7 py-2 text-[1.2rem] h-full`}
           >
-            <img
-              className="easeHove group-hover:invert "
-              src="/iconos/arrow-slide.svg"
-              alt=""
-            />
-            <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-xs rotate-180">
-              Volver
-            </span>
+            Volver
+          </button>
+
+          <button
+            onClick={HandleAudio}
+            className={`HoverButtons lg:text-sm w-full px-7 py-2 text-[1.2rem] h-full ${
+              !ajuste
+                ? "opacity-15 pointer-events-none"
+                : " opacity-100 pointer-events-auto bg-primary text-second"
+            }`}
+          >
+            Continuar
           </button>
         </div>
-        <div className="">
-          {ajuste && (
-            <button
-              onClick={HandleAudio}
-              className={`HoverButtons relative w-8 h-8 inline-block p-1.5 rounded-full HoverButtons group`}
-            >
-              <img
-                className="easeHove group-hover:invert "
-                src="/iconos/arrow-slide.svg"
-                alt=""
-              />{" "}
-              <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs">
-                Continuar
-              </span>
-            </button>
-          )}
-        </div>
-      </div>
+      
     </>
   );
 };

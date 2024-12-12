@@ -10,7 +10,7 @@ import ImgRender from "../../store/valtioStore";
 import { Loading } from "../helpers/Loading";
 import ReCAPTCHA from "react-google-recaptcha";
 
-const Formulario = () => {
+const Formulario = ({ back }) => {
   const [loadingButton, setLoadingButton] = useState(false);
   const [recaptchaValid, setRecaptchaValid] = useState(false); // Estado para el ReCAPTCHA
   const { urlFirabesAudio } = useAudioStore(); // Audio desde Zustand
@@ -125,21 +125,28 @@ const Formulario = () => {
         />
       </div>
 
-      <button
-        type="submit"
-        className={`my-6 py-2 px-12 max-lg:mx-auto ${
-          isButtonDisabled ? "opacity-35 pointer-events-none" : ""
-        }`}
-        disabled={isButtonDisabled}
-      >
-        {loadingButton ? <Loading texto={"Redirigiendo..."} /> : "Ir a pagar"}
-      </button>
+      <div className="w-full flex justify-center max-lg:flex-col max-lg:my-10 items-center relative lg:gap-2 xs:gap-4 h-10">
+        <button
+          onClick={back}
+          className={`HoverButtons lg:text-sm w-full px-7 py-2 text-[1.2rem] h-full`}
+        >
+          Volver
+        </button>
+
+        <button
+          type="submit"
+          disabled={isButtonDisabled}
+          className={`HoverButtons lg:text-sm w-full px-7 py-2 text-[1.2rem] h-full ${
+            isButtonDisabled
+              ? "opacity-15 pointer-events-none"
+              : " opacity-100 pointer-events-auto bg-primary text-second"
+          }`}
+        >
+          {loadingButton ? <Loading texto={"Redirigiendo..."} /> : "Ir a pagar"}
+        </button>
+      </div>
     </form>
   );
 };
 
 export default Formulario;
-
-
-
-

@@ -117,6 +117,17 @@ const useAudioStore = create((set, get) => {
         console.error("Error al generar o combinar el audio:", error);
       }
     },
+
+    generateAndCombineAudioTest: (text) => {
+      set({ isAudioReady: false });
+      const localAudioPath = "/audios/+de75-recorte.mp3";
+      setTimeout(() => {
+        set({
+          combinedAudioUrl: localAudioPath,
+          isAudioReady: true,
+        });
+      }, 1000);
+    },
   };
 });
 
