@@ -14,12 +14,14 @@ import { ButtonSouvenir } from "../components/helpers/ButtonSouvenir";
 import { ButtonDonar } from "../components/helpers/ButtonDonar";
 import { LosClasicosCards } from "../components/losClasicos/LosClasicosCards";
 import { SouvenirHome } from "../components/Souvenir/SouvenirHome";
+import { videos } from "../data/Videos";
 
 export const Home = () => {
   const { playVideo, play, closeVideo, scrollShow, scrollHide } =
     usePlayVideo();
   const [showButton, setShowButton] = useState(false);
   const [showButtonDonar, setShowButtonDonar] = useState(false);
+  const [urlVideoState, seturlVideoState] = useState(videos.comercial);
 
   // Configurar los observadores para las secciones con los IDs deseados
   const { ref: section0Ref, inView: inViewSection } = useInView({
@@ -82,31 +84,19 @@ export const Home = () => {
 
   return (
     <>
-      {/* <ButtonSouvenir showButton={showButton} />
-      <ButtonDonar showButton={showButtonDonar} />
-      <VideoComercial playVideo={playVideo} setPlayVideo={closeVideo} />
-      <SectionMain reff={section0Ref}/> */}
-      {/* <SectionAgendar reff={section1Ref} /> */}
-      {/*
-      <CompartirDonar reff={section2Ref} />
-      <CompartirCancion reff={section3Ref} />
-      <SouvenirHome reff={section4Ref} />
-      <LosClasicosCards reff={section5Ref} />*/}
-      {/* <MakingOf reff={section6Ref} /> */}
-
-      {/*    <Compartir reff={section7Ref} /> */}
-
       <ButtonSouvenir showButton={showButton} />
       <ButtonDonar showButton={showButtonDonar} />
-      <VideoComercial playVideo={playVideo} setPlayVideo={closeVideo} />
-      <SectionMain reff={section0Ref} />
+      <VideoComercial
+        playVideo={playVideo}
+        setPlayVideo={closeVideo}
+        urlVideo={urlVideoState}
+      />
+      <SectionMain reff={section0Ref} seturlVideoState={seturlVideoState} />
       <SectionAgendar reff={section1Ref} />
-
       <CompartirDonar reff={section2Ref} />
-      {/*  <CompartirCancion reff={section3Ref} /> */}
       <SouvenirHome reff={section4Ref} />
       <LosClasicosCards reff={section5Ref} />
-      {/* <MakingOf reff={section6Ref} /> */}
+      <MakingOf reff={section6Ref} seturlVideoState={seturlVideoState} />
 
       <Compartir reff={section7Ref} />
     </>

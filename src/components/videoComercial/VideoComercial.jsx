@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 import gsap from "gsap";
-import { videos } from "../../data/Videos";
+
 import ReactVideo from "./ReactVideo";
 
-export const VideoComercial = ({ playVideo, setPlayVideo }) => {
+export const VideoComercial = ({ playVideo, setPlayVideo, urlVideo }) => {
   const [close, setClose] = useState(false);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export const VideoComercial = ({ playVideo, setPlayVideo }) => {
       <div
         className={`boxVideo opacity-0 z-[9] lg:w-[70%] xs:w-full h-full flex flex-col justify-center items-center`}
       >
-        <ReactVideo play={playVideo} url={videos.comercial} />
+        <ReactVideo play={playVideo} url={urlVideo} />
       </div>
     </div>
   );
